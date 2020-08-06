@@ -34,26 +34,31 @@ class TopView: UIView {
         super.init(frame: frame)
         configureViews()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: ConfigureViews
     private func configureViews() {
-        [containerView, editButton, titleLabel].forEach {
+        [containerView].forEach {
+            addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        addSubview(containerView)
+        
         containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        containerView.addSubview(titleLabel)
+        [titleLabel, editButton].forEach {
+            containerView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        containerView.addSubview(editButton)
         editButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         editButton.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
     }
