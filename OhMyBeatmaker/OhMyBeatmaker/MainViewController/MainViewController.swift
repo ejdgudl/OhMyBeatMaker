@@ -140,16 +140,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 extension MainViewController: TouchedBannerCellDelegate {
     func openBannerWeb(indexPatRow: Int) {
         let webService = WebService()
-        switch indexPatRow {
-        case 0:
-            let sxswSite = webService.openWebSxsw()
-            present(sxswSite, animated: true)
-        case 1:
-            let boilerSite = webService.openWebBoiler()
-            present(boilerSite, animated: true)
-        default:
-            break
-        }
+        let sxswSite = webService.openWebSxsw(row: indexPatRow)
+        let boilSite = webService.openWebSxsw(row: indexPatRow)
+        present(sxswSite, animated: true)
+        present(boilSite, animated: true)
     }
 }
 

@@ -57,9 +57,9 @@ class BannerTableCell: UITableViewCell {
     // MARK: Helpers
     private func makeImage(row: Int, cell: BannerCollectionCell) {
         if row == 0 {
-            cell.bannerImageView.image = UIImage(named: "banner1")
-        } else {
             cell.bannerImageView.image = UIImage(named: "banner2")
+        } else {
+            cell.bannerImageView.image = UIImage(named: "banner1")
         }
     }
     

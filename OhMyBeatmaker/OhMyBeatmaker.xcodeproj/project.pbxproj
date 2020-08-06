@@ -36,6 +36,7 @@
 		D374807724DC52AC00D8EC43 /* BottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807624DC52AC00D8EC43 /* BottomStackView.swift */; };
 		D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807824DC538100D8EC43 /* NickNameTextField.swift */; };
 		D374807C24DC5EBB00D8EC43 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807B24DC5EBB00D8EC43 /* WebService.swift */; };
+		D374807E24DC6A7E00D8EC43 /* EditTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		D374807624DC52AC00D8EC43 /* BottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomStackView.swift; sourceTree = "<group>"; };
 		D374807824DC538100D8EC43 /* NickNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameTextField.swift; sourceTree = "<group>"; };
 		D374807B24DC5EBB00D8EC43 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				D374804224DC234F00D8EC43 /* TopView.swift */,
 				D374805724DC430600D8EC43 /* EditView.swift */,
+				D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
+				D374807E24DC6A7E00D8EC43 /* EditTableHeaderView.swift in Sources */,
 				D374807724DC52AC00D8EC43 /* BottomStackView.swift in Sources */,
 				D374804324DC234F00D8EC43 /* TopView.swift in Sources */,
 				D374806E24DC4E1F00D8EC43 /* IndicatorView.swift in Sources */,
