@@ -16,6 +16,7 @@
 		D374804924DC287400D8EC43 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804824DC287400D8EC43 /* Extension.swift */; };
 		D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */; };
 		D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */; };
+		D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D374804824DC287400D8EC43 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableCell.swift; sourceTree = "<group>"; };
 		D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionCell.swift; sourceTree = "<group>"; };
+		D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMusicTitleTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */,
+				D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D374804324DC234F00D8EC43 /* TopView.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
+				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
 				D374804624DC27E900D8EC43 /* Model.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,

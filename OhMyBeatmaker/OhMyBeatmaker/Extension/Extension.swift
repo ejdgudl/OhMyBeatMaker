@@ -11,11 +11,11 @@ import UIKit
 extension UITableView {
     
     static let bannerTableCellID = "bannerTableCellID"
-
+    static let newMusicTitleTableCellID = "newMusicTitleTableCellID"
 }
 
 extension UICollectionView {
     
     static let bannerCollectionCellID = "bannerCollectionCellID"
-
+    
 }
