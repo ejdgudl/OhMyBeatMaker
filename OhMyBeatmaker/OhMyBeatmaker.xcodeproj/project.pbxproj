@@ -19,6 +19,7 @@
 		D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */; };
 		D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */; };
 		D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805424DC365700D8EC43 /* CoverCollectionCell.swift */; };
+		D374805824DC430600D8EC43 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805724DC430600D8EC43 /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMusicTitleTableCell.swift; sourceTree = "<group>"; };
 		D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMusicCoverTableCell.swift; sourceTree = "<group>"; };
 		D374805424DC365700D8EC43 /* CoverCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverCollectionCell.swift; sourceTree = "<group>"; };
+		D374805724DC430600D8EC43 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				D374804224DC234F00D8EC43 /* TopView.swift */,
+				D374805724DC430600D8EC43 /* EditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				D374804924DC287400D8EC43 /* Extension.swift in Sources */,
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
+				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
 				D374804324DC234F00D8EC43 /* TopView.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
 				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,

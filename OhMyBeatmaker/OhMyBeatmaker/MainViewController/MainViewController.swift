@@ -23,6 +23,14 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var editView: EditView = {
+       let view = EditView()
+        view.delegate = self
+        return view
+    }()
+    
+    private var constraintX: NSLayoutConstraint?
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +40,16 @@ class MainViewController: UIViewController {
     
     // MARK: @Objc
     @objc func didTapEditButton() {
-        
+        moveToEditView(priority: .defaultHigh)
+    }
+    
+    // MARK: Helpers
+    private func moveToEditView(priority: UILayoutPriority) {
+        UIView.animate(withDuration: 1) {
+            self.constraintX?.priority = priority
+            self.constraintX?.isActive = true
+            self.view.layoutIfNeeded()
+        }
     }
     
     // MARK: Configure
@@ -49,7 +66,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
-        [topView, tableView].forEach {
+        [topView, tableView, editView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -63,6 +80,17 @@ class MainViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        editView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        editView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        editView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        editView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        let defaultConstraintX = editView.leftAnchor.constraint(equalTo: view.rightAnchor)
+        defaultConstraintX.priority = UILayoutPriority(500)
+        defaultConstraintX.isActive = true
+        constraintX = editView.leftAnchor.constraint(equalTo: view.leftAnchor)
+        constraintX?.priority = .defaultLow
+        constraintX?.isActive = true
     }
 }
 
@@ -106,9 +134,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: Extension
+// MARK: DidTapPlayButtonSecondDelegate
 extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(_ cell: CoverCollectionCell) {
         print(cell.artistNameLabel)
+    }
+}
+
+// MARK: DidTapBackgroundDelegate
+extension MainViewController: DidTapBackgroundDelegate {
+    func moveToOut() {
+        moveToEditView(priority: .defaultLow)
     }
 }
