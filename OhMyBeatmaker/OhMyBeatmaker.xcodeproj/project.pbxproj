@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374802C24DC1EA100D8EC43 /* AppDelegate.swift */; };
-		D374803124DC1EA100D8EC43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374803024DC1EA100D8EC43 /* ViewController.swift */; };
-		D374803424DC1EA100D8EC43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D374803224DC1EA100D8EC43 /* Main.storyboard */; };
+		D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374803024DC1EA100D8EC43 /* MainViewController.swift */; };
 		D374803624DC1EA400D8EC43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D374803524DC1EA400D8EC43 /* Assets.xcassets */; };
 		D374803924DC1EA400D8EC43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D374803724DC1EA400D8EC43 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -17,8 +16,7 @@
 /* Begin PBXFileReference section */
 		D374802924DC1EA100D8EC43 /* OhMyBeatmaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyBeatmaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D374802C24DC1EA100D8EC43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D374803024DC1EA100D8EC43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D374803324DC1EA100D8EC43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D374803024DC1EA100D8EC43 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D374803524DC1EA400D8EC43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D374803824DC1EA400D8EC43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D374803A24DC1EA400D8EC43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,13 +53,20 @@
 			isa = PBXGroup;
 			children = (
 				D374802C24DC1EA100D8EC43 /* AppDelegate.swift */,
-				D374803024DC1EA100D8EC43 /* ViewController.swift */,
-				D374803224DC1EA100D8EC43 /* Main.storyboard */,
+				D374804024DC221700D8EC43 /* ViewController */,
 				D374803524DC1EA400D8EC43 /* Assets.xcassets */,
 				D374803724DC1EA400D8EC43 /* LaunchScreen.storyboard */,
 				D374803A24DC1EA400D8EC43 /* Info.plist */,
 			);
 			path = OhMyBeatmaker;
+			sourceTree = "<group>";
+		};
+		D374804024DC221700D8EC43 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D374803024DC1EA100D8EC43 /* MainViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +129,6 @@
 			files = (
 				D374803924DC1EA400D8EC43 /* LaunchScreen.storyboard in Resources */,
 				D374803624DC1EA400D8EC43 /* Assets.xcassets in Resources */,
-				D374803424DC1EA100D8EC43 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D374803124DC1EA100D8EC43 /* ViewController.swift in Sources */,
+				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +147,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D374803224DC1EA100D8EC43 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D374803324DC1EA100D8EC43 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D374803724DC1EA400D8EC43 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
