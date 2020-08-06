@@ -17,6 +17,8 @@
 		D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */; };
 		D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */; };
 		D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */; };
+		D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */; };
+		D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374805424DC365700D8EC43 /* CoverCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableCell.swift; sourceTree = "<group>"; };
 		D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionCell.swift; sourceTree = "<group>"; };
 		D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMusicTitleTableCell.swift; sourceTree = "<group>"; };
+		D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMusicCoverTableCell.swift; sourceTree = "<group>"; };
+		D374805424DC365700D8EC43 /* CoverCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			children = (
 				D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */,
 				D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */,
+				D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */,
+				D374805424DC365700D8EC43 /* CoverCollectionCell.swift */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
@@ -201,6 +207,8 @@
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D374804324DC234F00D8EC43 /* TopView.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
+				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,
+				D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */,
 				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
 				D374804624DC27E900D8EC43 /* Model.swift in Sources */,

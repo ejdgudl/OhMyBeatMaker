@@ -12,10 +12,11 @@ extension UITableView {
     
     static let bannerTableCellID = "bannerTableCellID"
     static let newMusicTitleTableCellID = "newMusicTitleTableCellID"
+    static let newMusicCoverTableCellID = "newMusicCoverTableCellID"
 }
 
 extension UICollectionView {
     
     static let bannerCollectionCellID = "bannerCollectionCellID"
-    
+    static let newMusicCoverCollectionCellID = "newMusicCoverCollectionCellID"
 }

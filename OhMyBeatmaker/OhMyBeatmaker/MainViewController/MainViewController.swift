@@ -41,6 +41,7 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: UITableView.bannerTableCellID)
         tableView.register(NewMusicTitleTableCell.self, forCellReuseIdentifier: UITableView.newMusicTitleTableCellID)
+        tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
     }
     
     // MARK: ConfigureViews
@@ -68,7 +69,7 @@ class MainViewController: UIViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,6 +81,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             guard let newMusicTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.newMusicTitleTableCellID, for: indexPath) as? NewMusicTitleTableCell else {return UITableViewCell()}
             return newMusicTitleCell
+        case 2:
+            guard let newMusicCoverCell = tableView.dequeueReusableCell(withIdentifier: UITableView.newMusicCoverTableCellID, for: indexPath) as? NewMusicCoverTableCell else {fatalError()}
+            newMusicCoverCell.delegate = self
+            return newMusicCoverCell
         default:
             break
         }
@@ -92,9 +97,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return 130
         case 1:
             return 50
+        case 2:
+            return 140
         default:
             break
         }
         return 0
+    }
+}
+
+// MARK: Extension
+extension MainViewController: DidTapPlayButtonSecondDelegate {
+    func didTapPlayButton(_ cell: CoverCollectionCell) {
+        print(cell.artistNameLabel)
     }
 }
