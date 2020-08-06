@@ -35,6 +35,7 @@
 		D374807524DC519100D8EC43 /* LogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807424DC519100D8EC43 /* LogButton.swift */; };
 		D374807724DC52AC00D8EC43 /* BottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807624DC52AC00D8EC43 /* BottomStackView.swift */; };
 		D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807824DC538100D8EC43 /* NickNameTextField.swift */; };
+		D374807C24DC5EBB00D8EC43 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807B24DC5EBB00D8EC43 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		D374807424DC519100D8EC43 /* LogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogButton.swift; sourceTree = "<group>"; };
 		D374807624DC52AC00D8EC43 /* BottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomStackView.swift; sourceTree = "<group>"; };
 		D374807824DC538100D8EC43 /* NickNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameTextField.swift; sourceTree = "<group>"; };
+		D374807B24DC5EBB00D8EC43 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				D374804424DC27E000D8EC43 /* Model */,
 				D374805924DC468200D8EC43 /* LoginViewController */,
 				D374804024DC221700D8EC43 /* MainViewController */,
+				D374807A24DC5EAB00D8EC43 /* WebService */,
 				D374806C24DC4E0A00D8EC43 /* View */,
 				D374803524DC1EA400D8EC43 /* Assets.xcassets */,
 				D374803724DC1EA400D8EC43 /* LaunchScreen.storyboard */,
@@ -195,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				D374805C24DC46C900D8EC43 /* LoginViewController.swift */,
+				D374806F24DC501C00D8EC43 /* View */,
 				D374805E24DC471800D8EC43 /* TopLoginPageViewController */,
 				D374806324DC4A5900D8EC43 /* BottomLoginPageViewController */,
 			);
@@ -214,7 +218,6 @@
 		D374806324DC4A5900D8EC43 /* BottomLoginPageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D374806F24DC501C00D8EC43 /* View */,
 				D374806424DC4A6F00D8EC43 /* BottomLoginPageViewController.swift */,
 				D374806624DC4AAF00D8EC43 /* BottomFirstVC.swift */,
 				D374806824DC4ABA00D8EC43 /* BottomSecondVC.swift */,
@@ -240,6 +243,14 @@
 				D374807624DC52AC00D8EC43 /* BottomStackView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D374807A24DC5EAB00D8EC43 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				D374807B24DC5EBB00D8EC43 /* WebService.swift */,
+			);
+			path = WebService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +381,7 @@
 				D374806E24DC4E1F00D8EC43 /* IndicatorView.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
 				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,
+				D374807C24DC5EBB00D8EC43 /* WebService.swift in Sources */,
 				D374806524DC4A6F00D8EC43 /* BottomLoginPageViewController.swift in Sources */,
 				D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */,
 				D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class MainViewController: UIViewController {
     
@@ -105,6 +106,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             guard let bannerTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.bannerTableCellID, for: indexPath) as? BannerTableCell else {return UITableViewCell()}
+            bannerTableCell.touchedBannerCellDelegate = self
             return bannerTableCell
         case 1:
             guard let newMusicTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.newMusicTitleTableCellID, for: indexPath) as? NewMusicTitleTableCell else {return UITableViewCell()}
@@ -131,6 +133,23 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
         return 0
+    }
+}
+
+// MARK: TouchedBannerCellDelegate
+extension MainViewController: TouchedBannerCellDelegate {
+    func openBannerWeb(indexPatRow: Int) {
+        let webService = WebService()
+        switch indexPatRow {
+        case 0:
+            let sxswSite = webService.openWebSxsw()
+            present(sxswSite, animated: true)
+        case 1:
+            let boilerSite = webService.openWebBoiler()
+            present(boilerSite, animated: true)
+        default:
+            break
+        }
     }
 }
 

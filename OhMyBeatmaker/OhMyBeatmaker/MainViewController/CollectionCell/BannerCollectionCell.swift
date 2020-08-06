@@ -10,6 +10,17 @@ import UIKit
 
 class BannerCollectionCell: UICollectionViewCell {
     
+    // MARK: Properties
+    lazy var bannerImageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(named: "banner1")
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 15
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,11 +30,17 @@ class BannerCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: ConfigureViews
     func configureViews() {
-        backgroundColor = .orange
         layer.cornerRadius = 15
+        
+        addSubview(bannerImageView)
+        bannerImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        bannerImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        bannerImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        bannerImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        bannerImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
 }
