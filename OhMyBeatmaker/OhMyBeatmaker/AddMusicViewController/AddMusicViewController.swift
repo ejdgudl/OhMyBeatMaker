@@ -38,6 +38,7 @@ class AddMusicViewController: UIViewController {
     
     private let imagePicker = UIImagePickerController()
     
+    let firebaseService = FirebaseService()
     let storageRef = Storage.storage().reference()
     let db = Database.database().reference()
     
@@ -95,6 +96,7 @@ class AddMusicViewController: UIViewController {
                 self.db.child("Musics").updateChildValues(values) { (error, ref) in
                     print("Successfully saved information to Music database")
                 }
+                self.firebaseService.makeNew5(musicTitle: musicTitle)
             }
         }
     }
@@ -148,13 +150,13 @@ extension AddMusicViewController: UIDocumentPickerDelegate {
                 
                 DispatchQueue.main.async {
                     url.stopAccessingSecurityScopedResource()
-                    self.dismiss(animated: true, completion: nil)
-                    self.indicator.stopAnimating()
                     self.storageRef.child("Musics").child(fileName).downloadURL { (downloadUrl, error) in
                         guard let musicFileUrl = downloadUrl?.absoluteString else {return}
                         guard let musicTitle = urls.first?.deletingPathExtension().lastPathComponent else {return
                         }
                         self.uploadSongData(musicTitle: musicTitle, musicFileUrl: musicFileUrl)
+                        self.dismiss(animated: true, completion: nil)
+                        self.indicator.stopAnimating()
                     }
                 }
             }
