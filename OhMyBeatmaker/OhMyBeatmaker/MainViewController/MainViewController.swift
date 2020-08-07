@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Firebase
 
 class MainViewController: UIViewController {
     
@@ -26,13 +27,21 @@ class MainViewController: UIViewController {
     
     private lazy var editView: EditView = {
        let view = EditView()
-        view.delegate = self
         return view
     }()
     
     private var constraintX: NSLayoutConstraint?
     
+    private let webService = WebService()
     private let firebseService = FirebaseService()
+    private let db = Database.database().reference()
+    
+    var user: User? {
+        didSet {
+            guard let user = user else {return}
+            self.editView.loginButton.setTitle(user.nickName, for: .normal)
+        }
+    }
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -64,6 +73,8 @@ class MainViewController: UIViewController {
         tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
         
         editView.didTapEdiViewTableCellDelegate = self
+        editView.didTapBackgroundDelegate = self
+        editView.didTapLoginButtonDelegate = self
     }
     
     // MARK: ConfigureViews
@@ -143,11 +154,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: TouchedBannerCellDelegate
 extension MainViewController: TouchedBannerCellDelegate {
     func openBannerWeb(indexPatRow: Int) {
-        let webService = WebService()
-        let sxswSite = webService.openWebSxsw(row: indexPatRow)
-        let boilSite = webService.openWebSxsw(row: indexPatRow)
-        present(sxswSite, animated: true)
-        present(boilSite, animated: true)
+        let site = webService.openWeb(row: indexPatRow)
+        present(site, animated: true)
     }
 }
 
@@ -182,6 +190,34 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
         } else {
             let appIntroVC = AppIntroViewController()
             navigationController?.pushViewController(appIntroVC, animated: true)
+        }
+    }
+}
+
+// MARK: DidTapLoginButtonDelegate
+extension MainViewController: DidTapLoginButtonDelegate {
+    func prsentLoginVC() {
+        let loginVC = LoginViewController()
+        loginVC.bottomLoginPageViewController.firstVC.successSignInDelegate = self
+        present(loginVC, animated: true)
+    }
+}
+
+// MARK: SuccessSignUpDelegate
+extension MainViewController: SuccessSignInDelegate {
+    func moveToEditView() {
+        let currentUid = Auth.auth().currentUser?.uid
+        db.child("users").child(currentUid!).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
+            let uid = snapshot.key
+            let user = User(uid: uid, dictionary: dictionary)
+            self.user = user
+        }
+
+        UIView.animate(withDuration: 0.5) {
+            self.constraintX?.priority = .defaultLow
+            self.constraintX?.isActive = true
+            self.view.layoutIfNeeded()
         }
     }
 }

@@ -6,6 +6,25 @@
 //  Copyright © 2020 김동현. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class User {
+    
+    var nickName: String!
+    var profileImageUrl: String!
+    var uid: String!
+    
+    init(uid: String, dictionary: Dictionary<String, AnyObject>) {
+        self.uid = uid
+        
+        if let nickName = dictionary["nickName"] as? String {
+            self.nickName = nickName
+        }
+        
+        if let profileImageUrl = dictionary["profileImageURL"] as? String {
+            self.profileImageUrl = profileImageUrl
+        }
+    }
+}
 
 

@@ -40,6 +40,7 @@
 		D374808124DCF39000D8EC43 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808024DCF39000D8EC43 /* MyAccountViewController.swift */; };
 		D374808424DCF49900D8EC43 /* AppIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808324DCF49900D8EC43 /* AppIntroViewController.swift */; };
 		D374808624DCF6A200D8EC43 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808524DCF6A200D8EC43 /* FirebaseService.swift */; };
+		D374808924DD183700D8EC43 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808824DD183700D8EC43 /* LoginButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		D374808024DCF39000D8EC43 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		D374808324DCF49900D8EC43 /* AppIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntroViewController.swift; sourceTree = "<group>"; };
 		D374808524DCF6A200D8EC43 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		D374808824DD183700D8EC43 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				D374804224DC234F00D8EC43 /* TopView.swift */,
 				D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */,
 				D374805724DC430600D8EC43 /* EditView.swift */,
+				D374808724DD181700D8EC43 /* LoginButton */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,6 +282,14 @@
 				D374808324DCF49900D8EC43 /* AppIntroViewController.swift */,
 			);
 			path = AppIntroViewController;
+			sourceTree = "<group>";
+		};
+		D374808724DD181700D8EC43 /* LoginButton */ = {
+			isa = PBXGroup;
+			children = (
+				D374808824DD183700D8EC43 /* LoginButton.swift */,
+			);
+			path = LoginButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +432,7 @@
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
 				D374804624DC27E900D8EC43 /* Model.swift in Sources */,
 				D374805B24DC46A900D8EC43 /* TopLoginPageViewController.swift in Sources */,
+				D374808924DD183700D8EC43 /* LoginButton.swift in Sources */,
 				D374807524DC519100D8EC43 /* LogButton.swift in Sources */,
 				D374805D24DC46C900D8EC43 /* LoginViewController.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,

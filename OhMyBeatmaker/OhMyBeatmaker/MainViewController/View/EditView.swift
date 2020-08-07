@@ -18,6 +18,11 @@ protocol DidTapEdiViewTableCellDelegate: class {
     func didTapEdiViewTableCell(section: Int, row: Int)
 }
 
+// MARK: DidTapPlusPhotoButtonDelegate
+protocol DidTapLoginButtonDelegate: class {
+    func prsentLoginVC()
+}
+
 class EditView: UIView {
     
     // MARK: Properties
@@ -39,6 +44,12 @@ class EditView: UIView {
         return view
     }()
     
+    lazy var loginButton: LoginButton = {
+        let button = LoginButton()
+        button.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        return button
+    }()
+    
     private let dissmissButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "multiply.circle"), for: .normal)
@@ -55,8 +66,9 @@ class EditView: UIView {
     private let rows = ["내 계정": ["내정보", "로그아웃"], "앱 소개": ["OMB"]]
 
     
-    weak var delegate: DidTapBackgroundDelegate?
+    weak var didTapBackgroundDelegate: DidTapBackgroundDelegate?
     weak var didTapEdiViewTableCellDelegate: DidTapEdiViewTableCellDelegate?
+    weak var didTapLoginButtonDelegate: DidTapLoginButtonDelegate?
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -71,11 +83,15 @@ class EditView: UIView {
     
     // MARK: @Objc
     @objc private func dissmissEditView() {
-        delegate?.moveToOut()
+        didTapBackgroundDelegate?.moveToOut()
     }
     
     @objc private func didTapBackgraound() {
-        delegate?.moveToOut()
+        didTapBackgroundDelegate?.moveToOut()
+    }
+    
+    @objc private func didTapLoginButton() {
+        didTapLoginButtonDelegate?.prsentLoginVC()
     }
     
     // MARK: Configure
@@ -113,8 +129,16 @@ class EditView: UIView {
         containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        containerView.addSubview(dissmissButton)
-        dissmissButton.translatesAutoresizingMaskIntoConstraints = false
+        [loginButton, dissmissButton].forEach {
+            containerView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        loginButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        loginButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         dissmissButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
         dissmissButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -10).isActive = true
         

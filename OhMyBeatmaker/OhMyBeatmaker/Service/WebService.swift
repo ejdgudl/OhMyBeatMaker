@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 class WebService {
-    func openWebSxsw(row: Int) -> SFSafariViewController {
+    func openWeb(row: Int) -> SFSafariViewController {
         if row == 0 {
             guard let url = URL(string: "https://www.sxsw.com") else {fatalError()}
             let safariViewController = SFSafariViewController(url: url)
