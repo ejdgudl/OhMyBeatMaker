@@ -50,9 +50,15 @@ class MyAccountViewController: UIViewController {
         configureViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     // MARK: @Objc
     @objc private func didTapAddMusicButton() {
         let addMusicVC = AddMusicViewController()
+        addMusicVC.user = self.user
         present(addMusicVC, animated: true)
     }
     
@@ -104,7 +110,6 @@ class MyAccountViewController: UIViewController {
     
     // MARK: ConfigureViews
     private func configureViews () {
-        navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), style: .plain, target: self, action: #selector(didTapAddMusicButton))
         

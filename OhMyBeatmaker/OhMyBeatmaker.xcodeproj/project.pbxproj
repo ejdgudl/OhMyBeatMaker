@@ -44,6 +44,8 @@
 		D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */; };
 		D374809324DD40F300D8EC43 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809224DD40F300D8EC43 /* Song.swift */; };
 		D374809624DD438200D8EC43 /* AddMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809524DD438200D8EC43 /* AddMusicViewController.swift */; };
+		D374809924DD460500D8EC43 /* PlusCoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809824DD460500D8EC43 /* PlusCoverButton.swift */; };
+		D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809A24DD466B00D8EC43 /* AddMusicButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusPhotoButton.swift; sourceTree = "<group>"; };
 		D374809224DD40F300D8EC43 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		D374809524DD438200D8EC43 /* AddMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicViewController.swift; sourceTree = "<group>"; };
+		D374809824DD460500D8EC43 /* PlusCoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusCoverButton.swift; sourceTree = "<group>"; };
+		D374809A24DD466B00D8EC43 /* AddMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,8 +317,18 @@
 			isa = PBXGroup;
 			children = (
 				D374809524DD438200D8EC43 /* AddMusicViewController.swift */,
+				D374809724DD45F500D8EC43 /* View */,
 			);
 			path = AddMusicViewController;
+			sourceTree = "<group>";
+		};
+		D374809724DD45F500D8EC43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D374809824DD460500D8EC43 /* PlusCoverButton.swift */,
+				D374809A24DD466B00D8EC43 /* AddMusicButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +467,7 @@
 				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,
 				D374807C24DC5EBB00D8EC43 /* WebService.swift in Sources */,
 				D374806524DC4A6F00D8EC43 /* BottomLoginPageViewController.swift in Sources */,
+				D374809924DD460500D8EC43 /* PlusCoverButton.swift in Sources */,
 				D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */,
 				D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */,
 				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
@@ -461,6 +476,7 @@
 				D374805B24DC46A900D8EC43 /* TopLoginPageViewController.swift in Sources */,
 				D374808924DD183700D8EC43 /* LoginButton.swift in Sources */,
 				D374807524DC519100D8EC43 /* LogButton.swift in Sources */,
+				D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */,
 				D374809324DD40F300D8EC43 /* Song.swift in Sources */,
 				D374805D24DC46C900D8EC43 /* LoginViewController.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,

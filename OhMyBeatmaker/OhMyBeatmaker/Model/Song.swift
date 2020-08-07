@@ -10,21 +10,21 @@ import UIKit
 
 class Song {
     
-    var songName: String!
-    var artistName: String!
-    var songFileUrl: String!
+    var musicTitle: String!
+    var artistNickName: String!
+    var musicFileUrl: String!
     var coverImageUrl: String!
     var like: Int!
     
-    init(songName: String, dictionary: Dictionary<String, AnyObject>) {
-        self.songName = songName
+    init(musicTitle: String, dictionary: Dictionary<String, AnyObject>) {
+        self.musicTitle = musicTitle
         
-        if let artistName = dictionary["artistName"] as? String {
-            self.artistName = artistName
+        if let artistNickName = dictionary["artistNickName"] as? String {
+            self.artistNickName = artistNickName
         }
         
-        if let songFileUrl = dictionary["songFileUrl"] as? String {
-            self.songFileUrl = songFileUrl
+        if let musicFileUrl = dictionary["musicFileUrl"] as? String {
+            self.musicFileUrl = musicFileUrl
         }
         
         if let coverImageUrl = dictionary["coverImageUrl"] as? String {
