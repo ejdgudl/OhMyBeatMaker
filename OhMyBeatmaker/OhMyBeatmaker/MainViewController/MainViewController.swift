@@ -208,6 +208,8 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                 alertAddAction(title: "로그아웃", message: "로그아웃 하시겠습니까?") { (_) in
                     self.firebseService.signOut()
                     self.editView.loginButton.isEnabled = true
+                    self.editView.loginButton.setImage(UIImage(named: " "), for: .normal)
+                    self.editView.loginButton.setTitle("로그인", for: .normal)
                 }
             default:
                 break
