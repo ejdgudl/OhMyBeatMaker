@@ -16,6 +16,7 @@ class PasswordTextField: UITextField {
         placeholder = "Password"
         backgroundColor = UIColor(white: 0, alpha: 0.03)
         borderStyle = .roundedRect
+        isSecureTextEntry = true
         font = UIFont.systemFont(ofSize: 14)
     }
     

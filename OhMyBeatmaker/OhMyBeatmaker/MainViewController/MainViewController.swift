@@ -61,6 +61,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchUser()
+        navigationController?.navigationBar.isHidden = true
     }
     
     // MARK: @Objc
@@ -105,7 +106,6 @@ class MainViewController: UIViewController {
     // MARK: ConfigureViews
     private func configureViews() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
         
         [topView, tableView, editView].forEach {
             view.addSubview($0)

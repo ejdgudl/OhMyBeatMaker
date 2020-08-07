@@ -25,6 +25,7 @@ class TopView: UIView {
     
     let editButton: UIButton = {
         let button = UIButton(type: .system)
+        button.tintColor = .black
         button.setImage(UIImage(systemName: "doc.plaintext"), for: .normal)
         return button
     }()

@@ -21,6 +21,7 @@ class MyAccountViewController: UIViewController {
     var user: User? {
         didSet {
             guard let user = user else {return}
+            title = user.nickName
             guard let imageUrl = URL(string: user.profileImageUrl) else {return}
             URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
                 guard error == nil else {return}
@@ -103,6 +104,8 @@ class MyAccountViewController: UIViewController {
     
     // MARK: ConfigureViews
     private func configureViews () {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.tintColor = .black
         view.backgroundColor = .white
         
         [plusPhotoButton].forEach {
@@ -110,7 +113,7 @@ class MyAccountViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        plusPhotoButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        plusPhotoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70).isActive = true
         plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         plusPhotoButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         plusPhotoButton.heightAnchor.constraint(equalToConstant: 200).isActive = true

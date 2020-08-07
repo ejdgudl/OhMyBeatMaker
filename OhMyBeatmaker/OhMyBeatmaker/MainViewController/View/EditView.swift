@@ -53,6 +53,7 @@ class EditView: UIView {
     private let dissmissButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "multiply.circle"), for: .normal)
+        button.tintColor = .black
         button.addTarget(self, action: #selector(dissmissEditView), for: .touchUpInside)
         return button
     }()

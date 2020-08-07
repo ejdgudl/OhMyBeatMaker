@@ -13,7 +13,7 @@
 		D374803624DC1EA400D8EC43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D374803524DC1EA400D8EC43 /* Assets.xcassets */; };
 		D374803924DC1EA400D8EC43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D374803724DC1EA400D8EC43 /* LaunchScreen.storyboard */; };
 		D374804324DC234F00D8EC43 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804224DC234F00D8EC43 /* TopView.swift */; };
-		D374804624DC27E900D8EC43 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804524DC27E900D8EC43 /* Model.swift */; };
+		D374804624DC27E900D8EC43 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804524DC27E900D8EC43 /* User.swift */; };
 		D374804924DC287400D8EC43 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804824DC287400D8EC43 /* Extension.swift */; };
 		D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */; };
 		D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */; };
@@ -42,6 +42,7 @@
 		D374808624DCF6A200D8EC43 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808524DCF6A200D8EC43 /* FirebaseService.swift */; };
 		D374808924DD183700D8EC43 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808824DD183700D8EC43 /* LoginButton.swift */; };
 		D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */; };
+		D374809324DD40F300D8EC43 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809224DD40F300D8EC43 /* Song.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +56,7 @@
 		D374803824DC1EA400D8EC43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D374803A24DC1EA400D8EC43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D374804224DC234F00D8EC43 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
-		D374804524DC27E900D8EC43 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D374804524DC27E900D8EC43 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D374804824DC287400D8EC43 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableCell.swift; sourceTree = "<group>"; };
 		D374804E24DC2DA600D8EC43 /* BannerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionCell.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		D374808524DCF6A200D8EC43 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		D374808824DD183700D8EC43 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusPhotoButton.swift; sourceTree = "<group>"; };
+		D374809224DD40F300D8EC43 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +180,8 @@
 		D374804424DC27E000D8EC43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D374804524DC27E900D8EC43 /* Model.swift */,
+				D374804524DC27E900D8EC43 /* User.swift */,
+				D374809224DD40F300D8EC43 /* Song.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -442,10 +445,11 @@
 				D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */,
 				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
-				D374804624DC27E900D8EC43 /* Model.swift in Sources */,
+				D374804624DC27E900D8EC43 /* User.swift in Sources */,
 				D374805B24DC46A900D8EC43 /* TopLoginPageViewController.swift in Sources */,
 				D374808924DD183700D8EC43 /* LoginButton.swift in Sources */,
 				D374807524DC519100D8EC43 /* LogButton.swift in Sources */,
+				D374809324DD40F300D8EC43 /* Song.swift in Sources */,
 				D374805D24DC46C900D8EC43 /* LoginViewController.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,
 				D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */,
