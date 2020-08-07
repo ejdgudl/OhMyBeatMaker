@@ -43,6 +43,8 @@ class BottomSecondVC: UIViewController {
         return stackView
     }()
     
+    private let db = Database.database().reference()
+    
     weak var delegate: SignUpCompletionDelegate?
     
     // MARK: Life Cycle
@@ -77,13 +79,13 @@ class BottomSecondVC: UIViewController {
             
             let values = [uid: dictionaryValues]
             
-            Database.database().reference().child("users").updateChildValues(values) { (error, ref) in
-                print("successfully created user and saved information to database")
+            self.db.child("users").updateChildValues(values) { (error, ref) in
                 self.stackView.indicator.stopActivityIndicator()
                 self.whenSucessSignUp()
                 self.alertNormal(title: "회원가입 성공", message: "wassup.\(nickName)") { (_) in
                     self.delegate?.ScrollToFirst()
                 }
+                print("successfully created user and saved information to database")
             }
             try! Auth.auth().signOut()
         }

@@ -273,8 +273,8 @@
 		D374807F24DCF36F00D8EC43 /* MyAccountViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D374808A24DD2CDD00D8EC43 /* View */,
 				D374808024DCF39000D8EC43 /* MyAccountViewController.swift */,
+				D374808A24DD2CDD00D8EC43 /* View */,
 			);
 			path = MyAccountViewController;
 			sourceTree = "<group>";

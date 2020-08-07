@@ -40,6 +40,14 @@ class MainViewController: UIViewController {
         didSet {
             guard let user = user else {return}
             self.editView.loginButton.setTitle(user.nickName, for: .normal)
+            guard let imageUrl = URL(string: user.profileImageUrl) else {return}
+            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                guard error == nil else {return}
+                guard let data = data else {return}
+                DispatchQueue.main.async {
+                    self.editView.loginButton.setImage(UIImage(data: data), for: .normal)
+                }
+            }.resume()
         }
     }
     
@@ -48,6 +56,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configure()
         configureViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchUser()
     }
     
     // MARK: @Objc
@@ -77,8 +90,6 @@ class MainViewController: UIViewController {
     
     // MARK: Configure
     private func configure() {
-        self.fetchUser()
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -199,6 +210,7 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                     return
                 }
                 let myAccontVC = MyAccountViewController()
+                myAccontVC.user = self.user
                 navigationController?.pushViewController(myAccontVC, animated: true)
             case 1:
                 guard currentUser != nil else {
