@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
     
     private var constraintX: NSLayoutConstraint?
     
+    private let firebseService = FirebaseService()
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,8 @@ class MainViewController: UIViewController {
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: UITableView.bannerTableCellID)
         tableView.register(NewMusicTitleTableCell.self, forCellReuseIdentifier: UITableView.newMusicTitleTableCellID)
         tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
+        
+        editView.didTapEdiViewTableCellDelegate = self
     }
     
     // MARK: ConfigureViews
@@ -158,5 +162,26 @@ extension MainViewController: DidTapPlayButtonSecondDelegate {
 extension MainViewController: DidTapBackgroundDelegate {
     func moveToOut() {
         moveToEditView(priority: .defaultLow)
+    }
+}
+
+extension MainViewController: DidTapEdiViewTableCellDelegate {
+    func didTapEdiViewTableCell(section: Int, row: Int) {
+        if section == 0 {
+            switch row {
+            case 0:
+                let myAccontVC = MyAccountViewController()
+                navigationController?.pushViewController(myAccontVC, animated: true)
+            case 1:
+                alertAddAction(title: "로그아웃", message: "로그아웃 하시겠습니까?") { (_) in
+                    self.firebseService.signOut()
+                }
+            default:
+                break
+            }
+        } else {
+            let appIntroVC = AppIntroViewController()
+            navigationController?.pushViewController(appIntroVC, animated: true)
+        }
     }
 }
