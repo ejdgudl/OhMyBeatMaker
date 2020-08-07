@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MobileCoreServices
 
 class MyAccountViewController: UIViewController {
     
@@ -51,6 +52,13 @@ class MyAccountViewController: UIViewController {
     }
     
     // MARK: @Objc
+    @objc private func didTapAddMusicButton() {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeMP3)], in: .open)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true)
+    }
+    
     @objc func handleSelectProfilePhoto() {
         imagePicker.delegate = self
         imagePicker.modalPresentationStyle = .fullScreen
@@ -106,6 +114,8 @@ class MyAccountViewController: UIViewController {
     private func configureViews () {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .black
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), style: .plain, target: self, action: #selector(didTapAddMusicButton))
+        
         view.backgroundColor = .white
         
         [plusPhotoButton].forEach {
@@ -138,5 +148,12 @@ extension MyAccountViewController: UIImagePickerControllerDelegate, UINavigation
             self.dismiss(animated: true, completion: nil)
             self.indicator.stopActivityIndicator()
         }
+    }
+}
+
+// MARK: UIDocumentPickerDelegate
+extension MyAccountViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        print(":z")
     }
 }
