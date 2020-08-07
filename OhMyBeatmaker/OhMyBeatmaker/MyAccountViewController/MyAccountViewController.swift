@@ -154,6 +154,27 @@ extension MyAccountViewController: UIImagePickerControllerDelegate, UINavigation
 // MARK: UIDocumentPickerDelegate
 extension MyAccountViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        print(":z")
+        guard controller.documentPickerMode == .open, let url = urls.first, url.startAccessingSecurityScopedResource() else {return}
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "audio/mp3"
+        
+        if let data = try? Data(contentsOf: urls.first!) {
+//            let fileName = urls.first?.deletingPathExtension().lastPathComponent
+            let fileName = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("Musics").child(fileName)
+            storageRef.putData(data, metadata: metadata) { (_, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    print("suc")
+                }
+                
+                DispatchQueue.main.async {
+                    url.stopAccessingSecurityScopedResource()
+                }
+                
+            }
+        }
     }
 }
