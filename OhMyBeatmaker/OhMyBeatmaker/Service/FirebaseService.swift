@@ -30,16 +30,19 @@ class FirebaseService {
     
     func makeNew5(musicTitle: String) {
         let db = Database.database().reference()
+        
         db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot.exists() else {
+                let new5DictValues: [String: Any] = [
+                    "New5": [musicTitle]
+                ]
+                db.updateChildValues(new5DictValues) { (error, ref) in
+                    print("Successfully saved FIRST information to new5Music database")
+                }
+                return
+            }
             if let array = snapshot.value as? [String] {
-                if array[0] == "nil" {
-                    let new5DictValues: [String: Any] = [
-                        "New5": [musicTitle]
-                    ]
-                    db.updateChildValues(new5DictValues) { (error, ref) in
-                        print("Successfully saved FIRST information to new5Music database")
-                    }
-                } else if array.count == 1 {
+                if array.count == 1 {
                     let new5DictValues: [String: Any] = [
                         "New5": [musicTitle, array[0]]
                     ]

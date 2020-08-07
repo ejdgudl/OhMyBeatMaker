@@ -49,6 +49,11 @@ class MainViewController: UIViewController {
                 }
             }.resume()
             print("User Fetching......")
+        }
+    }
+    
+    var new5Array: [String]? {
+        didSet {
             tableView.reloadData()
         }
     }
@@ -63,6 +68,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchUser()
+        fetchNew5()
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -80,6 +86,13 @@ class MainViewController: UIViewController {
             let user = User(uid: uid, dictionary: dictionary)
             self.user = user
             self.editView.loginButton.isEnabled = false
+        }
+    }
+    
+    func fetchNew5() {
+        db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
+            guard let new5Array = snapshot.value as? [String]else {return}
+            self.new5Array = new5Array
         }
     }
     
@@ -140,11 +153,11 @@ class MainViewController: UIViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("tableView Reloading....")
         return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("tableView Reloading....")
         switch indexPath.row {
         case 0:
             guard let bannerTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.bannerTableCellID, for: indexPath) as? BannerTableCell else {return UITableViewCell()}
@@ -156,6 +169,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             guard let newMusicCoverCell = tableView.dequeueReusableCell(withIdentifier: UITableView.newMusicCoverTableCellID, for: indexPath) as? NewMusicCoverTableCell else {fatalError()}
             newMusicCoverCell.delegate = self
+            newMusicCoverCell.new5Array = self.new5Array
             return newMusicCoverCell
         default:
             break

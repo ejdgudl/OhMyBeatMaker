@@ -26,6 +26,12 @@ class NewMusicCoverTableCell: UITableViewCell {
     
     weak var delegate: DidTapPlayButtonSecondDelegate?
     
+    var new5Array: [String]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -65,6 +71,7 @@ class NewMusicCoverTableCell: UITableViewCell {
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension NewMusicCoverTableCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("CollectionView Reloading,.....")
         return 5
     }
     
