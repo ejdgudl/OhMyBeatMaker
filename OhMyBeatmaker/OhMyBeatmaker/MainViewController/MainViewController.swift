@@ -196,6 +196,10 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                 let myAccontVC = MyAccountViewController()
                 navigationController?.pushViewController(myAccontVC, animated: true)
             case 1:
+                guard Auth.auth().currentUser != nil else {
+                    alertNormal(title: "로그인을 해주세요", message: "사용자의 정보가 없습니다")
+                    return
+                }
                 alertAddAction(title: "로그아웃", message: "로그아웃 하시겠습니까?") { (_) in
                     self.firebseService.signOut()
                     self.editView.loginButton.isEnabled = true
