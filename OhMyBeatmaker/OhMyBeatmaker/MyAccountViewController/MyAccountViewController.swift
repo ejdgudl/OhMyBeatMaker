@@ -47,16 +47,13 @@ class MyAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
-        configure()
         configureViews()
     }
     
     // MARK: @Objc
     @objc private func didTapAddMusicButton() {
-        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeMP3)], in: .open)
-        documentPicker.delegate = self
-        documentPicker.allowsMultipleSelection = false
-        present(documentPicker, animated: true)
+        let addMusicVC = AddMusicViewController()
+        present(addMusicVC, animated: true)
     }
     
     @objc func handleSelectProfilePhoto() {
@@ -103,11 +100,6 @@ class MyAccountViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    // MARK: Configure
-    private func configure () {
-        
     }
     
     // MARK: ConfigureViews

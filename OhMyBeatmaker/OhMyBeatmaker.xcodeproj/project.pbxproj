@@ -43,6 +43,7 @@
 		D374808924DD183700D8EC43 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808824DD183700D8EC43 /* LoginButton.swift */; };
 		D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */; };
 		D374809324DD40F300D8EC43 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809224DD40F300D8EC43 /* Song.swift */; };
+		D374809624DD438200D8EC43 /* AddMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809524DD438200D8EC43 /* AddMusicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		D374808824DD183700D8EC43 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusPhotoButton.swift; sourceTree = "<group>"; };
 		D374809224DD40F300D8EC43 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		D374809524DD438200D8EC43 /* AddMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				D374805924DC468200D8EC43 /* LoginViewController */,
 				D374804024DC221700D8EC43 /* MainViewController */,
 				D374807F24DCF36F00D8EC43 /* MyAccountViewController */,
+				D374809424DD437500D8EC43 /* AddMusicViewController */,
 				D374808224DCF48600D8EC43 /* AppIntroViewController */,
 				D374807A24DC5EAB00D8EC43 /* Service */,
 				D374806C24DC4E0A00D8EC43 /* View */,
@@ -306,6 +309,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D374809424DD437500D8EC43 /* AddMusicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D374809524DD438200D8EC43 /* AddMusicViewController.swift */,
+			);
+			path = AddMusicViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -422,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D374804924DC287400D8EC43 /* Extension.swift in Sources */,
+				D374809624DD438200D8EC43 /* AddMusicViewController.swift in Sources */,
 				D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */,
 				D374806224DC475E00D8EC43 /* TopSecondVC.swift in Sources */,
 				D374807324DC512100D8EC43 /* PasswordTextField.swift in Sources */,
