@@ -59,6 +59,7 @@ class EditView: UIView {
     
     private var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorColor = .clear
         return tableView
     }()
     

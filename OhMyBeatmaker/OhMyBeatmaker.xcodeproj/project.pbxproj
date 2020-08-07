@@ -41,6 +41,7 @@
 		D374808424DCF49900D8EC43 /* AppIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808324DCF49900D8EC43 /* AppIntroViewController.swift */; };
 		D374808624DCF6A200D8EC43 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808524DCF6A200D8EC43 /* FirebaseService.swift */; };
 		D374808924DD183700D8EC43 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808824DD183700D8EC43 /* LoginButton.swift */; };
+		D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		D374808324DCF49900D8EC43 /* AppIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntroViewController.swift; sourceTree = "<group>"; };
 		D374808524DCF6A200D8EC43 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		D374808824DD183700D8EC43 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusPhotoButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 		D374807F24DCF36F00D8EC43 /* MyAccountViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D374808A24DD2CDD00D8EC43 /* View */,
 				D374808024DCF39000D8EC43 /* MyAccountViewController.swift */,
 			);
 			path = MyAccountViewController;
@@ -290,6 +293,14 @@
 				D374808824DD183700D8EC43 /* LoginButton.swift */,
 			);
 			path = LoginButton;
+			sourceTree = "<group>";
+		};
+		D374808A24DD2CDD00D8EC43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +428,7 @@
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
 				D374808124DCF39000D8EC43 /* MyAccountViewController.swift in Sources */,
 				D374807E24DC6A7E00D8EC43 /* EditTableHeaderView.swift in Sources */,
+				D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */,
 				D374807724DC52AC00D8EC43 /* BottomStackView.swift in Sources */,
 				D374808424DCF49900D8EC43 /* AppIntroViewController.swift in Sources */,
 				D374804324DC234F00D8EC43 /* TopView.swift in Sources */,
