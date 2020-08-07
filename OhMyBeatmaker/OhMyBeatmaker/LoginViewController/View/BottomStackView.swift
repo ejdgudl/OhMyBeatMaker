@@ -24,6 +24,7 @@ class BottomStackView: UIStackView {
         distribution = .fillEqually
         
         addSubview(indicator)
+        indicator.layer.zPosition = 999
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         indicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

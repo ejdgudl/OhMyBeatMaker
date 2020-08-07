@@ -53,7 +53,8 @@ class BottomSecondVC: UIViewController {
     
     // MARK: @Objc
     @objc private func didTapSignUpButton() {
-        stackView.indicator.startActivityIndicator()
+        
+        self.stackView.indicator.startActivityIndicator()
         
         guard let email = emailTextField.text, let password = passwordTextField.text, let nickName = nickNameTextField.text else {return}
         guard email != "", password != "", nickName != "", password.count >= 6 else {
@@ -65,7 +66,9 @@ class BottomSecondVC: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 print("Failed to create user with error", error.localizedDescription)
-                self.alertNormal(title: "회원가입 오류", message: "중복된 email이거나 형식이 잘못되었습니다", handler: nil)
+                self.alertNormal(title: "회원가입 오류", message: "중복된 email이거나 형식이 잘못되었습니다") { (_) in
+                    self.stackView.indicator.stopActivityIndicator()
+                }
             }
             
             guard let uid = user?.user.uid else {return}
