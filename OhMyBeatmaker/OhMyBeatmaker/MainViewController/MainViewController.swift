@@ -56,6 +56,17 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Helpers
+    func fetchUser() {
+        guard let currentUid = Auth.auth().currentUser?.uid else {return}
+        db.child("users").child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
+            let uid = snapshot.key
+            let user = User(uid: uid, dictionary: dictionary)
+            self.user = user
+            self.editView.loginButton.isEnabled = false
+        }
+    }
+    
     private func moveToEditView(priority: UILayoutPriority) {
         UIView.animate(withDuration: 1) {
             self.constraintX?.priority = priority
@@ -66,8 +77,11 @@ class MainViewController: UIViewController {
     
     // MARK: Configure
     private func configure() {
+        self.fetchUser()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: UITableView.bannerTableCellID)
         tableView.register(NewMusicTitleTableCell.self, forCellReuseIdentifier: UITableView.newMusicTitleTableCellID)
         tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
@@ -173,6 +187,7 @@ extension MainViewController: DidTapBackgroundDelegate {
     }
 }
 
+// MARK: DidTapEdiViewTableCellDelegate
 extension MainViewController: DidTapEdiViewTableCellDelegate {
     func didTapEdiViewTableCell(section: Int, row: Int) {
         if section == 0 {
@@ -183,6 +198,7 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
             case 1:
                 alertAddAction(title: "로그아웃", message: "로그아웃 하시겠습니까?") { (_) in
                     self.firebseService.signOut()
+                    self.editView.loginButton.isEnabled = true
                 }
             default:
                 break
@@ -203,16 +219,10 @@ extension MainViewController: DidTapLoginButtonDelegate {
     }
 }
 
-// MARK: SuccessSignUpDelegate
+// MARK: SuccessSignInDelegate
 extension MainViewController: SuccessSignInDelegate {
-    func moveToEditView() {
-        let currentUid = Auth.auth().currentUser?.uid
-        db.child("users").child(currentUid!).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
-            let uid = snapshot.key
-            let user = User(uid: uid, dictionary: dictionary)
-            self.user = user
-        }
+    func whenSuccessSignIn() {
+        self.fetchUser()
 
         UIView.animate(withDuration: 0.5) {
             self.constraintX?.priority = .defaultLow

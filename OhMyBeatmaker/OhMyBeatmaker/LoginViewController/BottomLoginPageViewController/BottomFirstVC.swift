@@ -15,7 +15,7 @@ protocol ScrollToSignUpVCDelegate: class {
 }
 // MARK: SuccessSignUpDelegate
 protocol SuccessSignInDelegate: class {
-    func moveToEditView()
+    func whenSuccessSignIn()
 }
 
 class BottomFirstVC: UIViewController {
@@ -75,7 +75,7 @@ class BottomFirstVC: UIViewController {
             
             self.dismiss(animated: true) {
                 self.stackView.indicator.stopActivityIndicator()
-                self.successSignInDelegate?.moveToEditView()
+                self.successSignInDelegate?.whenSuccessSignIn()
             }
         }
     }

@@ -20,4 +20,12 @@ class FirebaseService {
         }
     }
     
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            print("No crrent user")
+        } else {
+            print("User is logged in")
+        }
+    }
+    
 }
