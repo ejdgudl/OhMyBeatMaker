@@ -49,9 +49,10 @@ class PlayerViewController: UIViewController {
         return slider
     }()
     
-    private var playButton: UIButton = {
+    private lazy var playButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "playButton"), for: .normal)
+        button.addTarget(self, action: #selector(didTapPlaybutton), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -125,23 +126,31 @@ class PlayerViewController: UIViewController {
         configureViews()
     }
     
+    // MARK: @Objc
+    @objc private func didTapPlaybutton() {
+        if self.player?.rate == 0 {
+            self.player?.play()
+            self.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            self.player?.pause()
+            self.playButton.setImage(UIImage(named: "playButton"), for: .normal)
+        }
+    }
     
     // MARK: Helpers
     func playMusic(mp3FileUrl: String, musicTitle: String) {
         Storage.storage().reference().child("Musics").child(musicTitle).downloadURL { (downloadUrl, error) in
-            
+            if self.player?.currentItem != nil {
+                self.player?.pause()
+            }
             let url = URL(string: mp3FileUrl)
             self.playerItem = AVPlayerItem(url: url!)
             self.player = AVPlayer(playerItem: self.playerItem)
             let playerLayer = AVPlayerLayer(player: self.player)
             playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
             self.view.layer.addSublayer(playerLayer)
-            
-            if self.player?.rate == 0 {
-                self.player?.play()
-            } else {
-                self.player?.pause()
-            }
+            self.player?.play()
+            self.playButton.setImage(UIImage(named: "pause"), for: .normal)
         }
     }
     
