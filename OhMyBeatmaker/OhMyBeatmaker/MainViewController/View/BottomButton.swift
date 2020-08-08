@@ -76,7 +76,7 @@ class BottomButton: UIButton {
     
     // MARK: ConfigureViews
     private func configureViews() {
-        backgroundColor = .gray
+        backgroundColor = .lightGray
         [bottomImageView, musicTitle, playButton].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
