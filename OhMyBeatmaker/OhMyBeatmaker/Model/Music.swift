@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Song {
+class Music {
     
     var musicTitle: String!
     var artistNickName: String!

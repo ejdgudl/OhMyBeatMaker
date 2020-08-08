@@ -29,6 +29,7 @@ class NewMusicCoverTableCell: UITableViewCell {
     var new5Array: [String]? {
         didSet {
             collectionView.reloadData()
+            print("------Start CollectionView ReloadData------")
         }
     }
     
@@ -71,13 +72,14 @@ class NewMusicCoverTableCell: UITableViewCell {
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension NewMusicCoverTableCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("CollectionView Reloading,.....")
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("------CollectionViewCells Reloading.......------")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionView.newMusicCoverCollectionCellID, for: indexPath) as! CoverCollectionCell
         cell.delegate = self
+        cell.new5Array = self.new5Array
         return cell
     }
 }

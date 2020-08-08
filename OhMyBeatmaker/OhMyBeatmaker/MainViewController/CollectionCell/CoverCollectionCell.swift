@@ -44,6 +44,12 @@ class CoverCollectionCell: UICollectionViewCell {
     
     weak var delegate: DidTapPlayButtonFirstDelegate?
     
+    var new5Array: [String]? {
+        didSet {
+            print("new5Array didSet in the collection")
+        }
+    }
+    
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)

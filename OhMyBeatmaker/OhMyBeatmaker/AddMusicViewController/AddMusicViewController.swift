@@ -32,7 +32,7 @@ class AddMusicViewController: UIViewController {
     
     var user: User? {
         didSet {
-            print("전달 쌉가능")
+            print("AddMusicVC에 user 정보 도착")
         }
     }
     

@@ -55,6 +55,7 @@ class MainViewController: UIViewController {
     var new5Array: [String]? {
         didSet {
             tableView.reloadData()
+            print("------Start TableView ReloadData------")
         }
     }
     
@@ -67,8 +68,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchUser()
-        fetchNew5()
+        fetchAll()
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Helpers
-    func fetchUser() {
+    func fetchAll() {
         guard let currentUid = Auth.auth().currentUser?.uid else {return}
         db.child("users").child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
@@ -87,11 +87,8 @@ class MainViewController: UIViewController {
             self.user = user
             self.editView.loginButton.isEnabled = false
         }
-    }
-    
-    func fetchNew5() {
         db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
-            guard let new5Array = snapshot.value as? [String]else {return}
+            guard let new5Array = snapshot.value as? [String] else {return}
             self.new5Array = new5Array
         }
     }
@@ -153,11 +150,11 @@ class MainViewController: UIViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("tableView Reloading....")
         return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("------TableViewCell Reloading.......------")
         switch indexPath.row {
         case 0:
             guard let bannerTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.bannerTableCellID, for: indexPath) as? BannerTableCell else {return UITableViewCell()}
@@ -203,7 +200,7 @@ extension MainViewController: TouchedBannerCellDelegate {
 // MARK: DidTapPlayButtonSecondDelegate
 extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(_ cell: CoverCollectionCell) {
-        print(cell.artistNameLabel)
+        print("DidTapPlayButtonSecondDelegate")
     }
 }
 
@@ -261,7 +258,7 @@ extension MainViewController: DidTapLoginButtonDelegate {
 // MARK: SuccessSignInDelegate
 extension MainViewController: SuccessSignInDelegate {
     func whenSuccessSignIn() {
-        self.fetchUser()
+        self.fetchAll()
 
         UIView.animate(withDuration: 0.5) {
             self.constraintX?.priority = .defaultLow
