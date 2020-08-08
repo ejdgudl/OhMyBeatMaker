@@ -48,14 +48,12 @@ class MainViewController: UIViewController {
                     self.editView.loginButton.setImage(UIImage(data: data), for: .normal)
                 }
             }.resume()
-            print("User Fetching......")
         }
     }
     
     var new5Array: [String]? {
         didSet {
             tableView.reloadData()
-            print("------Start TableView ReloadData------")
         }
     }
     
@@ -154,7 +152,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("------TableViewCell Reloading.......------")
         switch indexPath.row {
         case 0:
             guard let bannerTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.bannerTableCellID, for: indexPath) as? BannerTableCell else {return UITableViewCell()}

@@ -44,9 +44,11 @@ class CoverCollectionCell: UICollectionViewCell {
     
     weak var delegate: DidTapPlayButtonFirstDelegate?
     
-    var new5Array: [String]? {
+    var newMusic: String? {
         didSet {
-            print("new5Array didSet in the collection")
+            print("newMusic didSet in the collection")
+            guard let music = newMusic else {return}
+            
         }
     }
     

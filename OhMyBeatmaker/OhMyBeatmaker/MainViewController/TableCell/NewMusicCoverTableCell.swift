@@ -28,8 +28,11 @@ class NewMusicCoverTableCell: UITableViewCell {
     
     var new5Array: [String]? {
         didSet {
+            guard let new5array = new5Array else {
+                return
+            }
+            print(new5array)
             collectionView.reloadData()
-            print("------Start CollectionView ReloadData------")
         }
     }
     
@@ -72,14 +75,19 @@ class NewMusicCoverTableCell: UITableViewCell {
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension NewMusicCoverTableCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        guard let new5Array = self.new5Array else {return 0}
+        return new5Array.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("------CollectionViewCells Reloading.......------")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionView.newMusicCoverCollectionCellID, for: indexPath) as! CoverCollectionCell
         cell.delegate = self
-        cell.new5Array = self.new5Array
+        if let newMusic = self.new5Array?[indexPath.row] {
+            cell.newMusic = newMusic
+            if let lastMusic = self.new5Array?[4] {
+                cell.newMusic = lastMusic
+            }
+        }
         return cell
     }
 }
