@@ -19,6 +19,8 @@ class CoverCollectionCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "cover")
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 15
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -88,14 +90,15 @@ class CoverCollectionCell: UICollectionViewCell {
     
     // MARK: ConfigureViews
     private func configureViews() {
-        backgroundColor = .orange
+        layer.cornerRadius = 15
+        layer.masksToBounds = true
         
         [coverImage, playButtonInCover, musicTitleLabel, artistNameLabel].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        coverImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        coverImage.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         coverImage.widthAnchor.constraint(equalToConstant: 80).isActive = true
         coverImage.heightAnchor.constraint(equalToConstant: 80).isActive = true
         coverImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

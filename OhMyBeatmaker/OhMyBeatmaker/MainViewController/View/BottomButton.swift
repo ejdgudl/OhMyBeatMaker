@@ -14,8 +14,11 @@ class BottomButton: UIButton {
     // MARK: Properties
     var bottomImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.image = UIImage(named: " ")
-        imageView.backgroundColor = .red
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 11
+        imageView.layer.masksToBounds = true
+        imageView.tintColor = .black
+        imageView.backgroundColor = .white
         return imageView
     }()
     
@@ -104,7 +107,7 @@ class BottomButton: UIButton {
         
         playButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         playButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
-        playButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        playButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        playButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        playButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
     }
 }
