@@ -140,8 +140,7 @@ extension AddMusicViewController: UIDocumentPickerDelegate {
         metadata.contentType = "audio/mp3"
         
         if let data = try? Data(contentsOf: urls.first!) {
-            let fileName = NSUUID().uuidString
-            storageRef.child("Musics").child(fileName).putData(data, metadata: metadata) { (_, error) in
+            storageRef.child("Musics").child(urls.first!.lastPathComponent).putData(data, metadata: metadata) { (_, error) in
                 if error != nil {
                     print(error!)
                 } else {
@@ -150,7 +149,7 @@ extension AddMusicViewController: UIDocumentPickerDelegate {
                 
                 DispatchQueue.main.async {
                     url.stopAccessingSecurityScopedResource()
-                    self.storageRef.child("Musics").child(fileName).downloadURL { (downloadUrl, error) in
+                    self.storageRef.child("Musics").child(urls.first!.lastPathComponent).downloadURL { (downloadUrl, error) in
                         guard let musicFileUrl = downloadUrl?.absoluteString else {return}
                         guard let musicTitle = urls.first?.deletingPathExtension().lastPathComponent else {return
                         }
