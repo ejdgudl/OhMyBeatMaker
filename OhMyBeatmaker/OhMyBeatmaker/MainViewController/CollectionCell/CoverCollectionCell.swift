@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol DidTapPlayButtonFirstDelegate: class {
-    func didTapPlayButton(_ cell: CoverCollectionCell)
+    func didTapPlayButton(newMusic: String)
 }
 
 class CoverCollectionCell: UICollectionViewCell {
@@ -82,7 +82,8 @@ class CoverCollectionCell: UICollectionViewCell {
     
     // MARK: @Objc
     @objc private func didTapPlayButton() {
-        delegate?.didTapPlayButton(self)
+        guard let newMusic = self.newMusic else {return}
+        delegate?.didTapPlayButton(newMusic: newMusic)
     }
     
     // MARK: ConfigureViews

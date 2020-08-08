@@ -198,7 +198,8 @@ extension MainViewController: TouchedBannerCellDelegate {
 
 // MARK: DidTapPlayButtonSecondDelegate
 extension MainViewController: DidTapPlayButtonSecondDelegate {
-    func didTapPlayButton(_ cell: CoverCollectionCell) {
+    func didTapPlayButton(newMusic: String) {
+        playerVC.newMusic = newMusic
         present(playerVC, animated: true)
     }
 }

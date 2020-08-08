@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PlayerViewController: UIViewController {
     
@@ -86,6 +87,30 @@ class PlayerViewController: UIViewController {
         imageView.tintColor = .lightGray
         return imageView
     }()
+    
+    private let db = Database.database().reference()
+    
+    var newMusic: String? {
+        didSet {
+            guard let music = newMusic else {return}
+            db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
+                guard let value = snapshot.value as? [String: Any] else {return}
+                guard let title = value["musicTitle"] as? String else {return}
+                self.songTitle.text = title
+                guard let artistNickName = value["artistNickName"] as? String else {return}
+                self.artistName.text = artistNickName
+                guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
+                guard let imageUrl = URL(string: imageUrlStr) else {return}
+                URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                    guard error == nil else {return}
+                    guard let data = data else {return}
+                    DispatchQueue.main.async {
+                        self.coverImageView.image = UIImage(data: data)
+                    }
+                }.resume()
+            }
+        }
+    }
     
     // MARK: Life Cycle
     override func viewDidLoad() {

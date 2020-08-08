@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DidTapPlayButtonSecondDelegate: class {
-    func didTapPlayButton(_ cell: CoverCollectionCell)
+    func didTapPlayButton(newMusic: String)
 }
 
 class NewMusicCoverTableCell: UITableViewCell {
@@ -102,7 +102,7 @@ extension NewMusicCoverTableCell: UICollectionViewDelegateFlowLayout {
 
 // MARK: DidTapPlayButtonFirstDelegate
 extension NewMusicCoverTableCell: DidTapPlayButtonFirstDelegate {
-    func didTapPlayButton(_ cell: CoverCollectionCell) {
-        delegate?.didTapPlayButton(cell)
+    func didTapPlayButton(newMusic: String) {
+        delegate?.didTapPlayButton(newMusic: newMusic)
     }
 }
