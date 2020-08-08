@@ -28,14 +28,14 @@ class PlayerViewController: UIViewController {
         return imageView
     }()
     
-    var songTitle: UILabel = {
+    var musicTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "Song Title"
         return label
     }()
     
-    var artistName: UILabel = {
+    var artistNickName: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textColor = .red
@@ -43,7 +43,7 @@ class PlayerViewController: UIViewController {
         return label
     }()
     
-    private var songTimeSlider: UISlider = {
+    private var musicTimeSlider: UISlider = {
         let slider = UISlider()
         return slider
     }()
@@ -69,7 +69,7 @@ class PlayerViewController: UIViewController {
         return button
     }()
     
-    private var songVolumeSlider: UISlider = {
+    private var musicVolumeSlider: UISlider = {
         let slider = UISlider()
         return slider
     }()
@@ -96,9 +96,9 @@ class PlayerViewController: UIViewController {
             db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
                 guard let value = snapshot.value as? [String: Any] else {return}
                 guard let title = value["musicTitle"] as? String else {return}
-                self.songTitle.text = title
+                self.musicTitle.text = title
                 guard let artistNickName = value["artistNickName"] as? String else {return}
-                self.artistName.text = artistNickName
+                self.artistNickName.text = artistNickName
                 guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
                 guard let imageUrl = URL(string: imageUrlStr) else {return}
                 URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
@@ -132,7 +132,7 @@ class PlayerViewController: UIViewController {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [topMarkLine, coverImageView, songTitle, artistName, songTimeSlider, playBeforeButton, playButton, playNextButton, volumeMinView, songVolumeSlider, volumeMaxView].forEach {
+        [topMarkLine, coverImageView, musicTitle, artistNickName, musicTimeSlider, playBeforeButton, playButton, playNextButton, volumeMinView, musicVolumeSlider, volumeMaxView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -147,15 +147,15 @@ class PlayerViewController: UIViewController {
         coverImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         coverImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
-        songTitle.bottomAnchor.constraint(equalTo: artistName.topAnchor, constant: -4).isActive = true
-        songTitle.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true
+        musicTitle.bottomAnchor.constraint(equalTo: artistNickName.topAnchor, constant: -4).isActive = true
+        musicTitle.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true
         
-        artistName.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.335)).isActive = true
-        artistName.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true
+        artistNickName.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.335)).isActive = true
+        artistNickName.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true
         
-        songTimeSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.243)).isActive = true
-        songTimeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        songTimeSlider.widthAnchor.constraint(equalTo: coverImageView.widthAnchor).isActive = true
+        musicTimeSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.243)).isActive = true
+        musicTimeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        musicTimeSlider.widthAnchor.constraint(equalTo: coverImageView.widthAnchor).isActive = true
         
         playBeforeButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         playBeforeButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
@@ -172,19 +172,19 @@ class PlayerViewController: UIViewController {
         playNextButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor).isActive = true
         playNextButton.leftAnchor.constraint(equalTo: playButton.rightAnchor, constant: 60).isActive = true
         
-        volumeMinView.centerYAnchor.constraint(equalTo: songVolumeSlider.centerYAnchor).isActive = true
+        volumeMinView.centerYAnchor.constraint(equalTo: musicVolumeSlider.centerYAnchor).isActive = true
         volumeMinView.widthAnchor.constraint(equalToConstant: 15).isActive = true
         volumeMinView.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        volumeMinView.rightAnchor.constraint(equalTo: songVolumeSlider.leftAnchor, constant: -15).isActive = true
+        volumeMinView.rightAnchor.constraint(equalTo: musicVolumeSlider.leftAnchor, constant: -15).isActive = true
         
-        songVolumeSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.07)).isActive = true
-        songVolumeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        songVolumeSlider.widthAnchor.constraint(equalTo: coverImageView.widthAnchor, constant: -65).isActive = true
+        musicVolumeSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.07)).isActive = true
+        musicVolumeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        musicVolumeSlider.widthAnchor.constraint(equalTo: coverImageView.widthAnchor, constant: -65).isActive = true
         
-        volumeMaxView.centerYAnchor.constraint(equalTo: songVolumeSlider.centerYAnchor).isActive = true
+        volumeMaxView.centerYAnchor.constraint(equalTo: musicVolumeSlider.centerYAnchor).isActive = true
         volumeMaxView.widthAnchor.constraint(equalToConstant: 15).isActive = true
         volumeMaxView.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        volumeMaxView.leftAnchor.constraint(equalTo: songVolumeSlider.rightAnchor, constant: 15).isActive = true
+        volumeMaxView.leftAnchor.constraint(equalTo: musicVolumeSlider.rightAnchor, constant: 15).isActive = true
     }
     
 }

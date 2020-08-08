@@ -1,5 +1,5 @@
 //
-//  AddSongViewController.swift
+//  AddMusicViewController.swift
 //  OhMyBeatmaker
 //
 //  Created by 김동현 on 2020/08/07.
@@ -64,7 +64,7 @@ class AddMusicViewController: UIViewController {
     }
     
     // MARK: Helpers
-    private func uploadSongData(musicTitle: String, musicFileUrl: String) {
+    private func uploadMusicData(musicTitle: String, musicFileUrl: String) {
         
         guard let coverImage = plusCoverButton.imageView?.image else {return}
         guard let uploadData = coverImage.jpegData(compressionQuality: 0.3) else {return}
@@ -154,7 +154,7 @@ extension AddMusicViewController: UIDocumentPickerDelegate {
                         guard let musicFileUrl = downloadUrl?.absoluteString else {return}
                         guard let musicTitle = urls.first?.deletingPathExtension().lastPathComponent else {return
                         }
-                        self.uploadSongData(musicTitle: musicTitle, musicFileUrl: musicFileUrl)
+                        self.uploadMusicData(musicTitle: musicTitle, musicFileUrl: musicFileUrl)
                         self.dismiss(animated: true, completion: nil)
                         self.indicator.stopAnimating()
                     }

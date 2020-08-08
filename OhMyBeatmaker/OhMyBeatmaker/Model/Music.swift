@@ -1,5 +1,5 @@
 //
-//  Song.swift
+//  Music.swift
 //  OhMyBeatmaker
 //
 //  Created by 김동현 on 2020/08/07.

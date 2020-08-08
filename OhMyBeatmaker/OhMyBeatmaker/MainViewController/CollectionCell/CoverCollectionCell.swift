@@ -29,7 +29,7 @@ class CoverCollectionCell: UICollectionViewCell {
         return button
     }()
     
-    private let songtitleLabel: UILabel = {
+    private let musicTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "노래제목"
         label.font = UIFont.boldSystemFont(ofSize: 15)
@@ -54,7 +54,7 @@ class CoverCollectionCell: UICollectionViewCell {
             db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
                 guard let value = snapshot.value as? [String: Any] else {return}
                 guard let title = value["musicTitle"] as? String else {return}
-                self.songtitleLabel.text = title
+                self.musicTitleLabel.text = title
                 guard let artistNickName = value["artistNickName"] as? String else {return}
                 self.artistNameLabel.text = artistNickName
                 guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
@@ -90,7 +90,7 @@ class CoverCollectionCell: UICollectionViewCell {
     private func configureViews() {
         backgroundColor = .orange
         
-        [coverImage, playButtonInCover, songtitleLabel, artistNameLabel].forEach {
+        [coverImage, playButtonInCover, musicTitleLabel, artistNameLabel].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -106,10 +106,10 @@ class CoverCollectionCell: UICollectionViewCell {
         playButtonInCover.widthAnchor.constraint(equalToConstant: 30).isActive = true
         playButtonInCover.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        songtitleLabel.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 5).isActive = true
-        songtitleLabel.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
+        musicTitleLabel.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 5).isActive = true
+        musicTitleLabel.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
         
-        artistNameLabel.topAnchor.constraint(equalTo: songtitleLabel.bottomAnchor, constant: 2).isActive = true
+        artistNameLabel.topAnchor.constraint(equalTo: musicTitleLabel.bottomAnchor, constant: 2).isActive = true
         artistNameLabel.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
     }
     
