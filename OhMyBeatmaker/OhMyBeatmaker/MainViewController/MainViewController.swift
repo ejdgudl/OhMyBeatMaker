@@ -26,8 +26,14 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var editView: EditView = {
-       let view = EditView()
+        let view = EditView()
         return view
+    }()
+    
+    private lazy var bottomButton: BottomButton = {
+        let button = BottomButton()
+        button.addTarget(self, action: #selector(didTapBottomButton), for: .touchUpInside)
+        return button
     }()
     
     private var constraintX: NSLayoutConstraint?
@@ -77,6 +83,10 @@ class MainViewController: UIViewController {
         moveToEditView(priority: .defaultHigh)
     }
     
+    @objc private func didTapBottomButton() {
+        print("z")
+    }
+    
     // MARK: Helpers
     func fetchAll() {
         guard let currentUid = Auth.auth().currentUser?.uid else {return}
@@ -119,7 +129,7 @@ class MainViewController: UIViewController {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [topView, tableView, editView].forEach {
+        [topView, tableView, editView, bottomButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -144,6 +154,11 @@ class MainViewController: UIViewController {
         constraintX = editView.leftAnchor.constraint(equalTo: view.leftAnchor)
         constraintX?.priority = .defaultLow
         constraintX?.isActive = true
+        
+        bottomButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        bottomButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        bottomButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        bottomButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
 }
 
@@ -259,7 +274,7 @@ extension MainViewController: DidTapLoginButtonDelegate {
 extension MainViewController: SuccessSignInDelegate {
     func whenSuccessSignIn() {
         self.fetchAll()
-
+        
         UIView.animate(withDuration: 0.5) {
             self.constraintX?.priority = .defaultLow
             self.constraintX?.isActive = true

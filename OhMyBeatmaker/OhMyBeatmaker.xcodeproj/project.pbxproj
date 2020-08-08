@@ -47,6 +47,7 @@
 		D374809924DD460500D8EC43 /* PlusCoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809824DD460500D8EC43 /* PlusCoverButton.swift */; };
 		D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809A24DD466B00D8EC43 /* AddMusicButton.swift */; };
 		D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809D24DE907100D8EC43 /* PlayerViewController.swift */; };
+		D37480A224DEC26700D8EC43 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A124DEC26700D8EC43 /* BottomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		D374809824DD460500D8EC43 /* PlusCoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusCoverButton.swift; sourceTree = "<group>"; };
 		D374809A24DD466B00D8EC43 /* AddMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicButton.swift; sourceTree = "<group>"; };
 		D374809D24DE907100D8EC43 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		D37480A124DEC26700D8EC43 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				D374804224DC234F00D8EC43 /* TopView.swift */,
 				D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */,
 				D374805724DC430600D8EC43 /* EditView.swift */,
+				D37480A124DEC26700D8EC43 /* BottomView.swift */,
 				D374808724DD181700D8EC43 /* LoginButton */,
 			);
 			path = View;
@@ -469,6 +472,7 @@
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
 				D374808124DCF39000D8EC43 /* MyAccountViewController.swift in Sources */,
 				D374807E24DC6A7E00D8EC43 /* EditTableHeaderView.swift in Sources */,
+				D37480A224DEC26700D8EC43 /* BottomView.swift in Sources */,
 				D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */,
 				D374807724DC52AC00D8EC43 /* BottomStackView.swift in Sources */,
 				D374808424DCF49900D8EC43 /* AppIntroViewController.swift in Sources */,
