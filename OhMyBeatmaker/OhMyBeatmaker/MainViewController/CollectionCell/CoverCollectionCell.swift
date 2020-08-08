@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol DidTapPlayButtonFirstDelegate: class {
     func didTapPlayButton(_ cell: CoverCollectionCell)
@@ -42,13 +43,30 @@ class CoverCollectionCell: UICollectionViewCell {
         return label
     }()
     
+    private let db = Database.database().reference()
+    
     weak var delegate: DidTapPlayButtonFirstDelegate?
     
     var newMusic: String? {
         didSet {
             print("newMusic didSet in the collection")
             guard let music = newMusic else {return}
-            
+            db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
+                guard let value = snapshot.value as? [String: Any] else {return}
+                guard let title = value["musicTitle"] as? String else {return}
+                self.songtitleLabel.text = title
+                guard let artistNickName = value["artistNickName"] as? String else {return}
+                self.artistNameLabel.text = artistNickName
+                guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
+                guard let imageUrl = URL(string: imageUrlStr) else {return}
+                URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                    guard error == nil else {return}
+                    guard let data = data else {return}
+                    DispatchQueue.main.async {
+                        self.coverImage.image = UIImage(data: data)
+                    }
+                }.resume()
+            }
         }
     }
     

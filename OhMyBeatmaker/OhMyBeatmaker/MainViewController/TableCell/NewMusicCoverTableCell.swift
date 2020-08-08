@@ -84,9 +84,6 @@ extension NewMusicCoverTableCell: UICollectionViewDelegate, UICollectionViewData
         cell.delegate = self
         if let newMusic = self.new5Array?[indexPath.row] {
             cell.newMusic = newMusic
-            if let lastMusic = self.new5Array?[4] {
-                cell.newMusic = lastMusic
-            }
         }
         return cell
     }
