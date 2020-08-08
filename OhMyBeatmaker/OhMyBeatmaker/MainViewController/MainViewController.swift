@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
     private let firebseService = FirebaseService()
     private let db = Database.database().reference()
     
+    private let playerVC = PlayerViewController()
+    
     var user: User? {
         didSet {
             guard let user = user else {return}
@@ -197,7 +199,7 @@ extension MainViewController: TouchedBannerCellDelegate {
 // MARK: DidTapPlayButtonSecondDelegate
 extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(_ cell: CoverCollectionCell) {
-        print("DidTapPlayButtonSecondDelegate")
+        present(playerVC, animated: true)
     }
 }
 

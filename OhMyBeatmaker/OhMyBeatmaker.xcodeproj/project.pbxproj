@@ -46,6 +46,7 @@
 		D374809624DD438200D8EC43 /* AddMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809524DD438200D8EC43 /* AddMusicViewController.swift */; };
 		D374809924DD460500D8EC43 /* PlusCoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809824DD460500D8EC43 /* PlusCoverButton.swift */; };
 		D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809A24DD466B00D8EC43 /* AddMusicButton.swift */; };
+		D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809D24DE907100D8EC43 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		D374809524DD438200D8EC43 /* AddMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicViewController.swift; sourceTree = "<group>"; };
 		D374809824DD460500D8EC43 /* PlusCoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusCoverButton.swift; sourceTree = "<group>"; };
 		D374809A24DD466B00D8EC43 /* AddMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicButton.swift; sourceTree = "<group>"; };
+		D374809D24DE907100D8EC43 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				D374804024DC221700D8EC43 /* MainViewController */,
 				D374807F24DCF36F00D8EC43 /* MyAccountViewController */,
 				D374809424DD437500D8EC43 /* AddMusicViewController */,
+				D374809C24DE905D00D8EC43 /* PlayerViewController */,
 				D374808224DCF48600D8EC43 /* AppIntroViewController */,
 				D374807A24DC5EAB00D8EC43 /* Service */,
 				D374806C24DC4E0A00D8EC43 /* View */,
@@ -331,6 +334,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D374809C24DE905D00D8EC43 /* PlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D374809D24DE907100D8EC43 /* PlayerViewController.swift */,
+			);
+			path = PlayerViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -451,6 +462,7 @@
 				D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */,
 				D374806224DC475E00D8EC43 /* TopSecondVC.swift in Sources */,
 				D374807324DC512100D8EC43 /* PasswordTextField.swift in Sources */,
+				D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */,
 				D374806724DC4AAF00D8EC43 /* BottomFirstVC.swift in Sources */,
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
