@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import AVFoundation
 
+var player: AVPlayer?
+
 class PlayerViewController: UIViewController {
     
     // MARK: Properties
@@ -93,7 +95,6 @@ class PlayerViewController: UIViewController {
     private let db = Database.database().reference()
     
     var playerItem: AVPlayerItem?
-    var player: AVPlayer?
     
     var newMusic: String? {
         didSet {
@@ -128,28 +129,28 @@ class PlayerViewController: UIViewController {
     
     // MARK: @Objc
     @objc private func didTapPlaybutton() {
-        if self.player?.rate == 0 {
-            self.player?.play()
-            self.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        if player?.rate == 0 {
+            player?.play()
+            playButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
-            self.player?.pause()
-            self.playButton.setImage(UIImage(named: "playButton"), for: .normal)
+            player?.pause()
+            playButton.setImage(UIImage(named: "playButton"), for: .normal)
         }
     }
     
     // MARK: Helpers
     func playMusic(mp3FileUrl: String, musicTitle: String) {
         Storage.storage().reference().child("Musics").child(musicTitle).downloadURL { (downloadUrl, error) in
-            if self.player?.currentItem != nil {
-                self.player?.pause()
+            if player?.currentItem != nil {
+                player?.pause()
             }
             let url = URL(string: mp3FileUrl)
             self.playerItem = AVPlayerItem(url: url!)
-            self.player = AVPlayer(playerItem: self.playerItem)
-            let playerLayer = AVPlayerLayer(player: self.player)
+            player = AVPlayer(playerItem: self.playerItem)
+            let playerLayer = AVPlayerLayer(player: player)
             playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
             self.view.layer.addSublayer(playerLayer)
-            self.player?.play()
+            player?.play()
             self.playButton.setImage(UIImage(named: "pause"), for: .normal)
         }
     }

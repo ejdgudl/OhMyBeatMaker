@@ -216,6 +216,7 @@ extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(newMusic: String) {
         playerVC.newMusic = newMusic
         bottomButton.newMusic = newMusic
+        bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
         present(playerVC, animated: true)
     }
 }

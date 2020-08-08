@@ -27,9 +27,10 @@ class BottomButton: UIButton {
         return label
     }()
     
-    private lazy var playButton: UIButton = {
+    lazy var playButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "playButton"), for: .normal)
+        button.addTarget(self, action: #selector(didTapPlaybutton), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -68,6 +69,15 @@ class BottomButton: UIButton {
     }
     
     // MARK: @Objc
+    @objc private func didTapPlaybutton() {
+        if player?.rate == 0 {
+            player?.play()
+            playButton.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            player?.pause()
+            playButton.setImage(UIImage(named: "playButton"), for: .normal)
+        }
+    }
     
     // MARK: Configure
     private func configure() {
