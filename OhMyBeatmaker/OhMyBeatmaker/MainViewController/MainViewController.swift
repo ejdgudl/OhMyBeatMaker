@@ -84,7 +84,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func didTapBottomButton() {
-        print("z")
+        present(playerVC, animated: true)
     }
     
     // MARK: Helpers
@@ -215,6 +215,7 @@ extension MainViewController: TouchedBannerCellDelegate {
 extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(newMusic: String) {
         playerVC.newMusic = newMusic
+        bottomButton.newMusic = newMusic
         present(playerVC, animated: true)
     }
 }
