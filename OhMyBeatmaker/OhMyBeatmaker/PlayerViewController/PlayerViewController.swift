@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AVFoundation
 
 class PlayerViewController: UIViewController {
     
@@ -90,6 +91,9 @@ class PlayerViewController: UIViewController {
     
     private let db = Database.database().reference()
     
+    var playerItem: AVPlayerItem?
+    var player: AVPlayer?
+    
     var newMusic: String? {
         didSet {
             guard let music = newMusic else {return}
@@ -108,6 +112,8 @@ class PlayerViewController: UIViewController {
                         self.coverImageView.image = UIImage(data: data)
                     }
                 }.resume()
+                guard let mp3Url = value["musicFileUrl"] as? String else {return}
+                self.playMusic(mp3FileUrl: mp3Url, musicTitle: title)
             }
         }
     }
@@ -121,7 +127,23 @@ class PlayerViewController: UIViewController {
     
     
     // MARK: Helpers
-    
+    func playMusic(mp3FileUrl: String, musicTitle: String) {
+        Storage.storage().reference().child("Musics").child(musicTitle).downloadURL { (downloadUrl, error) in
+            
+            let url = URL(string: mp3FileUrl)
+            self.playerItem = AVPlayerItem(url: url!)
+            self.player = AVPlayer(playerItem: self.playerItem)
+            let playerLayer = AVPlayerLayer(player: self.player)
+            playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
+            self.view.layer.addSublayer(playerLayer)
+            
+            if self.player?.rate == 0 {
+                self.player?.play()
+            } else {
+                self.player?.pause()
+            }
+        }
+    }
     
     // MARK: Configure
     private func configure() {
