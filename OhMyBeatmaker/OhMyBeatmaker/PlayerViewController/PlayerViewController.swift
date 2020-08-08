@@ -144,6 +144,7 @@ class PlayerViewController: UIViewController {
             if player?.currentItem != nil {
                 player?.pause()
             }
+            
             let url = URL(string: mp3FileUrl)
             self.playerItem = AVPlayerItem(url: url!)
             player = AVPlayer(playerItem: self.playerItem)
@@ -152,6 +153,12 @@ class PlayerViewController: UIViewController {
             self.view.layer.addSublayer(playerLayer)
             player?.play()
             self.playButton.setImage(UIImage(named: "pause"), for: .normal)
+            
+            player!.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: .main) { time in
+                let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds(player!.currentItem!.duration)
+                self.musicTimeSlider.value = Float(fraction)
+            }
+            self.musicVolumeSlider.setValue(AVAudioSession.sharedInstance().outputVolume, animated: true)
         }
     }
     
