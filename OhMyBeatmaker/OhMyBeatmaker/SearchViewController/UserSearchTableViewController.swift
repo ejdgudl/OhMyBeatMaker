@@ -14,6 +14,16 @@ class UserSearchTableViewController: UITableViewController {
     // MARK: Properties
     var users = [User]()
     
+    lazy var searchBar: UISearchBar = {
+       let searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        searchBar.showsCancelButton = true
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
+    private var searchedUsers = [User]()
+    private var searchMode = false
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -23,15 +33,28 @@ class UserSearchTableViewController: UITableViewController {
         configureViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    // MARK: @Objc
+    @objc func searchTapped() {
+        navigationItem.titleView = searchBar
+        navigationItem.rightBarButtonItem = nil
+        searchBar.becomeFirstResponder()
+    }
+    
     // MARK: Helpers
     private func fetchUser() {
         Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
             let uid = snapshot.key
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
-            
-            let user = User(uid: uid, dictionary: dictionary)
-            self.users.append(user)
-            self.tableView.reloadData()
+            if Auth.auth().currentUser?.uid != uid {
+                let user = User(uid: uid, dictionary: dictionary)
+                self.users.append(user)
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -42,9 +65,8 @@ class UserSearchTableViewController: UITableViewController {
     
     // MARK: ConfigureViews
     private func configureViews() {
-        navigationController?.navigationBar.isHidden = false
         title = "유저 찾기"
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 64, bottom: 0, right: 0)
     }
 }
@@ -59,16 +81,58 @@ extension UserSearchTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        if searchMode == false {
+            return users.count
+        } else {
+            return searchedUsers.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableView.searchTableCellID, for: indexPath) as! SearchTableCell
-        cell.user = users[indexPath.row]
+        var user: User?
+        if searchMode == false {
+            user = users[indexPath.row]
+        } else {
+            user = searchedUsers[indexPath.row]
+        }
+        cell.user = user
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        var user: User?
+        if searchMode == false {
+             user = users[indexPath.row]
+        } else {
+            user = searchedUsers[indexPath.row]
+        }
+        let userProfileVC = UserProfileViewController()
+        userProfileVC.user = user
+        navigationController?.pushViewController(userProfileVC, animated: true)
+    }
+}
+
+extension UserSearchTableViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        navigationItem.titleView = nil
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+        searchBar.text = ""
+        searchMode = false
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            searchMode = false
+        } else {
+            searchMode = true
+            let matchingUsers = self.users.filter { (user) -> Bool in
+                guard let nickName = user.nickName else {return false}
+                return nickName.lowercased().contains(searchText.lowercased())
+            }
+            self.searchedUsers = matchingUsers
+            tableView.reloadData()
+        }
     }
 }

@@ -57,6 +57,7 @@
 		D37480B324DFC1BF00D8EC43 /* MusicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */; };
 		D37480BF24E0380000D8EC43 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */; };
 		D37480C224E039AD00D8EC43 /* SearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480C124E039AD00D8EC43 /* SearchTableCell.swift */; };
+		D37480C524E051E800D8EC43 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480C424E051E800D8EC43 /* UserProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCell.swift; sourceTree = "<group>"; };
 		D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		D37480C124E039AD00D8EC43 /* SearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableCell.swift; sourceTree = "<group>"; };
+		D37480C424E051E800D8EC43 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		D374802B24DC1EA100D8EC43 /* OhMyBeatmaker */ = {
 			isa = PBXGroup;
 			children = (
+				D37480C324E051D100D8EC43 /* UserProfileViewController */,
 				D37480BD24E037D000D8EC43 /* SearchViewController */,
 				D374802C24DC1EA100D8EC43 /* AppDelegate.swift */,
 				D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */,
@@ -420,6 +423,14 @@
 			path = TableCell;
 			sourceTree = "<group>";
 		};
+		D37480C324E051D100D8EC43 /* UserProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D37480C424E051E800D8EC43 /* UserProfileViewController.swift */,
+			);
+			path = UserProfileViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -581,6 +592,7 @@
 				D37480A924DFBE1500D8EC43 /* PageViewController.swift in Sources */,
 				D37480C224E039AD00D8EC43 /* SearchTableCell.swift in Sources */,
 				D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */,
+				D37480C524E051E800D8EC43 /* UserProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
