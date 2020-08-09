@@ -13,7 +13,7 @@ class ChartHeaderView: UIView {
     // MARK: Properties
     private let headerTitle: UILabel = {
         let label = UILabel()
-        label.text = "Top 10"
+        label.text = "Top 5"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()

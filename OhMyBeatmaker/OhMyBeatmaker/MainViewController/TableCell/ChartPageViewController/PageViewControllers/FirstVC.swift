@@ -11,7 +11,7 @@ import UIKit
 class FirstVC: UIViewController {
     
     // MARK: Properties
-    private let top10TitleView: ChartHeaderView = {
+    private let top5TitleView: ChartHeaderView = {
         let view = ChartHeaderView()
         return view
     }()
@@ -41,17 +41,17 @@ class FirstVC: UIViewController {
     func configureViews() {
         view.backgroundColor = .clear
         
-        [top10TitleView, firstChartView].forEach {
+        [top5TitleView, firstChartView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        top10TitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        top10TitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
-        top10TitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        top10TitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        top5TitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        top5TitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        top5TitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        top5TitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        firstChartView.topAnchor.constraint(equalTo: top10TitleView.bottomAnchor).isActive = true
+        firstChartView.topAnchor.constraint(equalTo: top5TitleView.bottomAnchor).isActive = true
         firstChartView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
         firstChartView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
         firstChartView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
@@ -62,7 +62,7 @@ class FirstVC: UIViewController {
 // MARK: UITableViewDataSource, UITableViewDelegate
 extension FirstVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
