@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ChartHeaderView: UIView {
+class MusicTitleHeaderView: UIView {
     
     // MARK: Properties
     private let headerTitle: UILabel = {
         let label = UILabel()
-        label.text = "Top 5"
+        label.text = "Recommend"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()

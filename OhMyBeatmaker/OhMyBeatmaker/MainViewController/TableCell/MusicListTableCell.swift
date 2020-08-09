@@ -1,5 +1,5 @@
 //
-//  ChartCollectionCell.swift
+//  MusicListTableCell.swift
 //  OhMyBeatmaker
 //
 //  Created by 김동현 on 2020/08/09.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChartTableCell: UITableViewCell {
+class MusicListTableCell: UITableViewCell {
     
     // MARK: Properties
     let pageView: UIView = {

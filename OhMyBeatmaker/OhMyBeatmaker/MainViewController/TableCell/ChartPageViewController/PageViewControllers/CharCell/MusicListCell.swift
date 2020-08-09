@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ChartCell: UITableViewCell {
+class MusicListCell: UITableViewCell {
     
     // MARK: Properties
-    var chartImageView: UIImageView = {
+    var musicListImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 11
@@ -44,6 +44,25 @@ class ChartCell: UITableViewCell {
         return button
     }()
     
+    var music: Music? {
+        didSet {
+            guard let music = music else {return}
+            guard let imageUrlStr = music.coverImageUrl else {return}
+            guard let imageUrl = URL(string: imageUrlStr) else {return}
+            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                guard error == nil else {return}
+                guard let data = data else {return}
+                DispatchQueue.main.async {
+                    self.musicListImageView.image = UIImage(data: data)
+                }
+            }.resume()
+            guard let title = music.musicTitle else {return}
+            self.musicTitle.text = title
+            guard let artistNickName = music.artistNickName else {return}
+            self.artistNickName.text = artistNickName
+        }
+    }
+    
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -68,23 +87,23 @@ class ChartCell: UITableViewCell {
     // MARK: ConfigureViews
     private func configureViews() {
         selectionStyle = .none
-        [chartImageView, musicTitle, artistNickName, playButton].forEach {
+        [musicListImageView, musicTitle, artistNickName, playButton].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        chartImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        chartImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        chartImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        chartImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        musicListImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        musicListImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        musicListImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        musicListImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        musicTitle.bottomAnchor.constraint(equalTo: chartImageView.centerYAnchor, constant: -3).isActive = true
-        musicTitle.leftAnchor.constraint(equalTo: chartImageView.rightAnchor, constant: 5).isActive = true
+        musicTitle.bottomAnchor.constraint(equalTo: musicListImageView.centerYAnchor, constant: -3).isActive = true
+        musicTitle.leftAnchor.constraint(equalTo: musicListImageView.rightAnchor, constant: 5).isActive = true
         
-        artistNickName.topAnchor.constraint(equalTo: chartImageView.centerYAnchor, constant: 3).isActive = true
-        artistNickName.leftAnchor.constraint(equalTo: chartImageView.rightAnchor, constant: 5).isActive = true
+        artistNickName.topAnchor.constraint(equalTo: musicListImageView.centerYAnchor, constant: 3).isActive = true
+        artistNickName.leftAnchor.constraint(equalTo: musicListImageView.rightAnchor, constant: 5).isActive = true
         
-        playButton.centerYAnchor.constraint(equalTo: chartImageView.centerYAnchor).isActive = true
+        playButton.centerYAnchor.constraint(equalTo: musicListImageView.centerYAnchor).isActive = true
         playButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
         playButton.widthAnchor.constraint(equalToConstant: 17).isActive = true
         playButton.heightAnchor.constraint(equalToConstant: 17).isActive = true

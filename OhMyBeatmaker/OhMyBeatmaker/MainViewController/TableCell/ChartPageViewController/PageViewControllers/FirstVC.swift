@@ -7,54 +7,74 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstVC: UIViewController {
     
     // MARK: Properties
-    private let top5TitleView: ChartHeaderView = {
-        let view = ChartHeaderView()
+    private let MusicListTitleView: MusicTitleHeaderView = {
+        let view = MusicTitleHeaderView()
         return view
     }()
     
-    let firstChartView: UITableView = {
+    let firstMusicListView: UITableView = {
         let view = UITableView()
         view.backgroundColor = .clear
-        view.isScrollEnabled = false
+//        view.isScrollEnabled = true
         return view
     }()
+    
+    let db = Database.database().reference()
+    
+    var musics = [Music]() {
+        didSet {
+            musics.shuffle()
+            firstMusicListView.reloadData()
+        }
+    }
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMusic()
         configure()
         configureViews()
     }
     
+    private func fetchMusic() {
+        db.child("Musics").observe(.childAdded) { (snapShot) in
+            let musicTitle = snapShot.key
+            guard let dictionary = snapShot.value as? Dictionary<String, AnyObject> else {return}
+            let music = Music(musicTitle: musicTitle, dictionary: dictionary)
+            self.musics.append(music)
+        }
+    }
+    
     // MARK: Configure
     private func configure() {
-        firstChartView.delegate = self
-        firstChartView.dataSource = self
-        firstChartView.register(ChartCell.self, forCellReuseIdentifier: UITableView.chartCellID)
+        firstMusicListView.delegate = self
+        firstMusicListView.dataSource = self
+        firstMusicListView.register(MusicListCell.self, forCellReuseIdentifier: UITableView.musicCellID)
     }
     
     // MARK: ConfigureViews
     func configureViews() {
         view.backgroundColor = .clear
         
-        [top5TitleView, firstChartView].forEach {
+        [MusicListTitleView, firstMusicListView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        top5TitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        top5TitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
-        top5TitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        top5TitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        MusicListTitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        MusicListTitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        MusicListTitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        MusicListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        firstChartView.topAnchor.constraint(equalTo: top5TitleView.bottomAnchor).isActive = true
-        firstChartView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
-        firstChartView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        firstChartView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        firstMusicListView.topAnchor.constraint(equalTo: MusicListTitleView.bottomAnchor).isActive = true
+        firstMusicListView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        firstMusicListView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        firstMusicListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
     }
     
 }
@@ -62,7 +82,7 @@ class FirstVC: UIViewController {
 // MARK: UITableViewDataSource, UITableViewDelegate
 extension FirstVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.musics.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,7 +90,8 @@ extension FirstVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let chartCell = firstChartView.dequeueReusableCell(withIdentifier: UITableView.chartCellID, for: indexPath) as? ChartCell else {fatalError()}
-        return chartCell
+        guard let musicListCell = firstMusicListView.dequeueReusableCell(withIdentifier: UITableView.musicCellID, for: indexPath) as? MusicListCell else {fatalError()}
+        musicListCell.music = self.musics[indexPath.row]
+        return musicListCell
     }
 }

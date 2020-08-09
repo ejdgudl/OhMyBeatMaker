@@ -1,5 +1,5 @@
 //
-//  ChartTitleCell.swift
+//  MusicListTitleCell.swift
 //  OhMyBeatmaker
 //
 //  Created by 김동현 on 2020/08/09.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ChartTitleTableCell: UITableViewCell {
+class MusicListTitleTableCell: UITableViewCell {
     
     // MARK: Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "차트"
+        label.text = "Music List"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()

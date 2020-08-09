@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
     
     private let playerVC = PlayerViewController()
     
-    let pageVC = ChartPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    let pageVC = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     var user: User? {
         didSet {
@@ -121,8 +121,8 @@ class MainViewController: UIViewController {
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: UITableView.bannerTableCellID)
         tableView.register(NewMusicTitleTableCell.self, forCellReuseIdentifier: UITableView.newMusicTitleTableCellID)
         tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
-        tableView.register(ChartTitleTableCell.self, forCellReuseIdentifier: UITableView.chartTitleCellID)
-        tableView.register(ChartTableCell.self, forCellReuseIdentifier: UITableView.chartTableCellID)
+        tableView.register(MusicListTitleTableCell.self, forCellReuseIdentifier: UITableView.musicTitleCellID)
+        tableView.register(MusicListTableCell.self, forCellReuseIdentifier: UITableView.musicTableCellID)
         
         editView.didTapEdiViewTableCellDelegate = self
         editView.didTapBackgroundDelegate = self
@@ -189,13 +189,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             newMusicCoverCell.new5Array = self.new5Array
             return newMusicCoverCell
         case 3:
-            guard let chartTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.chartTitleCellID, for: indexPath) as? ChartTitleTableCell else {fatalError()}
-            return chartTitleCell
+            guard let musicListTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicTitleCellID, for: indexPath) as? MusicListTitleTableCell else {fatalError()}
+            return musicListTitleCell
         case 4:
-            guard let chartTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.chartTableCellID, for: indexPath) as? ChartTableCell else {fatalError()}
-            chartTableCell.pageView.addSubview(pageVC.view)
-            pageVC.view.frame = chartTableCell.pageView.frame
-            return chartTableCell
+            guard let musicTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicTableCellID, for: indexPath) as? MusicListTableCell else {fatalError()}
+            musicTableCell.pageView.addSubview(pageVC.view)
+            pageVC.view.frame = musicTableCell.pageView.frame
+            return musicTableCell
         default:
             break
         }

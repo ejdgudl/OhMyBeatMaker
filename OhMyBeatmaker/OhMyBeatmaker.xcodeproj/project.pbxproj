@@ -48,13 +48,13 @@
 		D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809A24DD466B00D8EC43 /* AddMusicButton.swift */; };
 		D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809D24DE907100D8EC43 /* PlayerViewController.swift */; };
 		D37480A224DEC26700D8EC43 /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A124DEC26700D8EC43 /* BottomButton.swift */; };
-		D37480A424DFBA9A00D8EC43 /* ChartTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */; };
-		D37480A624DFBC4200D8EC43 /* ChartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A524DFBC4200D8EC43 /* ChartTableCell.swift */; };
-		D37480A924DFBE1500D8EC43 /* ChartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A824DFBE1500D8EC43 /* ChartPageViewController.swift */; };
+		D37480A424DFBA9A00D8EC43 /* MusicListTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A324DFBA9A00D8EC43 /* MusicListTitleTableCell.swift */; };
+		D37480A624DFBC4200D8EC43 /* MusicListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A524DFBC4200D8EC43 /* MusicListTableCell.swift */; };
+		D37480A924DFBE1500D8EC43 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A824DFBE1500D8EC43 /* PageViewController.swift */; };
 		D37480AC24DFBE5600D8EC43 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480AB24DFBE5600D8EC43 /* FirstVC.swift */; };
 		D37480AE24DFBE5C00D8EC43 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */; };
-		D37480B124DFC03500D8EC43 /* ChartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B024DFC03500D8EC43 /* ChartHeaderView.swift */; };
-		D37480B324DFC1BF00D8EC43 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B224DFC1BF00D8EC43 /* ChartCell.swift */; };
+		D37480B124DFC03500D8EC43 /* MusicTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B024DFC03500D8EC43 /* MusicTitleHeaderView.swift */; };
+		D37480B324DFC1BF00D8EC43 /* MusicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,13 +103,13 @@
 		D374809A24DD466B00D8EC43 /* AddMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicButton.swift; sourceTree = "<group>"; };
 		D374809D24DE907100D8EC43 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		D37480A124DEC26700D8EC43 /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
-		D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTitleTableCell.swift; sourceTree = "<group>"; };
-		D37480A524DFBC4200D8EC43 /* ChartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableCell.swift; sourceTree = "<group>"; };
-		D37480A824DFBE1500D8EC43 /* ChartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPageViewController.swift; sourceTree = "<group>"; };
+		D37480A324DFBA9A00D8EC43 /* MusicListTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTitleTableCell.swift; sourceTree = "<group>"; };
+		D37480A524DFBC4200D8EC43 /* MusicListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableCell.swift; sourceTree = "<group>"; };
+		D37480A824DFBE1500D8EC43 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		D37480AB24DFBE5600D8EC43 /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
-		D37480B024DFC03500D8EC43 /* ChartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHeaderView.swift; sourceTree = "<group>"; };
-		D37480B224DFC1BF00D8EC43 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
+		D37480B024DFC03500D8EC43 /* MusicTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTitleHeaderView.swift; sourceTree = "<group>"; };
+		D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,8 +227,8 @@
 				D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */,
 				D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */,
 				D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */,
-				D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */,
-				D37480A524DFBC4200D8EC43 /* ChartTableCell.swift */,
+				D37480A324DFBA9A00D8EC43 /* MusicListTitleTableCell.swift */,
+				D37480A524DFBC4200D8EC43 /* MusicListTableCell.swift */,
 				D37480A724DFBDE800D8EC43 /* ChartPageViewController */,
 			);
 			path = TableCell;
@@ -365,7 +365,7 @@
 		D37480A724DFBDE800D8EC43 /* ChartPageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D37480A824DFBE1500D8EC43 /* ChartPageViewController.swift */,
+				D37480A824DFBE1500D8EC43 /* PageViewController.swift */,
 				D37480AA24DFBE4100D8EC43 /* PageViewControllers */,
 			);
 			path = ChartPageViewController;
@@ -385,7 +385,7 @@
 		D37480AF24DFC02E00D8EC43 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D37480B024DFC03500D8EC43 /* ChartHeaderView.swift */,
+				D37480B024DFC03500D8EC43 /* MusicTitleHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 		D37480B424DFF96700D8EC43 /* CharCell */ = {
 			isa = PBXGroup;
 			children = (
-				D37480B224DFC1BF00D8EC43 /* ChartCell.swift */,
+				D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */,
 			);
 			path = CharCell;
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D37480B324DFC1BF00D8EC43 /* ChartCell.swift in Sources */,
+				D37480B324DFC1BF00D8EC43 /* MusicListCell.swift in Sources */,
 				D374804924DC287400D8EC43 /* Extension.swift in Sources */,
 				D374809624DD438200D8EC43 /* AddMusicViewController.swift in Sources */,
 				D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */,
@@ -521,7 +521,7 @@
 				D374807324DC512100D8EC43 /* PasswordTextField.swift in Sources */,
 				D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */,
 				D374806724DC4AAF00D8EC43 /* BottomFirstVC.swift in Sources */,
-				D37480B124DFC03500D8EC43 /* ChartHeaderView.swift in Sources */,
+				D37480B124DFC03500D8EC43 /* MusicTitleHeaderView.swift in Sources */,
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
@@ -544,7 +544,7 @@
 				D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */,
 				D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */,
 				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
-				D37480A424DFBA9A00D8EC43 /* ChartTitleTableCell.swift in Sources */,
+				D37480A424DFBA9A00D8EC43 /* MusicListTitleTableCell.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
 				D374804624DC27E900D8EC43 /* User.swift in Sources */,
 				D374805B24DC46A900D8EC43 /* TopLoginPageViewController.swift in Sources */,
@@ -553,9 +553,9 @@
 				D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */,
 				D374809324DD40F300D8EC43 /* Music.swift in Sources */,
 				D374805D24DC46C900D8EC43 /* LoginViewController.swift in Sources */,
-				D37480A624DFBC4200D8EC43 /* ChartTableCell.swift in Sources */,
+				D37480A624DFBC4200D8EC43 /* MusicListTableCell.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,
-				D37480A924DFBE1500D8EC43 /* ChartPageViewController.swift in Sources */,
+				D37480A924DFBE1500D8EC43 /* PageViewController.swift in Sources */,
 				D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

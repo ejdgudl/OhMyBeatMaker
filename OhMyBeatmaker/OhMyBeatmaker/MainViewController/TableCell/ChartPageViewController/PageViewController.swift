@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Protocol SendFinishedTransition
 
-class ChartPageViewController: UIPageViewController {
+class PageViewController: UIPageViewController {
     
     // MARK: Properties
     private lazy var vcList = [firstVC, secondVC]
@@ -39,7 +39,7 @@ class ChartPageViewController: UIPageViewController {
 }
 
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
-extension ChartPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+extension PageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return vcList.count
