@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
 
 class SecondVC: UIViewController {
     
@@ -17,9 +18,10 @@ class SecondVC: UIViewController {
         return view
     }()
     
-    let videoView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
+    lazy var videoView: YTPlayerView = {
+        let view = YTPlayerView()
+        view.backgroundColor = .black
+        view.load(withVideoId: "INF37CuNa3w")
         return view
     }()
     
