@@ -55,6 +55,8 @@
 		D37480AE24DFBE5C00D8EC43 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */; };
 		D37480B124DFC03500D8EC43 /* MusicTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B024DFC03500D8EC43 /* MusicTitleHeaderView.swift */; };
 		D37480B324DFC1BF00D8EC43 /* MusicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */; };
+		D37480BF24E0380000D8EC43 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */; };
+		D37480C224E039AD00D8EC43 /* SearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480C124E039AD00D8EC43 /* SearchTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,8 @@
 		D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		D37480B024DFC03500D8EC43 /* MusicTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTitleHeaderView.swift; sourceTree = "<group>"; };
 		D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCell.swift; sourceTree = "<group>"; };
+		D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
+		D37480C124E039AD00D8EC43 /* SearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 		D374802B24DC1EA100D8EC43 /* OhMyBeatmaker */ = {
 			isa = PBXGroup;
 			children = (
+				D37480BD24E037D000D8EC43 /* SearchViewController */,
 				D374802C24DC1EA100D8EC43 /* AppDelegate.swift */,
 				D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */,
 				D374804724DC286C00D8EC43 /* Extension */,
@@ -376,7 +381,7 @@
 			children = (
 				D37480AB24DFBE5600D8EC43 /* FirstVC.swift */,
 				D37480AF24DFC02E00D8EC43 /* View */,
-				D37480B424DFF96700D8EC43 /* CharCell */,
+				D37480B424DFF96700D8EC43 /* MusicListCell */,
 				D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */,
 			);
 			path = PageViewControllers;
@@ -390,12 +395,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D37480B424DFF96700D8EC43 /* CharCell */ = {
+		D37480B424DFF96700D8EC43 /* MusicListCell */ = {
 			isa = PBXGroup;
 			children = (
 				D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */,
 			);
-			path = CharCell;
+			path = MusicListCell;
+			sourceTree = "<group>";
+		};
+		D37480BD24E037D000D8EC43 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */,
+				D37480C024E0394900D8EC43 /* TableCell */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		D37480C024E0394900D8EC43 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				D37480C124E039AD00D8EC43 /* SearchTableCell.swift */,
+			);
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,6 +545,7 @@
 				D374806724DC4AAF00D8EC43 /* BottomFirstVC.swift in Sources */,
 				D37480B124DFC03500D8EC43 /* MusicTitleHeaderView.swift in Sources */,
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
+				D37480BF24E0380000D8EC43 /* UserSearchTableViewController.swift in Sources */,
 				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
 				D374808124DCF39000D8EC43 /* MyAccountViewController.swift in Sources */,
@@ -556,6 +579,7 @@
 				D37480A624DFBC4200D8EC43 /* MusicListTableCell.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,
 				D37480A924DFBE1500D8EC43 /* PageViewController.swift in Sources */,
+				D37480C224E039AD00D8EC43 /* SearchTableCell.swift in Sources */,
 				D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

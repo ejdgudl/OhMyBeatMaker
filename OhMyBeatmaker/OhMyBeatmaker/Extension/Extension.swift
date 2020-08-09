@@ -19,6 +19,8 @@ extension UITableView {
     static let musicCellID = "chartCellID"
     
     static let editTableCellID = "CellID"
+    
+    static let searchTableCellID = "searchTableCellID"
 }
 
 extension UICollectionView {
