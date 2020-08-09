@@ -20,8 +20,6 @@ class MusicListCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 11
         imageView.layer.masksToBounds = true
-        imageView.tintColor = .black
-        imageView.backgroundColor = .orange
         return imageView
     }()
     

@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
         return tableView
     }()
     

@@ -24,6 +24,7 @@ class FirstVC: UIViewController {
     let firstMusicListView: UITableView = {
         let view = UITableView()
         view.backgroundColor = .clear
+        view.separatorStyle = .none
 //        view.isScrollEnabled = true
         return view
     }()

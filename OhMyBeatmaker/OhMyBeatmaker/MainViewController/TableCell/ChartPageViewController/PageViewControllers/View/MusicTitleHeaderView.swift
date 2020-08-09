@@ -13,7 +13,7 @@ class MusicTitleHeaderView: UIView {
     // MARK: Properties
     let headerTitle: UILabel = {
         let label = UILabel()
-        label.text = "Music"
+        label.text = "Entire Music"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()

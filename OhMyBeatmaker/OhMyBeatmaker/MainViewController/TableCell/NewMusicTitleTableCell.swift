@@ -13,7 +13,7 @@ class NewMusicTitleTableCell: UITableViewCell {
     // MARK: Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "최신 음악"
+        label.text = "Latest Music"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
