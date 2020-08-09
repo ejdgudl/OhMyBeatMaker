@@ -20,6 +20,22 @@ class SearchTableCell: UITableViewCell {
         return imageView
     }()
     
+    var user: User? {
+        didSet {
+            guard let profileImageStrUrl = user?.profileImageUrl else {return}
+            guard let profileImageUrl = URL(string: profileImageStrUrl) else {return}
+            URLSession.shared.dataTask(with: profileImageUrl) { (data, response, error) in
+                guard error == nil else {return}
+                guard let data = data else {return}
+                DispatchQueue.main.async {
+                    self.profileImageView.image = UIImage(data: data)
+                }
+            }.resume()
+            guard let userNickName = user?.nickName else {return}
+            textLabel?.text = userNickName
+        }
+    }
+    
     
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -39,8 +55,6 @@ class SearchTableCell: UITableViewCell {
     
     // MARK: ConfigureViews
     private func configureViews() {
-        textLabel?.text = "User Name"
-        
         [profileImageView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
