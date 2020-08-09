@@ -13,7 +13,7 @@ class MusicListTitleTableCell: UITableViewCell {
     // MARK: Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Music List"
+        label.text = "Recommend"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
