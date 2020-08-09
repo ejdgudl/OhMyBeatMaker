@@ -119,6 +119,7 @@ class MainViewController: UIViewController {
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: UITableView.bannerTableCellID)
         tableView.register(NewMusicTitleTableCell.self, forCellReuseIdentifier: UITableView.newMusicTitleTableCellID)
         tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
+        tableView.register(ChartTitleTableCell.self, forCellReuseIdentifier: UITableView.chartTitleCellID)
         
         editView.didTapEdiViewTableCellDelegate = self
         editView.didTapBackgroundDelegate = self
@@ -165,7 +166,7 @@ class MainViewController: UIViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,6 +183,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             newMusicCoverCell.delegate = self
             newMusicCoverCell.new5Array = self.new5Array
             return newMusicCoverCell
+        case 3:
+            guard let chartTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.chartTitleCellID, for: indexPath) as? ChartTitleTableCell else {fatalError()}
+            return chartTitleCell
         default:
             break
         }
@@ -196,6 +200,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return 50
         case 2:
             return 140
+        case 3:
+            return 50
         default:
             break
         }

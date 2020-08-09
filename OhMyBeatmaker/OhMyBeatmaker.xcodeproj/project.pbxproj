@@ -48,6 +48,7 @@
 		D374809B24DD466B00D8EC43 /* AddMusicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809A24DD466B00D8EC43 /* AddMusicButton.swift */; };
 		D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374809D24DE907100D8EC43 /* PlayerViewController.swift */; };
 		D37480A224DEC26700D8EC43 /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A124DEC26700D8EC43 /* BottomButton.swift */; };
+		D37480A424DFBA9A00D8EC43 /* ChartTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		D374809A24DD466B00D8EC43 /* AddMusicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusicButton.swift; sourceTree = "<group>"; };
 		D374809D24DE907100D8EC43 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		D37480A124DEC26700D8EC43 /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
+		D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTitleTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */,
 				D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */,
 				D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */,
+				D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				D374805524DC365700D8EC43 /* CoverCollectionCell.swift in Sources */,
 				D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */,
 				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
+				D37480A424DFBA9A00D8EC43 /* ChartTitleTableCell.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
 				D374804624DC27E900D8EC43 /* User.swift in Sources */,
 				D374805B24DC46A900D8EC43 /* TopLoginPageViewController.swift in Sources */,
