@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MusicListCellDelegate: class {
+    func sendMusicTitle(musicTitle: String)
+}
+
 class MusicListCell: UITableViewCell {
     
     // MARK: Properties
@@ -44,6 +48,8 @@ class MusicListCell: UITableViewCell {
         return button
     }()
     
+    weak var delegate: MusicListCellDelegate?
+    
     var music: Music? {
         didSet {
             guard let music = music else {return}
@@ -75,13 +81,8 @@ class MusicListCell: UITableViewCell {
     
     // MARK: @Objc
     @objc private func didTapPlaybutton() {
-        if player?.rate == 0 {
-            player?.play()
-            playButton.setImage(UIImage(named: "pause"), for: .normal)
-        } else {
-            player?.pause()
-            playButton.setImage(UIImage(named: "playButton"), for: .normal)
-        }
+        guard let musicTitle = self.musicTitle.text else {return}
+        delegate?.sendMusicTitle(musicTitle: musicTitle)
     }
     
     // MARK: ConfigureViews

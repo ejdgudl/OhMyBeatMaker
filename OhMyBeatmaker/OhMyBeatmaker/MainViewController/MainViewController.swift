@@ -194,6 +194,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             guard let musicTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicTableCellID, for: indexPath) as? MusicListTableCell else {fatalError()}
             musicTableCell.pageView.addSubview(pageVC.view)
+            pageVC.sendDelegate = self
             pageVC.view.frame = musicTableCell.pageView.frame
             return musicTableCell
         default:
@@ -238,6 +239,16 @@ extension MainViewController: DidTapPlayButtonSecondDelegate {
         present(playerVC, animated: true)
     }
 }
+
+extension MainViewController: PageViewControllerDelegate {
+    func sendMusicTitle(musicTitle: String) {
+        playerVC.newMusic = musicTitle
+        bottomButton.newMusic = musicTitle
+        bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        present(playerVC, animated: true)
+    }
+}
+
 
 // MARK: DidTapBackgroundDelegate
 extension MainViewController: DidTapBackgroundDelegate {

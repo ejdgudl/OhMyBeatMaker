@@ -8,7 +8,9 @@
 
 import UIKit
 
-// MARK: Protocol SendFinishedTransition
+protocol PageViewControllerDelegate: class {
+    func sendMusicTitle(musicTitle: String)
+}
 
 class PageViewController: UIPageViewController {
     
@@ -17,6 +19,8 @@ class PageViewController: UIPageViewController {
     
     private let firstVC = FirstVC()
     private let secondVC = SecondVC()
+    
+    weak var sendDelegate: PageViewControllerDelegate?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -29,6 +33,7 @@ class PageViewController: UIPageViewController {
     private func configure() {
         dataSource = self
         delegate = self
+        firstVC.delegate = self
         setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
     }
     
@@ -79,4 +84,10 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
         }
     }
     
+}
+
+extension PageViewController: FirstVCDelegate {
+    func sendMusicTitle(musicTitle: String) {
+        sendDelegate?.sendMusicTitle(musicTitle: musicTitle)
+    }
 }
