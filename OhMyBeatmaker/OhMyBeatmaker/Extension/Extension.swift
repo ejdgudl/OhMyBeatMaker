@@ -14,6 +14,9 @@ extension UITableView {
     static let newMusicTitleTableCellID = "newMusicTitleTableCellID"
     static let newMusicCoverTableCellID = "newMusicCoverTableCellID"
     static let chartTitleCellID = "chartTitleTableCellID"
+    static let chartTableCellID = "chartTableCellID"
+    
+    static let chartCellID = "chartCellID"
     
     static let editTableCellID = "CellID"
 }
