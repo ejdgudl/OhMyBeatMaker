@@ -229,8 +229,6 @@
 				D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */,
 				D37480A324DFBA9A00D8EC43 /* ChartTitleTableCell.swift */,
 				D37480A524DFBC4200D8EC43 /* ChartTableCell.swift */,
-				D37480B224DFC1BF00D8EC43 /* ChartCell.swift */,
-				D37480AF24DFC02E00D8EC43 /* View */,
 				D37480A724DFBDE800D8EC43 /* ChartPageViewController */,
 			);
 			path = TableCell;
@@ -377,6 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				D37480AB24DFBE5600D8EC43 /* FirstVC.swift */,
+				D37480AF24DFC02E00D8EC43 /* View */,
+				D37480B424DFF96700D8EC43 /* CharCell */,
 				D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */,
 			);
 			path = PageViewControllers;
@@ -388,6 +388,14 @@
 				D37480B024DFC03500D8EC43 /* ChartHeaderView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D37480B424DFF96700D8EC43 /* CharCell */ = {
+			isa = PBXGroup;
+			children = (
+				D37480B224DFC1BF00D8EC43 /* ChartCell.swift */,
+			);
+			path = CharCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

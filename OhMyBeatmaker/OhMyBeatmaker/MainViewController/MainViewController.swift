@@ -213,7 +213,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             return 50
         case 4:
-            return 350
+            return 400
         default:
             break
         }

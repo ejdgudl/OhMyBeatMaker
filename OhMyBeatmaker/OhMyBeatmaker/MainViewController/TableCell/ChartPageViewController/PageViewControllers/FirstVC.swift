@@ -18,8 +18,8 @@ class FirstVC: UIViewController {
     
     let firstChartView: UITableView = {
         let view = UITableView()
-        view.backgroundColor = .orange
-//        view.isScrollEnabled = false
+        view.backgroundColor = .clear
+        view.isScrollEnabled = false
         return view
     }()
     
