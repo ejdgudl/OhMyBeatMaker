@@ -21,6 +21,8 @@ extension UITableView {
     static let editTableCellID = "CellID"
     
     static let searchTableCellID = "searchTableCellID"
+    
+    static let messagesTableCellID = "messagesTableCellID"
 }
 
 extension UICollectionView {

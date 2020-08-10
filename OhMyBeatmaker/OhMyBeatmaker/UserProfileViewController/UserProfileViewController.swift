@@ -43,6 +43,11 @@ class UserProfileViewController: UIViewController {
         configureViews()
     }
     
+    @objc private func handleShowMessage() {
+        let messagesTableVC = MessagesTableViewController()
+        navigationController?.pushViewController(messagesTableVC, animated: true)
+    }
+    
     
     // MARK: Configure
     private func configure() {
@@ -51,6 +56,8 @@ class UserProfileViewController: UIViewController {
     
     // MARK: ConfigureViews
     private func configureViews() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleShowMessage))
+        
         view.backgroundColor = .white
         [profileImageView].forEach {
             view.addSubview($0)
