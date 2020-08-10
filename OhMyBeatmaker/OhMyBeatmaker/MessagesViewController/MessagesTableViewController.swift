@@ -24,7 +24,10 @@ class MessagesTableViewController: UITableViewController {
     
     // MARK: @Objc
     @objc private func handleNewMessage() {
-        
+        let newMessageTalbeVC = NewMessageViewController()
+        let navVC = UINavigationController(rootViewController: newMessageTalbeVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     
@@ -35,6 +38,7 @@ class MessagesTableViewController: UITableViewController {
     
     // MARK: ConfigureViews
     private func configureViews() {
+        navigationController?.navigationBar.tintColor = .black
         title = "Messages"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleNewMessage))
     }

@@ -60,6 +60,8 @@
 		D37480C524E051E800D8EC43 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480C424E051E800D8EC43 /* UserProfileViewController.swift */; };
 		D37480C824E0C84D00D8EC43 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480C724E0C84D00D8EC43 /* MessagesTableViewController.swift */; };
 		D37480CB24E0CC1F00D8EC43 /* MessagesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480CA24E0CC1F00D8EC43 /* MessagesTableCell.swift */; };
+		D37480CE24E0E3C900D8EC43 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480CD24E0E3C900D8EC43 /* NewMessageViewController.swift */; };
+		D37480D124E0E47E00D8EC43 /* NewMessageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		D37480C424E051E800D8EC43 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D37480C724E0C84D00D8EC43 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		D37480CA24E0CC1F00D8EC43 /* MessagesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableCell.swift; sourceTree = "<group>"; };
+		D37480CD24E0E3C900D8EC43 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
+		D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 		D374802B24DC1EA100D8EC43 /* OhMyBeatmaker */ = {
 			isa = PBXGroup;
 			children = (
+				D37480CC24E0E3B700D8EC43 /* NewMessageViewController */,
 				D37480C624E0C82200D8EC43 /* MessagesViewController */,
 				D37480C324E051D100D8EC43 /* UserProfileViewController */,
 				D37480BD24E037D000D8EC43 /* SearchViewController */,
@@ -453,6 +458,23 @@
 			path = TableCell;
 			sourceTree = "<group>";
 		};
+		D37480CC24E0E3B700D8EC43 /* NewMessageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D37480CD24E0E3C900D8EC43 /* NewMessageViewController.swift */,
+				D37480CF24E0E47200D8EC43 /* TableCell */,
+			);
+			path = NewMessageViewController;
+			sourceTree = "<group>";
+		};
+		D37480CF24E0E47200D8EC43 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,6 +607,7 @@
 				D374807E24DC6A7E00D8EC43 /* EditTableHeaderView.swift in Sources */,
 				D37480A224DEC26700D8EC43 /* BottomButton.swift in Sources */,
 				D37480AC24DFBE5600D8EC43 /* FirstVC.swift in Sources */,
+				D37480CE24E0E3C900D8EC43 /* NewMessageViewController.swift in Sources */,
 				D374808C24DD2CF500D8EC43 /* PlusPhotoButton.swift in Sources */,
 				D374807724DC52AC00D8EC43 /* BottomStackView.swift in Sources */,
 				D37480AE24DFBE5C00D8EC43 /* SecondVC.swift in Sources */,
@@ -594,6 +617,7 @@
 				D374808624DCF6A200D8EC43 /* FirebaseService.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
 				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,
+				D37480D124E0E47E00D8EC43 /* NewMessageTableCell.swift in Sources */,
 				D374807C24DC5EBB00D8EC43 /* WebService.swift in Sources */,
 				D374806524DC4A6F00D8EC43 /* BottomLoginPageViewController.swift in Sources */,
 				D374809924DD460500D8EC43 /* PlusCoverButton.swift in Sources */,
