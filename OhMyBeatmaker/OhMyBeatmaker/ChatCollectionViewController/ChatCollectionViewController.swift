@@ -29,6 +29,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     private let sendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Send", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
@@ -82,19 +83,19 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     private func configureViews() {
         collectionView.backgroundColor = .white
         
-        [messageTextField, sendButton, separatorView].forEach {
+        [sendButton, messageTextField, separatorView].forEach {
             containerView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
+        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -8).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
         messageTextField.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         messageTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12).isActive = true
-        messageTextField.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
+        messageTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -8).isActive = true
         messageTextField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        
-        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -16).isActive = true
-        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        
         
         separatorView.backgroundColor = .lightGray
         separatorView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
