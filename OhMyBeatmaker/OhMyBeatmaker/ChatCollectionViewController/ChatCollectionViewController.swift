@@ -14,6 +14,26 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     var user: User?
     var messages = [Message]()
     
+    private var containerView: UIView = {
+       let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 55)
+        return view
+    }()
+    
+    private let messageTextField: UITextField = {
+       let tf = UITextField()
+        tf.placeholder = "Enter message..."
+        return tf
+    }()
+    
+    private let sendButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return button
+    }()
+    
+    let separatorView = UIView()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -23,8 +43,22 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         configureViews()
     }
     
+    override var inputAccessoryView: UIView? {
+        get {
+            return containerView
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     // MARK: @Objc
     @objc private func handleInfoTapped() {
+    
+    }
+    
+    @objc private func handleSend() {
     
     }
     
@@ -48,13 +82,37 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     private func configureViews() {
         collectionView.backgroundColor = .white
         
+        [messageTextField, sendButton, separatorView].forEach {
+            containerView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        messageTextField.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        messageTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 12).isActive = true
+        messageTextField.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive = true
+        messageTextField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        
+        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -16).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        
+        
+        separatorView.backgroundColor = .lightGray
+        separatorView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        separatorView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        separatorView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        separatorView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
     }
 }
 
 extension ChatCollectionViewController {
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 2, height: 50)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
