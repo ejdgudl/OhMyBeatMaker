@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MessagesTableCell: UITableViewCell {
     
@@ -43,6 +44,19 @@ class MessagesTableCell: UITableViewCell {
         return label
     }()
     
+    var message: Message? {
+        didSet {
+            guard let messageText = message?.messageText else {return}
+            messageTextLabel.text = messageText
+            if let seconds = message?.creationDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                timestampLabel.text = dateFormatter.string(from: seconds)
+            }
+            configureUserData()
+        }
+    }
+    
     // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,6 +71,26 @@ class MessagesTableCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Helpers
+    private func configureUserData() {
+        guard let chatPartnerId = message?.getChatPartnerId() else {return}
+        Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
+            let uid = snapshot.key
+            guard let dictionary = snapshot.value as? Dictionary<String,AnyObject> else {return}
+            let user = User(uid: uid, dictionary: dictionary)
+            guard let profileImageStrUrl = user.profileImageUrl else {return}
+            guard let profileImageUrl = URL(string: profileImageStrUrl) else {return}
+            URLSession.shared.dataTask(with: profileImageUrl) { (data, response, error) in
+                guard error == nil else {return}
+                guard let data = data else {return}
+                DispatchQueue.main.async {
+                    self.profileImageView.image = UIImage(data: data)
+                }
+            }.resume()
+            self.usernameLabel.text = user.nickName
+        }
     }
     
     // MARK: Configure
