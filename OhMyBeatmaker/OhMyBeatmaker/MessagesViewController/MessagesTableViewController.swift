@@ -13,7 +13,7 @@ class MessagesTableViewController: UITableViewController {
     
     
     // MARK: Properties
-    
+    var messages = [Message]()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -25,9 +25,17 @@ class MessagesTableViewController: UITableViewController {
     // MARK: @Objc
     @objc private func handleNewMessage() {
         let newMessageTalbeVC = NewMessageViewController()
+        newMessageTalbeVC.messagesTableViewController = self
         let navVC = UINavigationController(rootViewController: newMessageTalbeVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
+    }
+    
+    // MARK: Helpers
+    func showChatCollectionVC(for user: User) {
+        let chatCollectionVC = ChatCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatCollectionVC.user = user
+        navigationController?.pushViewController(chatCollectionVC, animated: true)
     }
     
     
@@ -50,7 +58,7 @@ extension MessagesTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return messages.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

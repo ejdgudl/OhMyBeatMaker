@@ -30,6 +30,8 @@ extension UICollectionView {
     
     static let bannerCollectionCellID = "bannerCollectionCellID"
     static let newMusicCoverCollectionCellID = "newMusicCoverCollectionCellID"
+    
+    static let chatCollectionCellID = "chatCollectionCellID"
 }
 
 

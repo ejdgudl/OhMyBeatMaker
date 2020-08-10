@@ -13,6 +13,7 @@ class NewMessageViewController: UITableViewController {
     
     // MARK: Properties
     var users = [User]()
+    var messagesTableViewController: MessagesTableViewController?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -68,6 +69,9 @@ extension NewMessageViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("z")
+        self.dismiss(animated: true) {
+            let user = self.users[indexPath.row]
+            self.messagesTableViewController?.showChatCollectionVC(for: user)
+        }
     }
 }
