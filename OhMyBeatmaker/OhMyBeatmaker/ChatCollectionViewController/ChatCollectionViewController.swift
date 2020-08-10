@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -42,6 +43,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         configureNavi()
         configure()
         configureViews()
+        observeMessages()
     }
     
     override var inputAccessoryView: UIView? {
@@ -60,7 +62,8 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     @objc private func handleSend() {
-    
+        uploadMessageToServer()
+        messageTextField.text = nil
     }
     
     // MARK: Helpers
@@ -72,6 +75,44 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         infoButton.addTarget(self, action: #selector(handleInfoTapped), for: .touchUpInside)
         let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
         navigationItem.rightBarButtonItem = infoBarButtonItem
+    }
+    
+    private func uploadMessageToServer() {
+        guard let messageText = messageTextField.text else {return}
+        guard let currentUid = Auth.auth().currentUser?.uid else {return}
+        guard let userUid = self.user?.uid else {return}
+        let creationDate = Int(NSDate().timeIntervalSince1970)
+        let messageValues = [
+            "creationDate": creationDate,
+            "fromId": currentUid,
+            "toId": userUid,
+            "messageText": messageText
+        ] as [String: Any]
+        let messageRef = Database.database().reference().child("messages").childByAutoId()
+        messageRef.updateChildValues(messageValues)
+        
+        guard let messageKey = messageRef.key else { return }
+        
+        Database.database().reference().child("user-messages").child(currentUid).child(userUid).updateChildValues([messageKey: 1])
+        Database.database().reference().child("user-messages").child(userUid).child(currentUid).updateChildValues([messageKey: 1])
+    }
+    
+    private func observeMessages() {
+        guard let currentUid = Auth.auth().currentUser?.uid else {return}
+        guard let chatPartnerId = self.user?.uid else {return}
+        Database.database().reference().child("user-messages").child(currentUid).child(chatPartnerId).observe(.childAdded) { (snapshot) in
+            let messageId = snapshot.key
+            self.fetchMessage(withMessageId: messageId)
+        }
+    }
+    
+    private func fetchMessage(withMessageId messageId: String) {
+        Database.database().reference().child("messages").child(messageId).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
+            let message = Message(dictionary: dictionary)
+            self.messages.append(message)
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: Configure
@@ -113,7 +154,7 @@ extension ChatCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return messages.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
