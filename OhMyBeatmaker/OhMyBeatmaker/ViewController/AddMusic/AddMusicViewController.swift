@@ -30,16 +30,14 @@ class AddMusicViewController: UIViewController {
         return indicator
     }()
     
-    var user: User? {
-        didSet {
-            print("AddMusicVC에 user 정보 도착")
-        }
-    }
+    var user: User?
     
     private let imagePicker = UIImagePickerController()
     
     let firebaseService = FirebaseService()
+    
     let storageRef = Storage.storage().reference()
+    
     let db = Database.database().reference()
     
     // MARK: Life Cycle

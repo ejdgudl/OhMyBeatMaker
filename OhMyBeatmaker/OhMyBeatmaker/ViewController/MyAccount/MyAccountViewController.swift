@@ -46,7 +46,6 @@ class MyAccountViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUser()
         configureViews()
     }
     
@@ -70,16 +69,6 @@ class MyAccountViewController: UIViewController {
     }
     
     // MARK: Helpers
-    func fetchUser() {
-        guard let currentUid = Auth.auth().currentUser?.uid else {return}
-        db.child("users").child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
-            let uid = snapshot.key
-            let user = User(uid: uid, dictionary: dictionary)
-            self.user = user
-        }
-    }
-    
     private func uploadProfileImage() {
         
         guard let profileImage = plusPhotoButton.imageView?.image else {return}
@@ -101,7 +90,7 @@ class MyAccountViewController: UIViewController {
                 
                 let dictionaryValues = ["profileImageUrl": profileImageUrl]
                 guard let uid = Auth.auth().currentUser?.uid else {return}
-                Database.database().reference().child("users").child(uid).updateChildValues(dictionaryValues) { (error, ref) in
+                self.db.child("users").child(uid).updateChildValues(dictionaryValues) { (error, ref) in
                     print("Successfully saved iamgeUrl to database")
                 }
             }
@@ -157,7 +146,6 @@ extension MyAccountViewController: UIDocumentPickerDelegate {
         metadata.contentType = "audio/mp3"
         
         if let data = try? Data(contentsOf: urls.first!) {
-//            let fileName = urls.first?.deletingPathExtension().lastPathComponent
             let fileName = NSUUID().uuidString
             let storageRef = Storage.storage().reference().child("Musics").child(fileName)
             storageRef.putData(data, metadata: metadata) { (_, error) in
@@ -170,7 +158,6 @@ extension MyAccountViewController: UIDocumentPickerDelegate {
                 DispatchQueue.main.async {
                     url.stopAccessingSecurityScopedResource()
                 }
-                
             }
         }
     }

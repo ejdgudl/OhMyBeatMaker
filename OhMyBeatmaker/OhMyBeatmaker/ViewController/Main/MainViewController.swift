@@ -21,6 +21,10 @@ class MainViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .black
+        refreshControl.addTarget(self, action: #selector(pullToRefreshControl), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         return tableView
@@ -91,6 +95,13 @@ class MainViewController: UIViewController {
     
     @objc private func didTapBottomButton() {
         present(playerVC, animated: true)
+    }
+    
+    @objc private func pullToRefreshControl() {
+        fetchAll()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
     
     // MARK: Helpers
