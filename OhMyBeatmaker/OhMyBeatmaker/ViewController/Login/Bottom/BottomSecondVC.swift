@@ -45,7 +45,9 @@ class BottomSecondVC: UIViewController {
     
     private let db = Database.database().reference()
     
-    weak var delegate: SignUpCompletionDelegate?
+    private let firebaseService = FirebaseService()
+    
+    weak var signUpCompletionDelegate: SignUpCompletionDelegate?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -74,20 +76,18 @@ class BottomSecondVC: UIViewController {
             }
             
             guard let uid = user?.user.uid else {return}
-            
             let dictionaryValues = [ "nickName": nickName, "profileImageUrl": " "]
-            
             let values = [uid: dictionaryValues]
             
             self.db.child("users").updateChildValues(values) { (error, ref) in
                 self.stackView.indicator.stopActivityIndicator()
                 self.whenSucessSignUp()
                 self.alertNormal(title: "회원가입 성공", message: "wassup.\(nickName)") { (_) in
-                    self.delegate?.ScrollToFirst()
+                    self.signUpCompletionDelegate?.ScrollToFirst()
                 }
                 print("successfully created user and saved information to database")
             }
-            try! Auth.auth().signOut()
+            self.firebaseService.signOut()
         }
     }
     

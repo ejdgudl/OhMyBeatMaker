@@ -46,7 +46,7 @@ class MusicListCell: UITableViewCell {
         return button
     }()
     
-    weak var delegate: MusicListCellDelegate?
+    weak var musicListCellDelegate: MusicListCellDelegate?
     
     var music: Music? {
         didSet {
@@ -80,7 +80,7 @@ class MusicListCell: UITableViewCell {
     // MARK: @Objc
     @objc private func didTapPlaybutton() {
         guard let musicTitle = self.musicTitle.text else {return}
-        delegate?.sendMusicTitle(musicTitle: musicTitle)
+        musicListCellDelegate?.sendMusicTitle(musicTitle: musicTitle)
     }
     
     // MARK: ConfigureViews

@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol ChangeButtonImageDelegate: class {
+    func changeButtonImage(imageName: String)
+}
+
 class BottomButton: UIButton {
     
     // MARK: Properties
@@ -40,6 +44,8 @@ class BottomButton: UIButton {
     
     private let db = Database.database().reference()
     
+    weak var changeButtonImageDelegate: ChangeButtonImageDelegate?
+    
     var newMusic: String? {
         didSet {
             guard let music = newMusic else {return}
@@ -63,7 +69,6 @@ class BottomButton: UIButton {
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
         configureViews()
     }
     
@@ -75,16 +80,13 @@ class BottomButton: UIButton {
     @objc private func didTapPlaybutton() {
         if player?.rate == 0 {
             player?.play()
+            changeButtonImageDelegate?.changeButtonImage(imageName: "pause")
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
             player?.pause()
+            changeButtonImageDelegate?.changeButtonImage(imageName: "playButton")
             playButton.setImage(UIImage(named: "playButton"), for: .normal)
         }
-    }
-    
-    // MARK: Configure
-    private func configure() {
-        
     }
     
     // MARK: ConfigureViews

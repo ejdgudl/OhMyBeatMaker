@@ -57,15 +57,6 @@ class TopLoginPageViewController: UIPageViewController {
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 extension TopLoginPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return vcList.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
-    }
-    
-    // before
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = vcList.firstIndex(of: viewController) else { return nil }
         
@@ -76,8 +67,7 @@ extension TopLoginPageViewController: UIPageViewControllerDelegate, UIPageViewCo
             return vcList[previousIndex]
         }
     }
-    
-    // after
+
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         guard let viewControllerIndex = vcList.firstIndex(of: viewController) else { return nil }

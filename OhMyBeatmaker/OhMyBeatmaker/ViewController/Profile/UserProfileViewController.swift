@@ -23,7 +23,6 @@ class UserProfileViewController: UIViewController {
                     self.profileImageView.image = UIImage(data: data)
                 }
             }.resume()
-            
         }
     }
     

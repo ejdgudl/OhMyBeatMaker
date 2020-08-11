@@ -51,7 +51,7 @@ class PlayerViewController: UIViewController {
         return slider
     }()
     
-    private lazy var playButton: UIButton = {
+    lazy var playButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "playButton"), for: .normal)
         button.addTarget(self, action: #selector(didTapPlaybutton), for: .touchUpInside)
@@ -96,6 +96,8 @@ class PlayerViewController: UIViewController {
     
     var playerItem: AVPlayerItem?
     
+    var mainVC: MainViewController?
+    
     var newMusic: String? {
         didSet {
             guard let music = newMusic else {return}
@@ -123,17 +125,19 @@ class PlayerViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
         configureViews()
     }
     
     // MARK: @Objc
     @objc private func didTapPlaybutton() {
+        guard let mainVC = self.mainVC else {return}
         if player?.rate == 0 {
             player?.play()
+            mainVC.bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
             player?.pause()
+            mainVC.bottomButton.playButton.setImage(UIImage(named: "playButton"), for: .normal)
             playButton.setImage(UIImage(named: "playButton"), for: .normal)
         }
     }
@@ -160,11 +164,6 @@ class PlayerViewController: UIViewController {
             }
             self.musicVolumeSlider.setValue(AVAudioSession.sharedInstance().outputVolume, animated: true)
         }
-    }
-    
-    // MARK: Configure
-    private func configure() {
-        
     }
     
     // MARK: ConfigureViews
@@ -225,6 +224,5 @@ class PlayerViewController: UIViewController {
         volumeMaxView.heightAnchor.constraint(equalToConstant: 15).isActive = true
         volumeMaxView.leftAnchor.constraint(equalTo: musicVolumeSlider.rightAnchor, constant: 15).isActive = true
     }
-    
 }
 

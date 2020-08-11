@@ -22,11 +22,6 @@ class LoginViewController: UIViewController {
         configureViews()
     }
     
-    // MARK: @Objc
-    @objc private func didTapSignUpButton() {
-        
-    }
-    
     // MARK: Helpers
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -44,7 +39,6 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(bottomLoginPageViewController.view)
-        bottomLoginPageViewController.view.backgroundColor = .red
         bottomLoginPageViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
         bottomLoginPageViewController.view.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.2)).isActive = true

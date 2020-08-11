@@ -20,7 +20,7 @@ class PageViewController: UIPageViewController {
     private let firstVC = FirstVC()
     private let secondVC = SecondVC()
     
-    weak var sendDelegate: PageViewControllerDelegate?
+    weak var sendMusicTitleDelegate: PageViewControllerDelegate?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class PageViewController: UIPageViewController {
     private func configure() {
         dataSource = self
         delegate = self
-        firstVC.delegate = self
+        firstVC.firstPageVCDelegate = self
         setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
     }
     
@@ -86,8 +86,8 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
     
 }
 
-extension PageViewController: FirstVCDelegate {
+extension PageViewController: FirstPageVCDelegate {
     func sendMusicTitle(musicTitle: String) {
-        sendDelegate?.sendMusicTitle(musicTitle: musicTitle)
+        sendMusicTitleDelegate?.sendMusicTitle(musicTitle: musicTitle)
     }
 }

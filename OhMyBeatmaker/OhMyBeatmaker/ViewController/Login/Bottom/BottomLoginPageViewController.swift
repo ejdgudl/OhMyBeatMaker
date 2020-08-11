@@ -29,7 +29,7 @@ class BottomLoginPageViewController: UIPageViewController {
         delegate = self
         setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         firstVC.scrollToSignUpVCDelegate = self
-        secondVC.delegate = self
+        secondVC.signUpCompletionDelegate = self
     }
     
     // MARK: ConfigureView
@@ -41,7 +41,6 @@ class BottomLoginPageViewController: UIPageViewController {
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 extension BottomLoginPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
-    // before
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = vcList.firstIndex(of: viewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
@@ -53,7 +52,6 @@ extension BottomLoginPageViewController: UIPageViewControllerDelegate, UIPageVie
         }
     }
     
-    // after
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         guard let viewControllerIndex = vcList.firstIndex(of: viewController) else { return nil }
@@ -65,7 +63,6 @@ extension BottomLoginPageViewController: UIPageViewControllerDelegate, UIPageVie
             return vcList[nextIndex]
         }
     }
-    
 }
 
 // MARK: ScrollToSignUpVCDelegate

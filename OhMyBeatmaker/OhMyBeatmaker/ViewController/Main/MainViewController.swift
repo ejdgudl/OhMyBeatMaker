@@ -31,8 +31,9 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    private lazy var bottomButton: BottomButton = {
+    lazy var bottomButton: BottomButton = {
         let button = BottomButton()
+        button.changeButtonImageDelegate = self
         button.addTarget(self, action: #selector(didTapBottomButton), for: .touchUpInside)
         return button
     }()
@@ -40,7 +41,9 @@ class MainViewController: UIViewController {
     private var constraintX: NSLayoutConstraint?
     
     private let webService = WebService()
+    
     private let firebseService = FirebaseService()
+    
     private let db = Database.database().reference()
     
     private let playerVC = PlayerViewController()
@@ -92,6 +95,10 @@ class MainViewController: UIViewController {
     
     // MARK: Helpers
     func fetchAll() {
+        db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
+            guard let new5Array = snapshot.value as? [String] else {return}
+            self.new5Array = new5Array
+        }
         guard let currentUid = Auth.auth().currentUser?.uid else {return}
         db.child("users").child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
@@ -99,10 +106,6 @@ class MainViewController: UIViewController {
             let user = User(uid: uid, dictionary: dictionary)
             self.user = user
             self.editView.loginButton.isEnabled = false
-        }
-        db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
-            guard let new5Array = snapshot.value as? [String] else {return}
-            self.new5Array = new5Array
         }
     }
     
@@ -195,7 +198,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             guard let musicTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicTableCellID, for: indexPath) as? MusicListTableCell else {fatalError()}
             musicTableCell.pageView.addSubview(pageVC.view)
-            pageVC.sendDelegate = self
+            pageVC.sendMusicTitleDelegate = self
             pageVC.view.frame = musicTableCell.pageView.frame
             return musicTableCell
         default:
@@ -237,6 +240,7 @@ extension MainViewController: DidTapPlayButtonSecondDelegate {
         playerVC.newMusic = newMusic
         bottomButton.newMusic = newMusic
         bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        playerVC.mainVC = self
         present(playerVC, animated: true)
     }
 }
@@ -246,15 +250,8 @@ extension MainViewController: PageViewControllerDelegate {
         playerVC.newMusic = musicTitle
         bottomButton.newMusic = musicTitle
         bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        playerVC.mainVC = self
         present(playerVC, animated: true)
-    }
-}
-
-
-// MARK: DidTapBackgroundDelegate
-extension MainViewController: DidTapBackgroundDelegate {
-    func moveToOut() {
-        moveToEditView(priority: .defaultLow)
     }
 }
 
@@ -296,24 +293,40 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
     }
 }
 
+// MARK: SuccessSignInDelegate
+extension MainViewController: SuccessSignInDelegate {
+    func whenSuccessSignIn() {
+        fetchAll()
+        moveToEditView(priority: .defaultLow)
+    }
+}
+
+// MARK: ChangeButtonImageDelegate
+extension MainViewController: ChangeButtonImageDelegate {
+    func changeButtonImage(imageName: String) {
+        switch imageName {
+        case "pause":
+            playerVC.playButton.setImage(UIImage(named: imageName), for: .normal)
+        case "playButton":
+            playerVC.playButton.setImage(UIImage(named: imageName), for: .normal)
+        default:
+            break
+        }
+    }
+}
+
+// MARK: DidTapBackgroundDelegate
+extension MainViewController: DidTapBackgroundDelegate {
+    func moveToOut() {
+        moveToEditView(priority: .defaultLow)
+    }
+}
+
 // MARK: DidTapLoginButtonDelegate
 extension MainViewController: DidTapLoginButtonDelegate {
     func prsentLoginVC() {
         let loginVC = LoginViewController()
         loginVC.bottomLoginPageViewController.firstVC.successSignInDelegate = self
         present(loginVC, animated: true)
-    }
-}
-
-// MARK: SuccessSignInDelegate
-extension MainViewController: SuccessSignInDelegate {
-    func whenSuccessSignIn() {
-        self.fetchAll()
-        
-        UIView.animate(withDuration: 0.5) {
-            self.constraintX?.priority = .defaultLow
-            self.constraintX?.isActive = true
-            self.view.layoutIfNeeded()
-        }
     }
 }

@@ -25,8 +25,6 @@ class BannerTableCell: UITableViewCell {
         return view
     }()
     
-    private let firstBannerRow = IndexPath(item: 0, section: 0)
-    private let secondBannerRow = IndexPath(item: 1, section: 0)
     private let timer = Timer()
     private var count = 0
     
@@ -44,6 +42,8 @@ class BannerTableCell: UITableViewCell {
     
     // MARK: @Objc
     @objc private func updateTime() {
+        let firstBannerRow = IndexPath(item: 0, section: 0)
+        let secondBannerRow = IndexPath(item: 1, section: 0)
         count += 1
         if count % 10 == 0 {
             isSelected.toggle()

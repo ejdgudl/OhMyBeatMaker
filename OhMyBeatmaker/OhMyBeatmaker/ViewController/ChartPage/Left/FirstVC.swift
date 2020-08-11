@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-protocol FirstVCDelegate: class{
+protocol FirstPageVCDelegate: class{
     func sendMusicTitle(musicTitle: String)
 }
 
@@ -31,7 +31,7 @@ class FirstVC: UIViewController {
     
     let db = Database.database().reference()
     
-    weak var delegate: FirstVCDelegate?
+    weak var firstPageVCDelegate: FirstPageVCDelegate?
     
     var musics = [Music]() {
         didSet {
@@ -99,13 +99,13 @@ extension FirstVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let musicListCell = firstMusicListView.dequeueReusableCell(withIdentifier: UITableView.musicCellID, for: indexPath) as? MusicListCell else {fatalError()}
         musicListCell.music = self.musics[indexPath.row]
-        musicListCell.delegate = self
+        musicListCell.musicListCellDelegate = self
         return musicListCell
     }
 }
 
 extension FirstVC: MusicListCellDelegate {
     func sendMusicTitle(musicTitle: String) {
-        delegate?.sendMusicTitle(musicTitle: musicTitle)
+        firstPageVCDelegate?.sendMusicTitle(musicTitle: musicTitle)
     }
 }
