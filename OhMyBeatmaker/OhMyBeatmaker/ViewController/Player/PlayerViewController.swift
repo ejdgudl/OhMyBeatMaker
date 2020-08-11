@@ -94,8 +94,11 @@ class PlayerViewController: UIViewController {
         return button
     }()
     
-    private var musicVolumeSlider: UISlider = {
+    private lazy var musicVolumeSlider: UISlider = {
         let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.addTarget(self, action: #selector(handleVolumeSliderChange), for: .valueChanged)
         return slider
     }()
     
@@ -150,6 +153,10 @@ class PlayerViewController: UIViewController {
     }
     
     // MARK: @Objc
+    @objc private func handleVolumeSliderChange() {
+        player?.volume = musicVolumeSlider.value
+    }
+    
     @objc private func handleSliderChange() {
         if let duration = player?.currentItem?.duration {
             let totalSeocnds = CMTimeGetSeconds(duration)
@@ -211,16 +218,8 @@ class PlayerViewController: UIViewController {
                     })
                 }
             }
-            
-            
-//            player!.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: .main) { time in
-//                let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds(player!.currentItem!.duration)
-//                self.musicTimeSlider.value = Float(fraction)
-//            }
-            
-            
-            
             self.musicVolumeSlider.setValue(AVAudioSession.sharedInstance().outputVolume, animated: true)
+            player?.volume = AVAudioSession.sharedInstance().outputVolume
         }
     }
     
