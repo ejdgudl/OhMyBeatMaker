@@ -11,7 +11,6 @@ import Firebase
 
 class MessagesTableViewController: UITableViewController {
     
-    
     // MARK: Properties
     var messages = [Message]()
     var messagesDictionary = [String: Message]()
@@ -22,6 +21,11 @@ class MessagesTableViewController: UITableViewController {
         configure()
         configureViews()
         fetchMessages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: @Objc
@@ -66,7 +70,6 @@ class MessagesTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
     
     // MARK: Configure
     private func configure() {

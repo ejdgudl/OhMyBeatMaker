@@ -284,6 +284,9 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                 let userSerachVC = UserSearchTableViewController()
                 navigationController?.pushViewController(userSerachVC, animated: true)
             case 2:
+                let messagesRoomVC = MessagesTableViewController() 
+                navigationController?.pushViewController(messagesRoomVC, animated: true)
+            case 3:
                 guard currentUser != nil else {
                     alertNormal(title: "로그인을 해주세요", message: "사용자의 정보가 없습니다")
                     return

@@ -65,7 +65,7 @@ class EditView: UIView {
     }()
     
     private lazy var sections: [String] = rows.keys.sorted()
-    private let rows = ["내 계정": ["내정보", "유저 찾기", "로그아웃"], "앱 소개": ["OMB"]]
+    private let rows = ["내 계정": ["내정보", "유저 찾기", "채팅방", "로그아웃"], "앱 소개": ["OMB"]]
 
     
     weak var didTapBackgroundDelegate: DidTapBackgroundDelegate?
@@ -195,6 +195,8 @@ extension EditView: UITableViewDataSource, UITableViewDelegate {
             case 1:
                 didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
             case 2:
+                didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
+            case 3:
                 didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
             default:
                 break
