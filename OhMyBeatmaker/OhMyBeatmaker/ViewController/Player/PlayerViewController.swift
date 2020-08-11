@@ -46,9 +46,30 @@ class PlayerViewController: UIViewController {
         return label
     }()
     
-    private var musicTimeSlider: UISlider = {
+    private let currentTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "00:00"
+        label.textColor = .lightGray
+        label.font = UIFont.boldSystemFont(ofSize: 8)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var musicTimeSlider: UISlider = {
         let slider = UISlider()
+        slider.minimumTrackTintColor = .lightGray
+        slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
+        slider.setThumbImage(UIImage.init(named: "sliderThumbImage"), for: .normal)
         return slider
+    }()
+    
+    private let musicLengthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "00:00"
+        label.textColor = .lightGray
+        label.font = UIFont.boldSystemFont(ofSize: 8)
+        label.textAlignment = .right
+        return label
     }()
     
     lazy var playButton: UIButton = {
@@ -129,6 +150,17 @@ class PlayerViewController: UIViewController {
     }
     
     // MARK: @Objc
+    @objc private func handleSliderChange() {
+        if let duration = player?.currentItem?.duration {
+            let totalSeocnds = CMTimeGetSeconds(duration)
+            let value = Float64(musicTimeSlider.value) * totalSeocnds
+            let seekTime = CMTime(value: Int64(value), timescale: 1)
+            player?.seek(to: seekTime, completionHandler: { (completedSeek) in
+                print(seekTime)
+            })
+        }
+    }
+    
     @objc private func didTapPlaybutton() {
         guard let mainVC = self.mainVC else {return}
         if player?.rate == 0 {
@@ -157,11 +189,37 @@ class PlayerViewController: UIViewController {
             self.view.layer.addSublayer(playerLayer)
             player?.play()
             self.playButton.setImage(UIImage(named: "pause"), for: .normal)
-            
-            player!.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: .main) { time in
-                let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds(player!.currentItem!.duration)
-                self.musicTimeSlider.value = Float(fraction)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                if let duration = player?.currentItem?.duration {
+                    let seconds = CMTimeGetSeconds(duration)
+                    var secondsText = String(Int(seconds) % 60)
+                    let minutesText = String(format: "%02d", Int(seconds) / 60)
+                    if secondsText.count == 1 {
+                        secondsText = "0" + secondsText
+                    }
+                    self.musicLengthLabel.text = "\(minutesText):\(secondsText)"
+                    
+                    let interval = CMTime(value: 1, timescale: 2)
+                    player?.addPeriodicTimeObserver(forInterval: interval, queue: .main, using: { (progressTime) in
+                        let seconds = CMTimeGetSeconds(progressTime)
+                        let secondsString = String(format: "%02d", Int(seconds) % 60)
+                        let minutesText = String(format: "%02d", Int(seconds) / 60)
+                        self.currentTimeLabel.text = "\(minutesText):\(secondsString)"
+                        
+                        let durationSeconds = CMTimeGetSeconds(duration)
+                        self.musicTimeSlider.value = Float(seconds / durationSeconds)
+                    })
+                }
             }
+            
+            
+//            player!.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: .main) { time in
+//                let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds(player!.currentItem!.duration)
+//                self.musicTimeSlider.value = Float(fraction)
+//            }
+            
+            
+            
             self.musicVolumeSlider.setValue(AVAudioSession.sharedInstance().outputVolume, animated: true)
         }
     }
@@ -170,7 +228,7 @@ class PlayerViewController: UIViewController {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [topMarkLine, coverImageView, musicTitle, artistNickName, musicTimeSlider, playBeforeButton, playButton, playNextButton, volumeMinView, musicVolumeSlider, volumeMaxView].forEach {
+        [topMarkLine, coverImageView, musicTitle, artistNickName, musicTimeSlider, musicLengthLabel, currentTimeLabel, playBeforeButton, playButton, playNextButton, volumeMinView, musicVolumeSlider, volumeMaxView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -194,6 +252,16 @@ class PlayerViewController: UIViewController {
         musicTimeSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.243)).isActive = true
         musicTimeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         musicTimeSlider.widthAnchor.constraint(equalTo: coverImageView.widthAnchor).isActive = true
+        
+        musicLengthLabel.topAnchor.constraint(equalTo: musicTimeSlider.bottomAnchor, constant: -5).isActive = true
+        musicLengthLabel.rightAnchor.constraint(equalTo: musicTimeSlider.rightAnchor).isActive = true
+        musicLengthLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        musicLengthLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        currentTimeLabel.topAnchor.constraint(equalTo: musicTimeSlider.bottomAnchor, constant: -5).isActive = true
+        currentTimeLabel.leftAnchor.constraint(equalTo: musicTimeSlider.leftAnchor).isActive = true
+        currentTimeLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        currentTimeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         playBeforeButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         playBeforeButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
