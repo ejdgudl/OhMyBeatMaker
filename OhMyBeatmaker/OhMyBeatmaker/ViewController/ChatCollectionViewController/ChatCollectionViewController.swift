@@ -56,6 +56,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         return true
     }
     
+    // MARK: @objc
     @objc private func handleSend() {
         uploadMessageToServer()
         messageTextField.text = nil

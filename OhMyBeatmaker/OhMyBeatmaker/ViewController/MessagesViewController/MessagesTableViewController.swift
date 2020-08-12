@@ -112,7 +112,7 @@ extension MessagesTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
         let chatPartnerId = message.getChatPartnerId()
-        
+        print(chatPartnerId)
         fetchUser(with: chatPartnerId) { (user) in
             self.showChatCollectionVC(for: user)
         }
