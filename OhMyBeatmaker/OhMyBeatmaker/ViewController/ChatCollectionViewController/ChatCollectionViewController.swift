@@ -115,6 +115,12 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
+    private func estimateFrameForText(_ text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)], context: nil)
+    }
+    
     // MARK: Configure
     private func configure() {
         collectionView.register(ChatCollectionCell.self, forCellWithReuseIdentifier: UICollectionView.chatCollectionCellID)
@@ -150,7 +156,10 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
 extension ChatCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 2, height: 50)
+        var height: CGFloat = 80
+        let message = messages[indexPath.item]
+        height = estimateFrameForText(message.messageText).height + 20
+        return CGSize(width: view.frame.width, height: height)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
