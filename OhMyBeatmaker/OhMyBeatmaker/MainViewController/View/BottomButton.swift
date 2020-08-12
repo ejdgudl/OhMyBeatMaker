@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 protocol ChangeButtonImageDelegate: class {
     func changeButtonImage(imageName: String)
@@ -55,13 +56,7 @@ class BottomButton: UIButton {
                 self.musicTitle.text = title
                 guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
                 guard let imageUrl = URL(string: imageUrlStr) else {return}
-                URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                    guard error == nil else {return}
-                    guard let data = data else {return}
-                    DispatchQueue.main.async {
-                        self.bottomImageView.image = UIImage(data: data)
-                    }
-                }.resume()
+                self.bottomImageView.kf.setImage(with: imageUrl)
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol MusicListCellDelegate: class {
     func sendMusicTitle(musicTitle: String)
@@ -53,13 +54,7 @@ class MusicListCell: UITableViewCell {
             guard let music = music else {return}
             guard let imageUrlStr = music.coverImageUrl else {return}
             guard let imageUrl = URL(string: imageUrlStr) else {return}
-            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                guard error == nil else {return}
-                guard let data = data else {return}
-                DispatchQueue.main.async {
-                    self.musicListImageView.image = UIImage(data: data)
-                }
-            }.resume()
+            self.musicListImageView.kf.setImage(with: imageUrl)
             guard let title = music.musicTitle else {return}
             self.musicTitle.text = title
             guard let artistNickName = music.artistNickName else {return}

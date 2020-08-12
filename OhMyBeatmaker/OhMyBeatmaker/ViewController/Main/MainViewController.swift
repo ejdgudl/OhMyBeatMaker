@@ -9,6 +9,7 @@
 import UIKit
 import SafariServices
 import Firebase
+import Kingfisher
 
 class MainViewController: UIViewController {
     
@@ -59,13 +60,7 @@ class MainViewController: UIViewController {
             guard let user = user else {return}
             self.editView.loginButton.setTitle(user.nickName, for: .normal)
             guard let imageUrl = URL(string: user.profileImageUrl) else {return}
-            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                guard error == nil else {return}
-                guard let data = data else {return}
-                DispatchQueue.main.async {
-                    self.editView.loginButton.setImage(UIImage(data: data), for: .normal)
-                }
-            }.resume()
+            editView.loginButton.kf.setImage(with: imageUrl, for: .normal)
         }
     }
     

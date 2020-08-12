@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AVFoundation
+import Kingfisher
 
 var player: AVPlayer?
 
@@ -133,13 +134,7 @@ class PlayerViewController: UIViewController {
                 self.artistNickName.text = artistNickName
                 guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
                 guard let imageUrl = URL(string: imageUrlStr) else {return}
-                URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                    guard error == nil else {return}
-                    guard let data = data else {return}
-                    DispatchQueue.main.async {
-                        self.coverImageView.image = UIImage(data: data)
-                    }
-                }.resume()
+                self.coverImageView.kf.setImage(with: imageUrl)
                 guard let mp3Url = value["musicFileUrl"] as? String else {return}
                 self.playMusic(mp3FileUrl: mp3Url, musicTitle: title)
             }

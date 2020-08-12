@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 protocol DidTapPlayButtonFirstDelegate: class {
     func didTapPlayButton(newMusic: String)
@@ -61,13 +62,7 @@ class CoverCollectionCell: UICollectionViewCell {
                 self.artistNameLabel.text = artistNickName
                 guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
                 guard let imageUrl = URL(string: imageUrlStr) else {return}
-                URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                    guard error == nil else {return}
-                    guard let data = data else {return}
-                    DispatchQueue.main.async {
-                        self.coverImage.image = UIImage(data: data)
-                    }
-                }.resume()
+                self.coverImage.kf.setImage(with: imageUrl)
             }
         }
     }

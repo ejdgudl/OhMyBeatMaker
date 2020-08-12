@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserProfileViewController: UIViewController {
     
@@ -16,13 +17,7 @@ class UserProfileViewController: UIViewController {
             title = user?.nickName
             guard let profileImageStrUrl = user?.profileImageUrl else {return}
             guard let profileImageUrl = URL(string: profileImageStrUrl) else {return}
-            URLSession.shared.dataTask(with: profileImageUrl) { (data, response, error) in
-                guard error == nil else {return}
-                guard let data = data else {return}
-                DispatchQueue.main.async {
-                    self.profileImageView.image = UIImage(data: data)
-                }
-            }.resume()
+            profileImageView.kf.setImage(with: profileImageUrl)
         }
     }
     

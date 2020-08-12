@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchTableCell: UITableViewCell {
     
@@ -24,13 +25,7 @@ class SearchTableCell: UITableViewCell {
         didSet {
             guard let profileImageStrUrl = user?.profileImageUrl else {return}
             guard let profileImageUrl = URL(string: profileImageStrUrl) else {return}
-            URLSession.shared.dataTask(with: profileImageUrl) { (data, response, error) in
-                guard error == nil else {return}
-                guard let data = data else {return}
-                DispatchQueue.main.async {
-                    self.profileImageView.image = UIImage(data: data)
-                }
-            }.resume()
+            self.profileImageView.kf.setImage(with: profileImageUrl)
             guard let userNickName = user?.nickName else {return}
             textLabel?.text = userNickName
         }

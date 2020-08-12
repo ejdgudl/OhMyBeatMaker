@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MobileCoreServices
+import Kingfisher
 
 class MyAccountViewController: UIViewController {
     
@@ -24,13 +25,7 @@ class MyAccountViewController: UIViewController {
             guard let user = user else {return}
             title = user.nickName
             guard let imageUrl = URL(string: user.profileImageUrl) else {return}
-            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                guard error == nil else {return}
-                guard let data = data else {return}
-                DispatchQueue.main.async {
-                    self.plusPhotoButton.setImage(UIImage(data: data), for: .normal)
-                }
-            }.resume()
+            plusPhotoButton.kf.setImage(with: imageUrl, for: .normal)
         }
     }
     
