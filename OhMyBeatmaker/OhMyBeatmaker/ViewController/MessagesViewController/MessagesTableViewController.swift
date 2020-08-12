@@ -71,6 +71,15 @@ class MessagesTableViewController: UITableViewController {
         }
     }
     
+    func fetchUser(with uid: String, completion: @escaping(User) -> ()) {
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+            let user = User(uid: uid, dictionary: dictionary)
+            completion(user)
+        }
+    }
+    
     // MARK: Configure
     private func configure() {
         tableView.register(MessagesTableCell.self, forCellReuseIdentifier: UITableView.messagesTableCellID)
@@ -102,10 +111,8 @@ extension MessagesTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
         let chatPartnerId = message.getChatPartnerId()
-        Database.database().reference().child("users").child(chatPartnerId).observe(.childAdded) { (snapshot) in
-            let uid = snapshot.key
-            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
-            let user = User(uid: uid, dictionary: dictionary)
+        
+        fetchUser(with: chatPartnerId) { (user) in
             self.showChatCollectionVC(for: user)
         }
     }

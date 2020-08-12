@@ -76,10 +76,7 @@ class MessagesTableCell: UITableViewCell {
     // MARK: Helpers
     private func configureUserData() {
         guard let chatPartnerId = message?.getChatPartnerId() else {return}
-        Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
-            let uid = snapshot.key
-            guard let dictionary = snapshot.value as? Dictionary<String,AnyObject> else {return}
-            let user = User(uid: uid, dictionary: dictionary)
+        fetchUser(with: chatPartnerId) { (user) in
             guard let profileImageStrUrl = user.profileImageUrl else {return}
             guard let profileImageUrl = URL(string: profileImageStrUrl) else {return}
             URLSession.shared.dataTask(with: profileImageUrl) { (data, response, error) in
@@ -90,6 +87,15 @@ class MessagesTableCell: UITableViewCell {
                 }
             }.resume()
             self.usernameLabel.text = user.nickName
+        }
+    }
+    
+    func fetchUser(with uid: String, completion: @escaping(User) -> ()) {
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+            let user = User(uid: uid, dictionary: dictionary)
+            completion(user)
         }
     }
     

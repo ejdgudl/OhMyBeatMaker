@@ -205,8 +205,6 @@
 		D374804024DC221700D8EC43 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D37480D424E0ED8D00D8EC43 /* ChatCollectionViewController */,
-				D37480CC24E0E3B700D8EC43 /* NewMessageViewController */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -365,6 +363,8 @@
 				D3A3560A24E18DF90009700A /* Profile */,
 				D37480BD24E037D000D8EC43 /* Search */,
 				D37480C624E0C82200D8EC43 /* MessagesViewController */,
+				D37480D424E0ED8D00D8EC43 /* ChatCollectionViewController */,
+				D37480CC24E0E3B700D8EC43 /* NewMessageViewController */,
 				D37480A724DFBDE800D8EC43 /* ChartPage */,
 				D374809C24DE905D00D8EC43 /* Player */,
 				D374808224DCF48600D8EC43 /* AppIntro */,
