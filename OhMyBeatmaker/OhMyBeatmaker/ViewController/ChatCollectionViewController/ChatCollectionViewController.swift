@@ -56,11 +56,6 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         return true
     }
     
-    // MARK: @Objc
-    @objc private func handleInfoTapped() {
-    
-    }
-    
     @objc private func handleSend() {
         uploadMessageToServer()
         messageTextField.text = nil
@@ -70,11 +65,6 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     private func configureNavi() {
         guard let user = self.user else {return}
         title = user.nickName
-        
-        let infoButton = UIButton(type: .infoLight)
-        infoButton.addTarget(self, action: #selector(handleInfoTapped), for: .touchUpInside)
-        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
-        navigationItem.rightBarButtonItem = infoBarButtonItem
     }
     
     private func uploadMessageToServer() {
@@ -119,6 +109,24 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         let size = CGSize(width: 200, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)], context: nil)
+    }
+    
+    private func configureMessage(cell: ChatCollectionCell, message: Message) {
+        guard let currentUid = Auth.auth().currentUser?.uid else {return}
+        cell.bubbleWidthAnchor?.constant = estimateFrameForText(message.messageText).width + 32
+        cell.frame.size.height = estimateFrameForText(message.messageText).height + 20
+        
+        if message.fromId == currentUid {
+            cell.bubbleRightAnchor?.isActive = true
+            cell.bubbleLeftAnchor?.isActive = false
+            cell.bubbleView.backgroundColor = .lightGray
+            cell.profileImageView.isHidden = true
+        } else {
+            cell.bubbleRightAnchor?.isActive = false
+            cell.bubbleLeftAnchor?.isActive = true
+            cell.bubbleView.backgroundColor = .gray
+            cell.profileImageView.isHidden = false
+        }
     }
     
     // MARK: Configure
@@ -168,6 +176,8 @@ extension ChatCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionView.chatCollectionCellID, for: indexPath) as! ChatCollectionCell
+        cell.message = messages[indexPath.item]
+        configureMessage(cell: cell, message: messages[indexPath.item])
         return cell
     }
 }

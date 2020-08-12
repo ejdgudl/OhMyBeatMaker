@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class ChatCollectionCell: UICollectionViewCell {
     
@@ -29,7 +31,7 @@ class ChatCollectionCell: UICollectionViewCell {
         return view
     }()
     
-    let profileImageView: UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -42,6 +44,19 @@ class ChatCollectionCell: UICollectionViewCell {
     var bubbleRightAnchor: NSLayoutConstraint?
     var bubbleLeftAnchor: NSLayoutConstraint?
     
+    var message: Message? {
+        didSet {
+            guard let messageText = message?.messageText else {return}
+            textView.text = messageText
+            guard let chatPartnerId = message?.getChatPartnerId() else {return}
+            fetchUser(with: chatPartnerId) { (user) in
+                guard let profileImageUrl = user.profileImageUrl else {return}
+                guard let imageUrl = URL(string: profileImageUrl) else {return}
+                self.profileImageView.kf.setImage(with: imageUrl)
+            }
+        }
+    }
+    
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +66,16 @@ class ChatCollectionCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Helpers
+    func fetchUser(with uid: String, completion: @escaping(User) -> ()) {
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+            let user = User(uid: uid, dictionary: dictionary)
+            completion(user)
+        }
     }
     
     // MARK: Configure
@@ -67,14 +92,14 @@ class ChatCollectionCell: UICollectionViewCell {
         
         
         profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
-        profileImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).isActive = true
+        profileImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 4).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
         bubbleRightAnchor = bubbleView.rightAnchor.constraint(equalTo: rightAnchor, constant: -8)
         bubbleRightAnchor?.isActive = true
         
-        bubbleLeftAnchor = bubbleView.rightAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8)
+        bubbleLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8)
         bubbleLeftAnchor?.isActive = false
         
         bubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
