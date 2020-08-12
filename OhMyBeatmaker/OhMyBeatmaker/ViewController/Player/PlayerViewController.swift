@@ -178,44 +178,42 @@ class PlayerViewController: UIViewController {
     
     // MARK: Helpers
     func playMusic(mp3FileUrl: String, musicTitle: String) {
-        Storage.storage().reference().child("Musics").child(musicTitle).downloadURL { (downloadUrl, error) in
-            if player?.currentItem != nil {
-                player?.pause()
-            }
-            
-            let url = URL(string: mp3FileUrl)
-            self.playerItem = AVPlayerItem(url: url!)
-            player = AVPlayer(playerItem: self.playerItem)
-            let playerLayer = AVPlayerLayer(player: player)
-            playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
-            self.view.layer.addSublayer(playerLayer)
-            player?.play()
-            self.playButton.setImage(UIImage(named: "pause"), for: .normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                if let duration = player?.currentItem?.duration {
-                    let seconds = CMTimeGetSeconds(duration)
-                    var secondsText = String(Int(seconds) % 60)
-                    let minutesText = String(format: "%02d", Int(seconds) / 60)
-                    if secondsText.count == 1 {
-                        secondsText = "0" + secondsText
-                    }
-                    self.musicLengthLabel.text = "\(minutesText):\(secondsText)"
-                    
-                    let interval = CMTime(value: 1, timescale: 2)
-                    player?.addPeriodicTimeObserver(forInterval: interval, queue: .main, using: { (progressTime) in
-                        let seconds = CMTimeGetSeconds(progressTime)
-                        let secondsString = String(format: "%02d", Int(seconds) % 60)
-                        let minutesText = String(format: "%02d", Int(seconds) / 60)
-                        self.currentTimeLabel.text = "\(minutesText):\(secondsString)"
-                        
-                        let durationSeconds = CMTimeGetSeconds(duration)
-                        self.musicTimeSlider.value = Float(seconds / durationSeconds)
-                    })
-                }
-            }
-            self.musicVolumeSlider.setValue(AVAudioSession.sharedInstance().outputVolume, animated: true)
-            player?.volume = AVAudioSession.sharedInstance().outputVolume
+        if player?.currentItem != nil {
+            player?.pause()
         }
+        
+        let url = URL(string: mp3FileUrl)
+        self.playerItem = AVPlayerItem(url: url!)
+        player = AVPlayer(playerItem: self.playerItem)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
+        self.view.layer.addSublayer(playerLayer)
+        player?.play()
+        self.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if let duration = player?.currentItem?.duration {
+                let seconds = CMTimeGetSeconds(duration)
+                var secondsText = String(Int(seconds) % 60)
+                let minutesText = String(format: "%02d", Int(seconds) / 60)
+                if secondsText.count == 1 {
+                    secondsText = "0" + secondsText
+                }
+                self.musicLengthLabel.text = "\(minutesText):\(secondsText)"
+                
+                let interval = CMTime(value: 1, timescale: 2)
+                player?.addPeriodicTimeObserver(forInterval: interval, queue: .main, using: { (progressTime) in
+                    let seconds = CMTimeGetSeconds(progressTime)
+                    let secondsString = String(format: "%02d", Int(seconds) % 60)
+                    let minutesText = String(format: "%02d", Int(seconds) / 60)
+                    self.currentTimeLabel.text = "\(minutesText):\(secondsString)"
+                    
+                    let durationSeconds = CMTimeGetSeconds(duration)
+                    self.musicTimeSlider.value = Float(seconds / durationSeconds)
+                })
+            }
+        }
+        self.musicVolumeSlider.setValue(AVAudioSession.sharedInstance().outputVolume, animated: true)
+        player?.volume = AVAudioSession.sharedInstance().outputVolume
     }
     
     // MARK: ConfigureViews
