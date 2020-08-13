@@ -193,20 +193,12 @@
 				D374804124DC234000D8EC43 /* View */,
 				D3A3560224E18D010009700A /* Cell */,
 				D3A355FD24E18C7F0009700A /* ViewController */,
-				D374804024DC221700D8EC43 /* MainViewController */,
 				D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */,
 				D374803524DC1EA400D8EC43 /* Assets.xcassets */,
 				D374803724DC1EA400D8EC43 /* LaunchScreen.storyboard */,
 				D374803A24DC1EA400D8EC43 /* Info.plist */,
 			);
 			path = OhMyBeatmaker;
-			sourceTree = "<group>";
-		};
-		D374804024DC221700D8EC43 /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		D374804124DC234000D8EC43 /* View */ = {
