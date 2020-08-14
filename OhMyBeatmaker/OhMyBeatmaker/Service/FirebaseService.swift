@@ -28,6 +28,14 @@ class FirebaseService {
         }
     }
     
+    func fetchUserService(with uid: String, completion: @escaping(User) -> ()) {
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+            let user = User(uid: uid, dictionary: dictionary)
+            completion(user)
+        }
+    }
+    
     func makeNew5(musicTitle: String) {
         let db = Database.database().reference()
         

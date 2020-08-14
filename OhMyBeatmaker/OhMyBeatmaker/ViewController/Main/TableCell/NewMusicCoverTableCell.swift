@@ -24,13 +24,10 @@ class NewMusicCoverTableCell: UITableViewCell {
         return view
     }()
     
-    weak var delegate: DidTapPlayButtonSecondDelegate?
+    weak var didTapPlayButtonSecondDelegate: DidTapPlayButtonSecondDelegate?
     
     var new5Array: [String]? {
         didSet {
-            guard let new5array = new5Array else {
-                return
-            }
             collectionView.reloadData()
         }
     }
@@ -50,7 +47,7 @@ class NewMusicCoverTableCell: UITableViewCell {
     private func configure() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(CoverCollectionCell.self, forCellWithReuseIdentifier:    UICollectionView.newMusicCoverCollectionCellID)
+        collectionView.register(NewMusicCoverCollectionCell.self, forCellWithReuseIdentifier:    UICollectionView.newMusicCoverCollectionCellID)
     }
     
     // MARK: ConfigureViews
@@ -79,10 +76,10 @@ extension NewMusicCoverTableCell: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionView.newMusicCoverCollectionCellID, for: indexPath) as! CoverCollectionCell
-        cell.delegate = self
-        if let newMusic = self.new5Array?[indexPath.row] {
-            cell.newMusic = newMusic
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionView.newMusicCoverCollectionCellID, for: indexPath) as! NewMusicCoverCollectionCell
+        cell.didTapPlayButtonFirstDelegate = self
+        if let new5Array = self.new5Array?[indexPath.row] {
+            cell.new5ArrayOf1 = new5Array
         }
         return cell
     }
@@ -102,6 +99,6 @@ extension NewMusicCoverTableCell: UICollectionViewDelegateFlowLayout {
 // MARK: DidTapPlayButtonFirstDelegate
 extension NewMusicCoverTableCell: DidTapPlayButtonFirstDelegate {
     func didTapPlayButton(newMusic: String) {
-        delegate?.didTapPlayButton(newMusic: newMusic)
+        didTapPlayButtonSecondDelegate?.didTapPlayButton(newMusic: newMusic)
     }
 }

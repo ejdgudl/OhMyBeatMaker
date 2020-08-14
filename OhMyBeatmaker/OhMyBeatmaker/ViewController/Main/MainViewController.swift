@@ -20,14 +20,9 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = .black
-        refreshControl.addTarget(self, action: #selector(pullToRefreshControl), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
+    private let tableView: MainTableView = {
+        let tableView = MainTableView()
+        tableView.mainRefreshControl.addTarget(self, action: #selector(pullToRefreshControl), for: .valueChanged)
         return tableView
     }()
     
@@ -47,7 +42,7 @@ class MainViewController: UIViewController {
     
     private let webService = WebService()
     
-    private let firebseService = FirebaseService()
+    private let firebaseService = FirebaseService()
     
     private let db = Database.database().reference()
     
@@ -110,18 +105,13 @@ class MainViewController: UIViewController {
         db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
             guard let new5Array = snapshot.value as? [String] else {return}
             self.new5Array = new5Array
-            print(self.new5Array)
         }
         db.child("Top5").observeSingleEvent(of: .value) { (snapshot) in
             guard let top5Array = snapshot.value as? [String] else {return}
             self.top5Array = top5Array
-            print(self.top5Array)
         }
         guard let currentUid = Auth.auth().currentUser?.uid else {return}
-        db.child("users").child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
-            let uid = snapshot.key
-            let user = User(uid: uid, dictionary: dictionary)
+        firebaseService.fetchUserService(with: currentUid) { (user) in
             self.user = user
             self.editView.loginButton.isEnabled = false
         }
@@ -207,7 +197,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return newMusicTitleCell
         case 2:
             guard let newMusicCoverCell = tableView.dequeueReusableCell(withIdentifier: UITableView.newMusicCoverTableCellID, for: indexPath) as? NewMusicCoverTableCell else {fatalError()}
-            newMusicCoverCell.delegate = self
+            newMusicCoverCell.didTapPlayButtonSecondDelegate = self
             newMusicCoverCell.new5Array = self.new5Array
             return newMusicCoverCell
         case 3:
@@ -316,7 +306,7 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                     return
                 }
                 alertAddAction(title: "로그아웃", message: "로그아웃 하시겠습니까?") { (_) in
-                    self.firebseService.signOut()
+                    self.firebaseService.signOut()
                     self.editView.loginButton.isEnabled = true
                     self.editView.loginButton.setImage(UIImage(named: " "), for: .normal)
                     self.editView.loginButton.setTitle("로그인", for: .normal)

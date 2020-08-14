@@ -14,7 +14,7 @@ protocol DidTapPlayButtonFirstDelegate: class {
     func didTapPlayButton(newMusic: String)
 }
 
-class CoverCollectionCell: UICollectionViewCell {
+class NewMusicCoverCollectionCell: UICollectionViewCell {
     
     private let coverImage: UIImageView = {
         let imageView = UIImageView()
@@ -32,35 +32,32 @@ class CoverCollectionCell: UICollectionViewCell {
         return button
     }()
     
-    private let musicTitleLabel: UILabel = {
+    private let musicTitle: UILabel = {
         let label = UILabel()
-        label.text = "노래제목"
         label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
     
-    let artistNameLabel: UILabel = {
+    let artistNickName: UILabel = {
         let label = UILabel()
-        label.text = "아티스트"
         label.font = UIFont.boldSystemFont(ofSize: 12)
         return label
     }()
     
     private let db = Database.database().reference()
     
-    weak var delegate: DidTapPlayButtonFirstDelegate?
+    weak var didTapPlayButtonFirstDelegate: DidTapPlayButtonFirstDelegate?
     
-    var newMusic: String? {
+    var new5ArrayOf1: String? {
         didSet {
-            print("newMusic didSet in the collection")
-            guard let music = newMusic else {return}
-            db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
-                guard let value = snapshot.value as? [String: Any] else {return}
-                guard let title = value["musicTitle"] as? String else {return}
-                self.musicTitleLabel.text = title
-                guard let artistNickName = value["artistNickName"] as? String else {return}
-                self.artistNameLabel.text = artistNickName
-                guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
+            guard let new5ArrayOf1 = new5ArrayOf1 else {return}
+            db.child("Musics").child(new5ArrayOf1).observeSingleEvent(of: .value) { (snapshot) in
+                guard let musicData = snapshot.value as? [String: Any] else {return}
+                guard let title = musicData["musicTitle"] as? String else {return}
+                self.musicTitle.text = title
+                guard let artistNickName = musicData["artistNickName"] as? String else {return}
+                self.artistNickName.text = artistNickName
+                guard let imageUrlStr = musicData["coverImageUrl"] as? String else {return}
                 guard let imageUrl = URL(string: imageUrlStr) else {return}
                 self.coverImage.kf.setImage(with: imageUrl)
             }
@@ -79,8 +76,8 @@ class CoverCollectionCell: UICollectionViewCell {
     
     // MARK: @Objc
     @objc private func didTapPlayButton() {
-        guard let newMusic = self.newMusic else {return}
-        delegate?.didTapPlayButton(newMusic: newMusic)
+        guard let newMusic = self.new5ArrayOf1 else {return}
+        didTapPlayButtonFirstDelegate?.didTapPlayButton(newMusic: newMusic)
     }
     
     // MARK: ConfigureViews
@@ -88,7 +85,7 @@ class CoverCollectionCell: UICollectionViewCell {
         layer.cornerRadius = 15
         layer.masksToBounds = true
         
-        [coverImage, playButtonInCover, musicTitleLabel, artistNameLabel].forEach {
+        [coverImage, playButtonInCover, musicTitle, artistNickName].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -104,12 +101,11 @@ class CoverCollectionCell: UICollectionViewCell {
         playButtonInCover.widthAnchor.constraint(equalToConstant: 30).isActive = true
         playButtonInCover.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        musicTitleLabel.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 5).isActive = true
-        musicTitleLabel.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
+        musicTitle.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 5).isActive = true
+        musicTitle.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
         
-        artistNameLabel.topAnchor.constraint(equalTo: musicTitleLabel.bottomAnchor, constant: 2).isActive = true
-        artistNameLabel.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
+        artistNickName.topAnchor.constraint(equalTo: musicTitle.bottomAnchor, constant: 2).isActive = true
+        artistNickName.leftAnchor.constraint(equalTo: coverImage.leftAnchor).isActive = true
     }
-    
 }
 

@@ -55,7 +55,7 @@ class BannerTableCell: UITableViewCell {
     }
     
     // MARK: Helpers
-    private func makeImage(row: Int, cell: BannerCollectionCell) {
+    private func showImage(row: Int, cell: BannerCollectionCell) {
         if row == 0 {
             cell.bannerImageView.image = UIImage(named: "banner2")
         } else {
@@ -97,7 +97,7 @@ extension BannerTableCell: UICollectionViewDelegate, UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let bannerCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionView.bannerCollectionCellID, for: indexPath) as? BannerCollectionCell else {return UICollectionViewCell()}
-        makeImage(row: indexPath.row, cell: bannerCollectionCell)
+        showImage(row: indexPath.row, cell: bannerCollectionCell)
         return bannerCollectionCell
     }
     
