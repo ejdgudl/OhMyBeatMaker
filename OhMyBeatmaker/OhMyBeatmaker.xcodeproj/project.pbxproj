@@ -67,6 +67,8 @@
 		D37480D924E0EEC600D8EC43 /* ChatCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37480D824E0EEC600D8EC43 /* ChatCollectionCell.swift */; };
 		D3A3560624E18D430009700A /* CellIDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3560524E18D430009700A /* CellIDExtension.swift */; };
 		D3A3560824E18D610009700A /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3560724E18D610009700A /* KeyboardExtension.swift */; };
+		D3FE297524E620E900623C45 /* MusicSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */; };
+		D3FE297724E6218700623C45 /* SearchMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		D37480D824E0EEC600D8EC43 /* ChatCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionCell.swift; sourceTree = "<group>"; };
 		D3A3560524E18D430009700A /* CellIDExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIDExtension.swift; sourceTree = "<group>"; };
 		D3A3560724E18D610009700A /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchTableViewController.swift; sourceTree = "<group>"; };
+		D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,34 +311,16 @@
 			isa = PBXGroup;
 			children = (
 				D37480C724E0C84D00D8EC43 /* MessagesTableViewController.swift */,
-				D37480C924E0CBF900D8EC43 /* TableCell */,
 			);
 			path = MessagesViewController;
-			sourceTree = "<group>";
-		};
-		D37480C924E0CBF900D8EC43 /* TableCell */ = {
-			isa = PBXGroup;
-			children = (
-				D37480CA24E0CC1F00D8EC43 /* MessagesTableCell.swift */,
-			);
-			path = TableCell;
 			sourceTree = "<group>";
 		};
 		D37480CC24E0E3B700D8EC43 /* NewMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
 				D37480CD24E0E3C900D8EC43 /* NewMessageViewController.swift */,
-				D37480CF24E0E47200D8EC43 /* TableCell */,
 			);
 			path = NewMessageViewController;
-			sourceTree = "<group>";
-		};
-		D37480CF24E0E47200D8EC43 /* TableCell */ = {
-			isa = PBXGroup;
-			children = (
-				D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */,
-			);
-			path = TableCell;
 			sourceTree = "<group>";
 		};
 		D37480D424E0ED8D00D8EC43 /* ChatCollectionViewController */ = {
@@ -354,6 +340,7 @@
 				D374809424DD437500D8EC43 /* AddMusic */,
 				D3A3560A24E18DF90009700A /* Profile */,
 				D37480BD24E037D000D8EC43 /* Search */,
+				D3FE297324E620E300623C45 /* MusicSearchTableViewController */,
 				D37480C624E0C82200D8EC43 /* MessagesViewController */,
 				D37480D424E0ED8D00D8EC43 /* ChatCollectionViewController */,
 				D37480CC24E0E3B700D8EC43 /* NewMessageViewController */,
@@ -420,7 +407,10 @@
 				D37480A324DFBA9A00D8EC43 /* MusicListTitleTableCell.swift */,
 				D37480A524DFBC4200D8EC43 /* MusicListTableCell.swift */,
 				D37480C124E039AD00D8EC43 /* SearchTableCell.swift */,
+				D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */,
 				D37480B224DFC1BF00D8EC43 /* MusicListCell.swift */,
+				D37480CA24E0CC1F00D8EC43 /* MessagesTableCell.swift */,
+				D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -457,6 +447,14 @@
 				D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */,
 			);
 			path = Rigth;
+			sourceTree = "<group>";
+		};
+		D3FE297324E620E300623C45 /* MusicSearchTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */,
+			);
+			path = MusicSearchTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,6 +585,7 @@
 				D37480D324E0EC0500D8EC43 /* Message.swift in Sources */,
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
 				D37480BF24E0380000D8EC43 /* UserSearchTableViewController.swift in Sources */,
+				D3FE297524E620E900623C45 /* MusicSearchTableViewController.swift in Sources */,
 				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
 				D37480D624E0EDA600D8EC43 /* ChatCollectionViewController.swift in Sources */,
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
@@ -627,6 +626,7 @@
 				D37480A624DFBC4200D8EC43 /* MusicListTableCell.swift in Sources */,
 				D374804C24DC2BDF00D8EC43 /* BannerTableCell.swift in Sources */,
 				D37480A924DFBE1500D8EC43 /* PageViewController.swift in Sources */,
+				D3FE297724E6218700623C45 /* SearchMusicTableCell.swift in Sources */,
 				D37480C224E039AD00D8EC43 /* SearchTableCell.swift in Sources */,
 				D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */,
 				D37480C524E051E800D8EC43 /* UserProfileViewController.swift in Sources */,

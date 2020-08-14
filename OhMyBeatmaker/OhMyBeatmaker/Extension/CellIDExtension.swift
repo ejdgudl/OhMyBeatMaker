@@ -24,6 +24,8 @@ extension UITableView {
     
     static let messagesTableCellID = "messagesTableCellID"
     static let newMessageTableCellID = "newMessageTableCellID"
+    
+    static let searchMusicTableCellID = "searchMusicTableCellID"
 }
 
 extension UICollectionView {
