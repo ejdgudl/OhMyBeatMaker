@@ -35,9 +35,7 @@ class AddMusicViewController: UIViewController {
     private let imagePicker = UIImagePickerController()
     
     let firebaseService = FirebaseService()
-    
     let storageRef = Storage.storage().reference()
-    
     let db = Database.database().reference()
     
     // MARK: Life Cycle

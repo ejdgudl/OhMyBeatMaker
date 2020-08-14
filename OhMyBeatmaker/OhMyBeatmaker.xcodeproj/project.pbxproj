@@ -243,16 +243,12 @@
 		D374804124DC234000D8EC43 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */,
-				D374808824DD183700D8EC43 /* LoginButton.swift */,
 				D374807624DC52AC00D8EC43 /* BottomStackView.swift */,
 				D374807024DC502A00D8EC43 /* EmailTextField.swift */,
-				D374807224DC512100D8EC43 /* PasswordTextField.swift */,
 				D374807824DC538100D8EC43 /* NickNameTextField.swift */,
+				D374807224DC512100D8EC43 /* PasswordTextField.swift */,
 				D374807424DC519100D8EC43 /* LogButton.swift */,
 				D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */,
-				D374809824DD460500D8EC43 /* PlusCoverButton.swift */,
-				D374809A24DD466B00D8EC43 /* AddMusicButton.swift */,
 				D374806D24DC4E1F00D8EC43 /* IndicatorView.swift */,
 			);
 			name = View;
@@ -309,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				D374809524DD438200D8EC43 /* AddMusicViewController.swift */,
+				D3DE7CB624E6E78D00C90029 /* View */,
 			);
 			path = AddMusic;
 			sourceTree = "<group>";
@@ -379,10 +376,10 @@
 				D3A3560A24E18DF90009700A /* Profile */,
 				D37480BD24E037D000D8EC43 /* Search */,
 				D3FE297324E620E300623C45 /* MusicSearchTableViewController */,
+				D374808224DCF48600D8EC43 /* AppIntro */,
 				D37480C624E0C82200D8EC43 /* MessagesViewController */,
 				D37480D424E0ED8D00D8EC43 /* ChatCollectionViewController */,
 				D37480CC24E0E3B700D8EC43 /* NewMessageViewController */,
-				D374808224DCF48600D8EC43 /* AppIntro */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -497,6 +494,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D3DE7CB624E6E78D00C90029 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D374809A24DD466B00D8EC43 /* AddMusicButton.swift */,
+				D374809824DD460500D8EC43 /* PlusCoverButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D3EC8D7724E6B43000415359 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +525,8 @@
 				D374804224DC234F00D8EC43 /* TopView.swift */,
 				D3F42A3524E6A2ED0072FB11 /* MainTableView.swift */,
 				D374805724DC430600D8EC43 /* EditView.swift */,
+				D374808824DD183700D8EC43 /* LoginButton.swift */,
+				D374807D24DC6A7E00D8EC43 /* EditTableHeaderView.swift */,
 				D37480A124DEC26700D8EC43 /* BottomButton.swift */,
 			);
 			path = view;

@@ -13,7 +13,6 @@ class EditTableHeaderView: UIView {
     // MARK: Properties
     let headerTitle: UILabel = {
         let label = UILabel()
-        label.text = "gg"
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
@@ -32,6 +31,7 @@ class EditTableHeaderView: UIView {
     // MARK: ConfigureViews
     private func configureViews() {
         backgroundColor = UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 0.7)
+        
         addSubview(headerTitle)
         headerTitle.translatesAutoresizingMaskIntoConstraints = false
         

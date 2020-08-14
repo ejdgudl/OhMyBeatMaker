@@ -274,14 +274,13 @@ extension MainViewController: MusicSearchSendTitleDelegate {
 // MARK: DidTapEdiViewTableCellDelegate
 extension MainViewController: DidTapEdiViewTableCellDelegate {
     func didTapEdiViewTableCell(section: Int, row: Int) {
+        guard Auth.auth().currentUser != nil else {
+            alertNormal(title: "로그인을 해주세요", message: "사용자의 정보가 없습니다")
+            return
+        }
         if section == 0 {
-            let currentUser = Auth.auth().currentUser
             switch row {
             case 0:
-                guard currentUser != nil else {
-                    alertNormal(title: "로그인을 해주세요", message: "사용자의 정보가 없습니다")
-                    return
-                }
                 let myAccontVC = MyAccountViewController()
                 myAccontVC.user = self.user
                 navigationController?.pushViewController(myAccontVC, animated: true)
@@ -296,10 +295,6 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                 let messagesRoomVC = MessagesTableViewController()
                 navigationController?.pushViewController(messagesRoomVC, animated: true)
             case 4:
-                guard currentUser != nil else {
-                    alertNormal(title: "로그인을 해주세요", message: "사용자의 정보가 없습니다")
-                    return
-                }
                 alertAddAction(title: "로그아웃", message: "로그아웃 하시겠습니까?") { (_) in
                     self.firebaseService.signOut()
                     self.editView.loginButton.isEnabled = true
