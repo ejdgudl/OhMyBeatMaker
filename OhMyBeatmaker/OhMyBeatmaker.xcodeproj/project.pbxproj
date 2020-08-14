@@ -334,13 +334,13 @@
 			path = MusicListPage;
 			sourceTree = "<group>";
 		};
-		D37480BD24E037D000D8EC43 /* Search */ = {
+		D37480BD24E037D000D8EC43 /* UserSearch */ = {
 			isa = PBXGroup;
 			children = (
 				D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */,
 				D3DE7CB724E6E97B00C90029 /* View */,
 			);
-			path = Search;
+			path = UserSearch;
 			sourceTree = "<group>";
 		};
 		D37480C624E0C82200D8EC43 /* MessagesViewController */ = {
@@ -377,7 +377,7 @@
 				D374807F24DCF36F00D8EC43 /* MyAccount */,
 				D374809424DD437500D8EC43 /* AddMusic */,
 				D3A3560A24E18DF90009700A /* Profile */,
-				D37480BD24E037D000D8EC43 /* Search */,
+				D37480BD24E037D000D8EC43 /* UserSearch */,
 				D3FE297324E620E300623C45 /* MusicSearchTableViewController */,
 				D374808224DCF48600D8EC43 /* AppIntro */,
 				D37480C624E0C82200D8EC43 /* MessagesViewController */,

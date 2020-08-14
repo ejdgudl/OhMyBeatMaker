@@ -18,10 +18,8 @@ class MusicSearchTableViewController: UITableViewController {
     // MARK: Properties
     var musics = [Music]()
     
-    lazy var searchBar: UISearchBar = {
-       let searchBar = UISearchBar()
-        searchBar.sizeToFit()
-        searchBar.showsCancelButton = true
+    lazy var searchBar: SearchBar = {
+       let searchBar = SearchBar()
         searchBar.delegate = self
         return searchBar
     }()
@@ -30,6 +28,8 @@ class MusicSearchTableViewController: UITableViewController {
     private var searchMode = false
     
     weak var MusicSearchSendTitleDelegate: MusicSearchSendTitleDelegate?
+    
+    private let db = Database.database().reference()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class MusicSearchTableViewController: UITableViewController {
     
     // MARK: Helpers
     private func fetchMusic() {
-        Database.database().reference().child("Musics").observe(.childAdded) { (snapshot) in
+        db.child("Musics").observe(.childAdded) { (snapshot) in
             let musicTitle = snapshot.key
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
             let music = Music(musicTitle: musicTitle, dictionary: dictionary)
@@ -128,6 +128,7 @@ extension MusicSearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchMode = false
+            tableView.reloadData()
         } else {
             searchMode = true
             let matchingUsers = self.musics.filter { (music) -> Bool in
