@@ -11,7 +11,7 @@ import UIKit
 class MusicTitleHeaderView: UIView {
     
     // MARK: Properties
-    let headerTitle: UILabel = {
+    var headerTitle: UILabel = {
         let label = UILabel()
         label.text = "Entire Music"
         label.font = UIFont.boldSystemFont(ofSize: 20)

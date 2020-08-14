@@ -69,6 +69,7 @@
 		D3A3560824E18D610009700A /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3560724E18D610009700A /* KeyboardExtension.swift */; };
 		D3FE297524E620E900623C45 /* MusicSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */; };
 		D3FE297724E6218700623C45 /* SearchMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */; };
+		D3FE297C24E6284B00623C45 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297B24E6284B00623C45 /* ThirdVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		D3A3560724E18D610009700A /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchTableViewController.swift; sourceTree = "<group>"; };
 		D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicTableCell.swift; sourceTree = "<group>"; };
+		D3FE297B24E6284B00623C45 /* ThirdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThirdVC.swift; path = ../../../../../../../../Documents/ThirdVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,8 +295,9 @@
 			isa = PBXGroup;
 			children = (
 				D37480A824DFBE1500D8EC43 /* PageViewController.swift */,
-				D3A3560B24E18E8F0009700A /* Left */,
-				D3A3560C24E18E940009700A /* Rigth */,
+				D3A3560B24E18E8F0009700A /* First */,
+				D3A3560C24E18E940009700A /* Second */,
+				D3FE297824E6270100623C45 /* Third */,
 			);
 			path = ChartPage;
 			sourceTree = "<group>";
@@ -433,20 +436,20 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		D3A3560B24E18E8F0009700A /* Left */ = {
+		D3A3560B24E18E8F0009700A /* First */ = {
 			isa = PBXGroup;
 			children = (
 				D37480AB24DFBE5600D8EC43 /* FirstVC.swift */,
 			);
-			path = Left;
+			path = First;
 			sourceTree = "<group>";
 		};
-		D3A3560C24E18E940009700A /* Rigth */ = {
+		D3A3560C24E18E940009700A /* Second */ = {
 			isa = PBXGroup;
 			children = (
 				D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */,
 			);
-			path = Rigth;
+			path = Second;
 			sourceTree = "<group>";
 		};
 		D3FE297324E620E300623C45 /* MusicSearchTableViewController */ = {
@@ -455,6 +458,14 @@
 				D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */,
 			);
 			path = MusicSearchTableViewController;
+			sourceTree = "<group>";
+		};
+		D3FE297824E6270100623C45 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				D3FE297B24E6284B00623C45 /* ThirdVC.swift */,
+			);
+			path = Third;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -590,6 +601,7 @@
 				D37480D624E0EDA600D8EC43 /* ChatCollectionViewController.swift in Sources */,
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
 				D374808124DCF39000D8EC43 /* MyAccountViewController.swift in Sources */,
+				D3FE297C24E6284B00623C45 /* ThirdVC.swift in Sources */,
 				D374807E24DC6A7E00D8EC43 /* EditTableHeaderView.swift in Sources */,
 				D37480A224DEC26700D8EC43 /* BottomButton.swift in Sources */,
 				D37480AC24DFBE5600D8EC43 /* FirstVC.swift in Sources */,

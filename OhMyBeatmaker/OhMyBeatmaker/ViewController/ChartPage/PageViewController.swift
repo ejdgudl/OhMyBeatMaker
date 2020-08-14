@@ -15,10 +15,11 @@ protocol PageViewControllerDelegate: class {
 class PageViewController: UIPageViewController {
     
     // MARK: Properties
-    private lazy var vcList = [firstVC, secondVC]
+    private lazy var vcList = [firstVC, secondVC, thirdVC]
     
     private let firstVC = FirstVC()
     private let secondVC = SecondVC()
+    private let thirdVC = ThirdVC()
     
     weak var sendMusicTitleDelegate: PageViewControllerDelegate?
     
