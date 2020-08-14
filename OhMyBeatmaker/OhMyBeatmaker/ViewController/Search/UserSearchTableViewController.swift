@@ -14,16 +14,16 @@ class UserSearchTableViewController: UITableViewController {
     // MARK: Properties
     var users = [User]()
     
-    lazy var searchBar: UISearchBar = {
-       let searchBar = UISearchBar()
-        searchBar.sizeToFit()
-        searchBar.showsCancelButton = true
+    lazy var searchBar: SearchBar = {
+       let searchBar = SearchBar()
         searchBar.delegate = self
         return searchBar
     }()
     
     private var searchedUsers = [User]()
     private var searchMode = false
+    
+    private let db = Database.database().reference()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class UserSearchTableViewController: UITableViewController {
     
     // MARK: Helpers
     private func fetchUser() {
-        Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
+        db.child("users").observe(.childAdded) { (snapshot) in
             let uid = snapshot.key
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
             if Auth.auth().currentUser?.uid != uid {
@@ -125,6 +125,7 @@ extension UserSearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchMode = false
+            tableView.reloadData()
         } else {
             searchMode = true
             let matchingUsers = self.users.filter { (user) -> Bool in

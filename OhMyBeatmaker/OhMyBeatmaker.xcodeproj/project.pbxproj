@@ -78,6 +78,7 @@
 		D3DE7CAF24E6C50000C90029 /* PlayNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CAE24E6C50000C90029 /* PlayNextButton.swift */; };
 		D3DE7CB324E6C5AD00C90029 /* MusicTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CB224E6C5AD00C90029 /* MusicTimeSlider.swift */; };
 		D3DE7CB524E6C62900C90029 /* MusicVolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CB424E6C62900C90029 /* MusicVolumeSlider.swift */; };
+		D3DE7CB924E6E98B00C90029 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CB824E6E98B00C90029 /* SearchBar.swift */; };
 		D3F42A3624E6A2ED0072FB11 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F42A3524E6A2ED0072FB11 /* MainTableView.swift */; };
 		D3FE297524E620E900623C45 /* MusicSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */; };
 		D3FE297724E6218700623C45 /* SearchMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */; };
@@ -160,6 +161,7 @@
 		D3DE7CAE24E6C50000C90029 /* PlayNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayNextButton.swift; sourceTree = "<group>"; };
 		D3DE7CB224E6C5AD00C90029 /* MusicTimeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTimeSlider.swift; sourceTree = "<group>"; };
 		D3DE7CB424E6C62900C90029 /* MusicVolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVolumeSlider.swift; sourceTree = "<group>"; };
+		D3DE7CB824E6E98B00C90029 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		D3F42A3524E6A2ED0072FB11 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchTableViewController.swift; sourceTree = "<group>"; };
 		D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicTableCell.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */,
+				D3DE7CB724E6E97B00C90029 /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -499,6 +502,14 @@
 			children = (
 				D374809A24DD466B00D8EC43 /* AddMusicButton.swift */,
 				D374809824DD460500D8EC43 /* PlusCoverButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D3DE7CB724E6E97B00C90029 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3DE7CB824E6E98B00C90029 /* SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -680,6 +691,7 @@
 				D374804924DC287400D8EC43 /* AlertExtension.swift in Sources */,
 				D374809624DD438200D8EC43 /* AddMusicViewController.swift in Sources */,
 				D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */,
+				D3DE7CB924E6E98B00C90029 /* SearchBar.swift in Sources */,
 				D374806224DC475E00D8EC43 /* TopSecondVC.swift in Sources */,
 				D374807324DC512100D8EC43 /* PasswordTextField.swift in Sources */,
 				D3DE7CB324E6C5AD00C90029 /* MusicTimeSlider.swift in Sources */,
