@@ -27,7 +27,7 @@ class MusicSearchTableViewController: UITableViewController {
     private var searchedMusics = [Music]()
     private var searchMode = false
     
-    weak var MusicSearchSendTitleDelegate: MusicSearchSendTitleDelegate?
+    weak var musicSearchSendTitleDelegate: MusicSearchSendTitleDelegate?
     
     private let db = Database.database().reference()
     
@@ -111,8 +111,8 @@ extension MusicSearchTableViewController {
         } else {
             music = searchedMusics[indexPath.row]
         }
-        guard let music1 = music else {return}
-        MusicSearchSendTitleDelegate?.searchSendMusicTitle(musicTitle: music1.musicTitle)
+        guard let selectMusic = music else {return}
+        musicSearchSendTitleDelegate?.searchSendMusicTitle(musicTitle: selectMusic.musicTitle)
     }
 }
 

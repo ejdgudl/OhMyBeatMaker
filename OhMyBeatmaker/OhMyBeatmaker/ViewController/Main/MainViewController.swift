@@ -259,14 +259,11 @@ extension MainViewController: MusicListPageViewControllerDelegate {
     }
 }
 
-
-
+// MARK: MusicSearchSendTitleDelegate
 extension MainViewController: MusicSearchSendTitleDelegate {
     func searchSendMusicTitle(musicTitle: String) {
+        playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
         playerVC.musicTitle = musicTitle
-        bottomButton.newMusic = musicTitle
-        bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
-        playerVC.mainVC = self
         present(playerVC, animated: true)
     }
 }
@@ -289,7 +286,7 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                 navigationController?.pushViewController(userSerachVC, animated: true)
             case 2:
                 let musicSerachVC = MusicSearchTableViewController()
-                musicSerachVC.MusicSearchSendTitleDelegate = self
+                musicSerachVC.musicSearchSendTitleDelegate = self
                 navigationController?.pushViewController(musicSerachVC, animated: true)
             case 3:
                 let messagesRoomVC = MessagesTableViewController()
@@ -322,14 +319,7 @@ extension MainViewController: SuccessSignInDelegate {
 // MARK: ChangeButtonImageDelegate
 extension MainViewController: ChangeButtonImageDelegate {
     func changeButtonImage(imageName: String) {
-        switch imageName {
-        case "pause":
-            playerVC.playButton.setImage(UIImage(named: imageName), for: .normal)
-        case "playButton":
-            playerVC.playButton.setImage(UIImage(named: imageName), for: .normal)
-        default:
-            break
-        }
+        playerVC.playButton.setImage(UIImage(named: imageName), for: .normal)
     }
 }
 

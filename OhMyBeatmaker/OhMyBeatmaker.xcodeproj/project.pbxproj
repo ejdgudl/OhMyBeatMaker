@@ -231,7 +231,7 @@
 				D374807A24DC5EAB00D8EC43 /* Service */,
 				D374804724DC286C00D8EC43 /* Extension */,
 				D374804424DC27E000D8EC43 /* Model */,
-				D374804124DC234000D8EC43 /* View */,
+				D3DE7CBA24E6F0B300C90029 /* View */,
 				D3A3560224E18D010009700A /* Cell */,
 				D3A355FD24E18C7F0009700A /* ViewController */,
 				D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */,
@@ -251,10 +251,8 @@
 				D374807224DC512100D8EC43 /* PasswordTextField.swift */,
 				D374807424DC519100D8EC43 /* LogButton.swift */,
 				D374808B24DD2CF500D8EC43 /* PlusPhotoButton.swift */,
-				D374806D24DC4E1F00D8EC43 /* IndicatorView.swift */,
 			);
-			name = View;
-			path = MainViewController/View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		D374804424DC27E000D8EC43 /* Model */ = {
@@ -339,6 +337,7 @@
 			children = (
 				D37480BE24E0380000D8EC43 /* UserSearchTableViewController.swift */,
 				D3DE7CB724E6E97B00C90029 /* View */,
+				D3DE7CBB24E6F0DF00C90029 /* TableCell */,
 			);
 			path = UserSearch;
 			sourceTree = "<group>";
@@ -347,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				D37480C724E0C84D00D8EC43 /* MessagesTableViewController.swift */,
+				D3A3560324E18D040009700A /* TableCell */,
 			);
 			path = MessagesViewController;
 			sourceTree = "<group>";
@@ -355,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				D37480CD24E0E3C900D8EC43 /* NewMessageViewController.swift */,
+				D3DE7CBD24E6F13200C90029 /* TableCell */,
 			);
 			path = NewMessageViewController;
 			sourceTree = "<group>";
@@ -363,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				D37480D524E0EDA600D8EC43 /* ChatCollectionViewController.swift */,
+				D3A3560424E18D080009700A /* CollectionCell */,
 			);
 			path = ChatCollectionViewController;
 			sourceTree = "<group>";
@@ -402,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				D374805C24DC46C900D8EC43 /* LoginViewController.swift */,
+				D374804124DC234000D8EC43 /* View */,
 				D3A3560024E18CB00009700A /* Top */,
 				D3A3560124E18CB30009700A /* Bottom */,
 			);
@@ -431,8 +434,6 @@
 		D3A3560224E18D010009700A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D3A3560324E18D040009700A /* TableCell */,
-				D3A3560424E18D080009700A /* CollectionCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -440,10 +441,7 @@
 		D3A3560324E18D040009700A /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
-				D37480C124E039AD00D8EC43 /* SearchTableCell.swift */,
-				D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */,
 				D37480CA24E0CC1F00D8EC43 /* MessagesTableCell.swift */,
-				D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -514,6 +512,38 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D3DE7CBA24E6F0B300C90029 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D374806D24DC4E1F00D8EC43 /* IndicatorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D3DE7CBB24E6F0DF00C90029 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				D37480C124E039AD00D8EC43 /* SearchTableCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		D3DE7CBC24E6F0F200C90029 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		D3DE7CBD24E6F13200C90029 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				D37480D024E0E47E00D8EC43 /* NewMessageTableCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
 		D3EC8D7724E6B43000415359 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */,
+				D3DE7CBC24E6F0F200C90029 /* TableCell */,
 			);
 			path = MusicSearchTableViewController;
 			sourceTree = "<group>";
