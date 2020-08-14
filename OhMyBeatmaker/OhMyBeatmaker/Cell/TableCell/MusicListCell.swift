@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 protocol MusicListCellDelegate: class {
     func sendMusicTitle(musicTitle: String)
@@ -48,6 +49,7 @@ class MusicListCell: UITableViewCell {
     }()
     
     weak var musicListCellDelegate: MusicListCellDelegate?
+    private let db = Database.database().reference()
     
     var music: Music? {
         didSet {
@@ -59,6 +61,23 @@ class MusicListCell: UITableViewCell {
             self.musicTitle.text = title
             guard let artistNickName = music.artistNickName else {return}
             self.artistNickName.text = artistNickName
+        }
+    }
+    
+    var topMusic: String? {
+        didSet {
+            print("newMusic didSet in the collection")
+            guard let music = topMusic else {return}
+            db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
+                guard let value = snapshot.value as? [String: Any] else {return}
+                guard let title = value["musicTitle"] as? String else {return}
+                self.musicTitle.text = title
+                guard let artistNickName = value["artistNickName"] as? String else {return}
+                self.artistNickName.text = artistNickName
+                guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
+                guard let imageUrl = URL(string: imageUrlStr) else {return}
+                self.musicListImageView.kf.setImage(with: imageUrl)
+            }
         }
     }
     

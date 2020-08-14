@@ -16,7 +16,7 @@ protocol FirstPageVCDelegate: class{
 class FirstVC: UIViewController {
     
     // MARK: Properties
-    private let MusicListTitleView: MusicTitleHeaderView = {
+    private let musicListTitleView: MusicTitleHeaderView = {
         let view = MusicTitleHeaderView()
         view.headerTitle.text = "Top5"
         return view
@@ -38,6 +38,24 @@ class FirstVC: UIViewController {
         didSet {
             musics.shuffle()
             firstMusicListView.reloadData()
+        }
+    }
+    
+    var newMusic: [String]? {
+        didSet {
+            guard let newMusic = newMusic else {return}
+            firstMusicListView.reloadData()
+//            guard let music = newMusic else {return}
+//            db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
+//                guard let value = snapshot.value as? [String: Any] else {return}
+//                guard let title = value["musicTitle"] as? String else {return}
+//                self.musicTitleLabel.text = title
+//                guard let artistNickName = value["artistNickName"] as? String else {return}
+//                self.artistNameLabel.text = artistNickName
+//                guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
+//                guard let imageUrl = URL(string: imageUrlStr) else {return}
+//                self.coverImage.kf.setImage(with: imageUrl)
+//            }
         }
     }
     
@@ -69,17 +87,17 @@ class FirstVC: UIViewController {
     func configureViews() {
         view.backgroundColor = .clear
         
-        [MusicListTitleView, firstMusicListView].forEach {
+        [musicListTitleView, firstMusicListView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        MusicListTitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        MusicListTitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
-        MusicListTitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        MusicListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        musicListTitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        musicListTitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        musicListTitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        musicListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        firstMusicListView.topAnchor.constraint(equalTo: MusicListTitleView.bottomAnchor).isActive = true
+        firstMusicListView.topAnchor.constraint(equalTo: musicListTitleView.bottomAnchor).isActive = true
         firstMusicListView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
         firstMusicListView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
         firstMusicListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
@@ -90,7 +108,8 @@ class FirstVC: UIViewController {
 // MARK: UITableViewDataSource, UITableViewDelegate
 extension FirstVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.musics.count
+        guard let newMusic = self.newMusic else {return 0 }
+        return newMusic.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,7 +118,8 @@ extension FirstVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let musicListCell = firstMusicListView.dequeueReusableCell(withIdentifier: UITableView.musicCellID, for: indexPath) as? MusicListCell else {fatalError()}
-        musicListCell.music = self.musics[indexPath.row]
+        guard let newMusic = self.newMusic else {fatalError()}
+        musicListCell.topMusic = newMusic[indexPath.row]
         musicListCell.musicListCellDelegate = self
         return musicListCell
     }

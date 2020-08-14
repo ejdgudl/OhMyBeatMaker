@@ -70,6 +70,12 @@ class MainViewController: UIViewController {
         }
     }
     
+    var top5Array: [String]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +110,12 @@ class MainViewController: UIViewController {
         db.child("New5").observeSingleEvent(of: .value) { (snapshot) in
             guard let new5Array = snapshot.value as? [String] else {return}
             self.new5Array = new5Array
+            print(self.new5Array)
+        }
+        db.child("Top5").observeSingleEvent(of: .value) { (snapshot) in
+            guard let top5Array = snapshot.value as? [String] else {return}
+            self.top5Array = top5Array
+            print(self.top5Array)
         }
         guard let currentUid = Auth.auth().currentUser?.uid else {return}
         db.child("users").child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
@@ -206,6 +218,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             musicTableCell.pageView.addSubview(pageVC.view)
             pageVC.sendMusicTitleDelegate = self
             pageVC.view.frame = musicTableCell.pageView.frame
+            pageVC.firstVC.newMusic = self.top5Array
             return musicTableCell
         default:
             break

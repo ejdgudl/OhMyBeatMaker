@@ -17,7 +17,7 @@ class PageViewController: UIPageViewController {
     // MARK: Properties
     private lazy var vcList = [firstVC, secondVC, thirdVC]
     
-    private let firstVC = FirstVC()
+    let firstVC = FirstVC()
     private let secondVC = SecondVC()
     private let thirdVC = ThirdVC()
     

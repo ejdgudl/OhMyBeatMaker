@@ -31,7 +31,6 @@ class NewMusicCoverTableCell: UITableViewCell {
             guard let new5array = new5Array else {
                 return
             }
-            print(new5array)
             collectionView.reloadData()
         }
     }
