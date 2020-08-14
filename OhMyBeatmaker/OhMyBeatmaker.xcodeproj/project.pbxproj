@@ -68,6 +68,16 @@
 		D3A3560624E18D430009700A /* CellIDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3560524E18D430009700A /* CellIDExtension.swift */; };
 		D3A3560824E18D610009700A /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3560724E18D610009700A /* KeyboardExtension.swift */; };
 		D3D0685924E6AC8000B48FD7 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0685824E6AC8000B48FD7 /* PlayerService.swift */; };
+		D3DE7CA024E6C30200C90029 /* TopMarkLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7C9F24E6C30200C90029 /* TopMarkLine.swift */; };
+		D3DE7CA224E6C34200C90029 /* MusicTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CA124E6C34200C90029 /* MusicTitleLabel.swift */; };
+		D3DE7CA424E6C38500C90029 /* ArtistNickName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CA324E6C38500C90029 /* ArtistNickName.swift */; };
+		D3DE7CA624E6C3B800C90029 /* CurrentTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CA524E6C3B800C90029 /* CurrentTimeLabel.swift */; };
+		D3DE7CA824E6C41F00C90029 /* MusicLengthLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CA724E6C41F00C90029 /* MusicLengthLabel.swift */; };
+		D3DE7CAB24E6C46700C90029 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CAA24E6C46700C90029 /* PlayButton.swift */; };
+		D3DE7CAD24E6C4C400C90029 /* PlayBeforeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CAC24E6C4C400C90029 /* PlayBeforeButton.swift */; };
+		D3DE7CAF24E6C50000C90029 /* PlayNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CAE24E6C50000C90029 /* PlayNextButton.swift */; };
+		D3DE7CB324E6C5AD00C90029 /* MusicTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CB224E6C5AD00C90029 /* MusicTimeSlider.swift */; };
+		D3DE7CB524E6C62900C90029 /* MusicVolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE7CB424E6C62900C90029 /* MusicVolumeSlider.swift */; };
 		D3F42A3624E6A2ED0072FB11 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F42A3524E6A2ED0072FB11 /* MainTableView.swift */; };
 		D3FE297524E620E900623C45 /* MusicSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */; };
 		D3FE297724E6218700623C45 /* SearchMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */; };
@@ -140,6 +150,16 @@
 		D3A3560524E18D430009700A /* CellIDExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIDExtension.swift; sourceTree = "<group>"; };
 		D3A3560724E18D610009700A /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		D3D0685824E6AC8000B48FD7 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		D3DE7C9F24E6C30200C90029 /* TopMarkLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMarkLine.swift; sourceTree = "<group>"; };
+		D3DE7CA124E6C34200C90029 /* MusicTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTitleLabel.swift; sourceTree = "<group>"; };
+		D3DE7CA324E6C38500C90029 /* ArtistNickName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistNickName.swift; sourceTree = "<group>"; };
+		D3DE7CA524E6C3B800C90029 /* CurrentTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeLabel.swift; sourceTree = "<group>"; };
+		D3DE7CA724E6C41F00C90029 /* MusicLengthLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLengthLabel.swift; sourceTree = "<group>"; };
+		D3DE7CAA24E6C46700C90029 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		D3DE7CAC24E6C4C400C90029 /* PlayBeforeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBeforeButton.swift; sourceTree = "<group>"; };
+		D3DE7CAE24E6C50000C90029 /* PlayNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayNextButton.swift; sourceTree = "<group>"; };
+		D3DE7CB224E6C5AD00C90029 /* MusicTimeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTimeSlider.swift; sourceTree = "<group>"; };
+		D3DE7CB424E6C62900C90029 /* MusicVolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVolumeSlider.swift; sourceTree = "<group>"; };
 		D3F42A3524E6A2ED0072FB11 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		D3FE297424E620E900623C45 /* MusicSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchTableViewController.swift; sourceTree = "<group>"; };
 		D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicTableCell.swift; sourceTree = "<group>"; };
@@ -297,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				D374809D24DE907100D8EC43 /* PlayerViewController.swift */,
+				D3DE7C9E24E6C2EF00C90029 /* View */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -352,6 +373,7 @@
 				D3A355FF24E18C940009700A /* Login */,
 				D3A355FE24E18C890009700A /* Main */,
 				D37480A724DFBDE800D8EC43 /* ChartPage */,
+				D374809C24DE905D00D8EC43 /* Player */,
 				D374807F24DCF36F00D8EC43 /* MyAccount */,
 				D374809424DD437500D8EC43 /* AddMusic */,
 				D3A3560A24E18DF90009700A /* Profile */,
@@ -360,7 +382,6 @@
 				D37480C624E0C82200D8EC43 /* MessagesViewController */,
 				D37480D424E0ED8D00D8EC43 /* ChatCollectionViewController */,
 				D37480CC24E0E3B700D8EC43 /* NewMessageViewController */,
-				D374809C24DE905D00D8EC43 /* Player */,
 				D374808224DCF48600D8EC43 /* AppIntro */,
 			);
 			path = ViewController;
@@ -457,6 +478,23 @@
 				D37480AD24DFBE5C00D8EC43 /* SecondVC.swift */,
 			);
 			path = Second;
+			sourceTree = "<group>";
+		};
+		D3DE7C9E24E6C2EF00C90029 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3DE7C9F24E6C30200C90029 /* TopMarkLine.swift */,
+				D3DE7CA124E6C34200C90029 /* MusicTitleLabel.swift */,
+				D3DE7CA324E6C38500C90029 /* ArtistNickName.swift */,
+				D3DE7CA524E6C3B800C90029 /* CurrentTimeLabel.swift */,
+				D3DE7CA724E6C41F00C90029 /* MusicLengthLabel.swift */,
+				D3DE7CAA24E6C46700C90029 /* PlayButton.swift */,
+				D3DE7CAC24E6C4C400C90029 /* PlayBeforeButton.swift */,
+				D3DE7CAE24E6C50000C90029 /* PlayNextButton.swift */,
+				D3DE7CB224E6C5AD00C90029 /* MusicTimeSlider.swift */,
+				D3DE7CB424E6C62900C90029 /* MusicVolumeSlider.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D3EC8D7724E6B43000415359 /* View */ = {
@@ -636,15 +674,18 @@
 				D374807924DC538100D8EC43 /* NickNameTextField.swift in Sources */,
 				D374806224DC475E00D8EC43 /* TopSecondVC.swift in Sources */,
 				D374807324DC512100D8EC43 /* PasswordTextField.swift in Sources */,
+				D3DE7CB324E6C5AD00C90029 /* MusicTimeSlider.swift in Sources */,
 				D374809E24DE907100D8EC43 /* PlayerViewController.swift in Sources */,
 				D374806724DC4AAF00D8EC43 /* BottomFirstVC.swift in Sources */,
 				D3A3560824E18D610009700A /* KeyboardExtension.swift in Sources */,
 				D37480B124DFC03500D8EC43 /* MusicListTitleHeaderView.swift in Sources */,
 				D37480D324E0EC0500D8EC43 /* Message.swift in Sources */,
 				D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */,
+				D3DE7CB524E6C62900C90029 /* MusicVolumeSlider.swift in Sources */,
 				D37480BF24E0380000D8EC43 /* UserSearchTableViewController.swift in Sources */,
 				D3FE297524E620E900623C45 /* MusicSearchTableViewController.swift in Sources */,
 				D374805824DC430600D8EC43 /* EditView.swift in Sources */,
+				D3DE7CA024E6C30200C90029 /* TopMarkLine.swift in Sources */,
 				D37480D624E0EDA600D8EC43 /* ChatCollectionViewController.swift in Sources */,
 				D374806024DC475100D8EC43 /* TopFirstVC.swift in Sources */,
 				D374808124DCF39000D8EC43 /* MyAccountViewController.swift in Sources */,
@@ -662,15 +703,21 @@
 				D374808624DCF6A200D8EC43 /* FirebaseService.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
 				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,
+				D3DE7CAB24E6C46700C90029 /* PlayButton.swift in Sources */,
+				D3DE7CA824E6C41F00C90029 /* MusicLengthLabel.swift in Sources */,
 				D3A3560624E18D430009700A /* CellIDExtension.swift in Sources */,
 				D37480D124E0E47E00D8EC43 /* NewMessageTableCell.swift in Sources */,
 				D374807C24DC5EBB00D8EC43 /* WebService.swift in Sources */,
 				D374806524DC4A6F00D8EC43 /* BottomLoginPageViewController.swift in Sources */,
 				D374809924DD460500D8EC43 /* PlusCoverButton.swift in Sources */,
 				D374805524DC365700D8EC43 /* NewMusicCoverCollectionCell.swift in Sources */,
+				D3DE7CA224E6C34200C90029 /* MusicTitleLabel.swift in Sources */,
+				D3DE7CAF24E6C50000C90029 /* PlayNextButton.swift in Sources */,
 				D37480C824E0C84D00D8EC43 /* MessagesTableViewController.swift in Sources */,
 				D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */,
 				D374805124DC32C800D8EC43 /* NewMusicTitleTableCell.swift in Sources */,
+				D3DE7CAD24E6C4C400C90029 /* PlayBeforeButton.swift in Sources */,
+				D3DE7CA424E6C38500C90029 /* ArtistNickName.swift in Sources */,
 				D37480A424DFBA9A00D8EC43 /* MusicListTitleTableCell.swift in Sources */,
 				D3F42A3624E6A2ED0072FB11 /* MainTableView.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
@@ -689,6 +736,7 @@
 				D3FE297724E6218700623C45 /* SearchMusicTableCell.swift in Sources */,
 				D37480C224E039AD00D8EC43 /* SearchTableCell.swift in Sources */,
 				D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */,
+				D3DE7CA624E6C3B800C90029 /* CurrentTimeLabel.swift in Sources */,
 				D37480C524E051E800D8EC43 /* UserProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

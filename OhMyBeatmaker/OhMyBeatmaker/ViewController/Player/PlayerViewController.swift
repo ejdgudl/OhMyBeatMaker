@@ -16,10 +16,8 @@ var player: AVPlayer?
 class PlayerViewController: UIViewController {
     
     // MARK: Properties
-    private var topMarkLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 3
+    private var topMarkLine: TopMarkLine = {
+        let view = TopMarkLine()
         return view
     }()
     
@@ -32,73 +30,50 @@ class PlayerViewController: UIViewController {
         return imageView
     }()
     
-    var musicTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.text = "Song Title"
+    var musicTitleLabel: MusicTitleLabel = {
+        let label = MusicTitleLabel()
         return label
     }()
     
-    var artistNickName: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.textColor = .red
-        label.text = "artist"
+    var artistNickName: ArtistNickName = {
+        let label = ArtistNickName()
         return label
     }()
     
-    private let currentTimeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "00:00"
-        label.textColor = .lightGray
-        label.font = UIFont.boldSystemFont(ofSize: 8)
-        label.textAlignment = .left
+    private let currentTimeLabel: CurrentTimeLabel = {
+        let label = CurrentTimeLabel()
         return label
     }()
     
-    private lazy var musicTimeSlider: UISlider = {
-        let slider = UISlider()
-        slider.minimumTrackTintColor = .lightGray
+    private lazy var musicTimeSlider: MusicTimeSlider = {
+        let slider = MusicTimeSlider()
         slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
-        slider.setThumbImage(UIImage.init(named: "sliderThumbImage"), for: .normal)
         return slider
     }()
     
-    private let musicLengthLabel: UILabel = {
-        let label = UILabel()
-        label.text = "00:00"
-        label.textColor = .lightGray
-        label.font = UIFont.boldSystemFont(ofSize: 8)
-        label.textAlignment = .right
+    private let musicLengthLabel: MusicLengthLabel = {
+        let label = MusicLengthLabel()
         return label
     }()
     
-    lazy var playButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "playButton"), for: .normal)
+    lazy var playButton: PlayButton = {
+        let button = PlayButton(type: .system)
         button.addTarget(self, action: #selector(didTapPlaybutton), for: .touchUpInside)
-        button.tintColor = .black
         return button
     }()
     
-    private var playBeforeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "playBefore"), for: .normal)
-        button.tintColor = .black
+    private var playBeforeButton: PlayBeforeButton = {
+        let button = PlayBeforeButton(type: .system)
         return button
     }()
     
-    private var playNextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "playNext"), for: .normal)
-        button.tintColor = .black
+    private var playNextButton: PlayNextButton = {
+        let button = PlayNextButton(type: .system)
         return button
     }()
     
-    private lazy var musicVolumeSlider: UISlider = {
-        let slider = UISlider()
-        slider.minimumValue = 0
-        slider.maximumValue = 1
+    private lazy var musicVolumeSlider: MusicVolumeSlider = {
+        let slider = MusicVolumeSlider()
         slider.addTarget(self, action: #selector(handleVolumeSliderChange), for: .valueChanged)
         return slider
     }()
@@ -117,9 +92,9 @@ class PlayerViewController: UIViewController {
         return imageView
     }()
     
-    private let db = Database.database().reference()
-    
     var playerItem: AVPlayerItem?
+    
+    private let db = Database.database().reference()
     
     var mainVC: MainViewController?
     
@@ -130,15 +105,15 @@ class PlayerViewController: UIViewController {
         didSet {
             guard let music = musicTitle else {return}
             db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
-                guard let value = snapshot.value as? [String: Any] else {return}
-                guard let title = value["musicTitle"] as? String else {return}
+                guard let musicData = snapshot.value as? [String: Any] else {return}
+                guard let title = musicData["musicTitle"] as? String else {return}
                 self.musicTitleLabel.text = title
-                guard let artistNickName = value["artistNickName"] as? String else {return}
+                guard let artistNickName = musicData["artistNickName"] as? String else {return}
                 self.artistNickName.text = artistNickName
-                guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
+                guard let imageUrlStr = musicData["coverImageUrl"] as? String else {return}
                 guard let imageUrl = URL(string: imageUrlStr) else {return}
                 self.coverImageView.kf.setImage(with: imageUrl)
-                guard let mp3Url = value["musicFileUrl"] as? String else {return}
+                guard let mp3Url = musicData["musicFileUrl"] as? String else {return}
                 self.playMusic(mp3FileUrl: mp3Url, musicTitle: title)
             }
         }
@@ -181,11 +156,12 @@ class PlayerViewController: UIViewController {
     
     // MARK: Helpers
     func playMusic(mp3FileUrl: String, musicTitle: String) {
+        
         if player?.currentItem != nil {
             player?.pause()
         }
         
-        
+        // Like + 1
         db.child("Musics").child(musicTitle).observeSingleEvent(of: .value, with: { (snapshot) in
             let musicTitle = snapshot.key
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
@@ -194,6 +170,8 @@ class PlayerViewController: UIViewController {
             like += 1
             self.db.child("Musics").child(musicTitle).updateChildValues(["like" : like])
         })
+        
+        // Make Top5
         db.child("Musics").observe(.childAdded) { (snapshot) in
             let musicTitle = snapshot.key
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
@@ -218,7 +196,7 @@ class PlayerViewController: UIViewController {
             }
         }
         
-        
+        // Play
         let url = URL(string: mp3FileUrl)
         self.playerItem = AVPlayerItem(url: url!)
         player = AVPlayer(playerItem: self.playerItem)
