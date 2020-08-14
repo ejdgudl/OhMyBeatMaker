@@ -50,6 +50,8 @@ class MainViewController: UIViewController {
     
     let pageVC = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
+    private let playerService = PlayerService()
+    
     var user: User? {
         didSet {
             guard let user = user else {return}
@@ -246,10 +248,7 @@ extension MainViewController: TouchedBannerCellDelegate {
 // MARK: DidTapPlayButtonSecondDelegate
 extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(newMusic: String) {
-        playerVC.newMusic = newMusic
-        bottomButton.newMusic = newMusic
-        bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
-        playerVC.mainVC = self
+        playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, newMusic: newMusic)
         present(playerVC, animated: true)
     }
 }
