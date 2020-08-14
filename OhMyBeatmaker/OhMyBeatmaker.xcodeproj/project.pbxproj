@@ -417,7 +417,6 @@
 		D3A3560324E18D040009700A /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
-				D37480A324DFBA9A00D8EC43 /* MusicListTitleTableCell.swift */,
 				D37480A524DFBC4200D8EC43 /* MusicListTableCell.swift */,
 				D37480C124E039AD00D8EC43 /* SearchTableCell.swift */,
 				D3FE297624E6218700623C45 /* SearchMusicTableCell.swift */,
@@ -478,6 +477,7 @@
 				D374804B24DC2BDF00D8EC43 /* BannerTableCell.swift */,
 				D374805024DC32C800D8EC43 /* NewMusicTitleTableCell.swift */,
 				D374805224DC35AE00D8EC43 /* NewMusicCoverTableCell.swift */,
+				D37480A324DFBA9A00D8EC43 /* MusicListTitleTableCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";

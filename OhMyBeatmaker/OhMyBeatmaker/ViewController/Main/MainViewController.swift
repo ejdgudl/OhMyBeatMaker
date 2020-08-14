@@ -41,16 +41,13 @@ class MainViewController: UIViewController {
     private var constraintX: NSLayoutConstraint?
     
     private let webService = WebService()
-    
     private let firebaseService = FirebaseService()
+    private let playerService = PlayerService()
     
     private let db = Database.database().reference()
     
     private let playerVC = PlayerViewController()
-    
     let pageVC = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    
-    private let playerService = PlayerService()
     
     var user: User? {
         didSet {
