@@ -32,7 +32,7 @@ class PlayerViewController: UIViewController {
         return imageView
     }()
     
-    var musicTitle: UILabel = {
+    var musicTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "Song Title"
@@ -126,13 +126,13 @@ class PlayerViewController: UIViewController {
     var dictValues = [String: Int]()
     var sortedArray = [Dictionary<String, Int>.Element]()
     
-    var newMusic: String? {
+    var musicTitle: String? {
         didSet {
-            guard let music = newMusic else {return}
+            guard let music = musicTitle else {return}
             db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
                 guard let value = snapshot.value as? [String: Any] else {return}
                 guard let title = value["musicTitle"] as? String else {return}
-                self.musicTitle.text = title
+                self.musicTitleLabel.text = title
                 guard let artistNickName = value["artistNickName"] as? String else {return}
                 self.artistNickName.text = artistNickName
                 guard let imageUrlStr = value["coverImageUrl"] as? String else {return}
@@ -257,7 +257,7 @@ class PlayerViewController: UIViewController {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [topMarkLine, coverImageView, musicTitle, artistNickName, musicTimeSlider, musicLengthLabel, currentTimeLabel, playBeforeButton, playButton, playNextButton, volumeMinView, musicVolumeSlider, volumeMaxView].forEach {
+        [topMarkLine, coverImageView, musicTitleLabel, artistNickName, musicTimeSlider, musicLengthLabel, currentTimeLabel, playBeforeButton, playButton, playNextButton, volumeMinView, musicVolumeSlider, volumeMaxView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -272,8 +272,8 @@ class PlayerViewController: UIViewController {
         coverImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         coverImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
-        musicTitle.bottomAnchor.constraint(equalTo: artistNickName.topAnchor, constant: -4).isActive = true
-        musicTitle.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true
+        musicTitleLabel.bottomAnchor.constraint(equalTo: artistNickName.topAnchor, constant: -4).isActive = true
+        musicTitleLabel.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true
         
         artistNickName.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height * 0.335)).isActive = true
         artistNickName.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true

@@ -18,7 +18,7 @@ class MusicListCell: UITableViewCell {
     
     // MARK: Properties
     var musicListImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 11
         imageView.layer.masksToBounds = true
@@ -28,7 +28,6 @@ class MusicListCell: UITableViewCell {
     var musicTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = "Song Title"
         return label
     }()
     
@@ -36,7 +35,6 @@ class MusicListCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textColor = .lightGray
-        label.text = "artist"
         return label
     }()
     
@@ -49,8 +47,10 @@ class MusicListCell: UITableViewCell {
     }()
     
     weak var musicListCellDelegate: MusicListCellDelegate?
+    
     private let db = Database.database().reference()
     
+    // from SecondVC(Today Beat)
     var music: Music? {
         didSet {
             guard let music = music else {return}
@@ -64,10 +64,10 @@ class MusicListCell: UITableViewCell {
         }
     }
     
-    var topMusic: String? {
+    // from FirstVC(Top5)
+    var top5ArrayOf1: String? {
         didSet {
-            print("newMusic didSet in the collection")
-            guard let music = topMusic else {return}
+            guard let music = top5ArrayOf1 else {return}
             db.child("Musics").child(music).observeSingleEvent(of: .value) { (snapshot) in
                 guard let value = snapshot.value as? [String: Any] else {return}
                 guard let title = value["musicTitle"] as? String else {return}

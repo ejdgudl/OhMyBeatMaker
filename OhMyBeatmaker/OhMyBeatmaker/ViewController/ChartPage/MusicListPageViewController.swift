@@ -8,11 +8,12 @@
 
 import UIKit
 
-protocol PageViewControllerDelegate: class {
+// MARK: MusicListPageViewControllerDelegate
+protocol MusicListPageViewControllerDelegate: class {
     func sendMusicTitle(musicTitle: String)
 }
 
-class PageViewController: UIPageViewController {
+class MusicListPageViewController: UIPageViewController {
     
     // MARK: Properties
     private lazy var vcList = [firstVC, secondVC, thirdVC]
@@ -21,7 +22,7 @@ class PageViewController: UIPageViewController {
     private let secondVC = SecondVC()
     private let thirdVC = ThirdVC()
     
-    weak var sendMusicTitleDelegate: PageViewControllerDelegate?
+    weak var musicListPageViewControllerDelegate: MusicListPageViewControllerDelegate?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -46,15 +47,7 @@ class PageViewController: UIPageViewController {
 }
 
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
-extension PageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return vcList.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
-    }
+extension MusicListPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     // before
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -85,17 +78,18 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
             return vcList[nextIndex]
         }
     }
-    
 }
 
-extension PageViewController: FirstPageVCDelegate {
+// MARK: FirstPageVCDelegate
+extension MusicListPageViewController: FirstPageVCDelegate {
     func sendMusicTitle(musicTitle: String) {
-        sendMusicTitleDelegate?.sendMusicTitle(musicTitle: musicTitle)
+        musicListPageViewControllerDelegate?.sendMusicTitle(musicTitle: musicTitle)
     }
 }
 
-extension PageViewController: SecondPageVCDelegate {
+// MARK: SecondPageVCDelegate
+extension MusicListPageViewController: SecondPageVCDelegate {
     func sendMusicSecondChartTitle(musicTitle: String) {
-        sendMusicTitleDelegate?.sendMusicTitle(musicTitle: musicTitle)
+        musicListPageViewControllerDelegate?.sendMusicTitle(musicTitle: musicTitle)
     }
 }

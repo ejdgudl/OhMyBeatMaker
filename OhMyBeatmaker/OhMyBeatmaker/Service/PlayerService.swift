@@ -11,9 +11,9 @@ import Firebase
 
 class PlayerService {
 
-    func presentPlayer(playerVC: PlayerViewController, bottomButton: BottomButton, selfVC: MainViewController, newMusic: String) {
-        playerVC.newMusic = newMusic
-        bottomButton.newMusic = newMusic
+    func presentPlayer(playerVC: PlayerViewController, bottomButton: BottomButton, selfVC: MainViewController, musicTitle: String) {
+        playerVC.musicTitle = musicTitle
+        bottomButton.newMusic = musicTitle
         bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
         playerVC.mainVC = selfVC
     }

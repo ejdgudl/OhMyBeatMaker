@@ -16,17 +16,17 @@ protocol SecondPageVCDelegate: class{
 class SecondVC: UIViewController {
     
     // MARK: Properties
-    private let MusicListTitleView: MusicTitleHeaderView = {
-        let view = MusicTitleHeaderView()
+    private let musicListTitleHeaderView: MusicListTitleHeaderView = {
+        let view = MusicListTitleHeaderView()
         view.headerTitle.text = "Today Beat"
         return view
     }()
     
-    let firstMusicListView: UITableView = {
+    let secondMusicListView: UITableView = {
         let view = UITableView()
         view.backgroundColor = .clear
         view.separatorStyle = .none
-//        view.isScrollEnabled = true
+        view.isScrollEnabled = true
         return view
     }()
     
@@ -36,8 +36,7 @@ class SecondVC: UIViewController {
     
     var musics = [Music]() {
         didSet {
-            musics.shuffle()
-            firstMusicListView.reloadData()
+            secondMusicListView.reloadData()
         }
     }
     
@@ -65,29 +64,29 @@ class SecondVC: UIViewController {
     
     // MARK: Configure
     private func configure() {
-        firstMusicListView.delegate = self
-        firstMusicListView.dataSource = self
-        firstMusicListView.register(MusicListCell.self, forCellReuseIdentifier: UITableView.musicCellID)
+        secondMusicListView.delegate = self
+        secondMusicListView.dataSource = self
+        secondMusicListView.register(MusicListCell.self, forCellReuseIdentifier: UITableView.musicCellID)
     }
     
     // MARK: ConfigureViews
     func configureViews() {
         view.backgroundColor = .clear
         
-        [MusicListTitleView, firstMusicListView].forEach {
+        [musicListTitleHeaderView, secondMusicListView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        MusicListTitleView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        MusicListTitleView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
-        MusicListTitleView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        MusicListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        musicListTitleHeaderView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        musicListTitleHeaderView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        musicListTitleHeaderView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        musicListTitleHeaderView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        firstMusicListView.topAnchor.constraint(equalTo: MusicListTitleView.bottomAnchor).isActive = true
-        firstMusicListView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
-        firstMusicListView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        firstMusicListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        secondMusicListView.topAnchor.constraint(equalTo: musicListTitleHeaderView.bottomAnchor).isActive = true
+        secondMusicListView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        secondMusicListView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        secondMusicListView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
     }
     
 }
@@ -103,7 +102,7 @@ extension SecondVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let musicListCell = firstMusicListView.dequeueReusableCell(withIdentifier: UITableView.musicCellID, for: indexPath) as? MusicListCell else {fatalError()}
+        guard let musicListCell = secondMusicListView.dequeueReusableCell(withIdentifier: UITableView.musicCellID, for: indexPath) as? MusicListCell else {fatalError()}
         musicListCell.music = self.musics[indexPath.row]
         musicListCell.musicListCellDelegate = self
         return musicListCell

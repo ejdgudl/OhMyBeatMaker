@@ -8,12 +8,11 @@
 
 import UIKit
 
-class MusicTitleHeaderView: UIView {
+class MusicListTitleHeaderView: UIView {
     
     // MARK: Properties
     var headerTitle: UILabel = {
         let label = UILabel()
-        label.text = "Entire Music"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()

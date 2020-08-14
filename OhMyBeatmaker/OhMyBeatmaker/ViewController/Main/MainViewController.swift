@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
     private let db = Database.database().reference()
     
     private let playerVC = PlayerViewController()
-    let pageVC = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    let pageVC = MusicListPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     var user: User? {
         didSet {
@@ -132,8 +132,8 @@ class MainViewController: UIViewController {
         tableView.register(BannerTableCell.self, forCellReuseIdentifier: UITableView.bannerTableCellID)
         tableView.register(NewMusicTitleTableCell.self, forCellReuseIdentifier: UITableView.newMusicTitleTableCellID)
         tableView.register(NewMusicCoverTableCell.self, forCellReuseIdentifier: UITableView.newMusicCoverTableCellID)
-        tableView.register(MusicListTitleTableCell.self, forCellReuseIdentifier: UITableView.musicTitleCellID)
-        tableView.register(MusicListTableCell.self, forCellReuseIdentifier: UITableView.musicTableCellID)
+        tableView.register(MusicListTitleTableCell.self, forCellReuseIdentifier: UITableView.musicListTitleCellID)
+        tableView.register(MusicListTableCell.self, forCellReuseIdentifier: UITableView.musicListTableCellID)
         
         editView.didTapEdiViewTableCellDelegate = self
         editView.didTapBackgroundDelegate = self
@@ -200,15 +200,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             newMusicCoverCell.new5Array = self.new5Array
             return newMusicCoverCell
         case 3:
-            guard let musicListTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicTitleCellID, for: indexPath) as? MusicListTitleTableCell else {fatalError()}
+            guard let musicListTitleCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicListTitleCellID, for: indexPath) as? MusicListTitleTableCell else {fatalError()}
             return musicListTitleCell
         case 4:
-            guard let musicTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicTableCellID, for: indexPath) as? MusicListTableCell else {fatalError()}
-            musicTableCell.pageView.addSubview(pageVC.view)
-            pageVC.sendMusicTitleDelegate = self
-            pageVC.view.frame = musicTableCell.pageView.frame
-            pageVC.firstVC.newMusic = self.top5Array
-            return musicTableCell
+            guard let musicListTableCell = tableView.dequeueReusableCell(withIdentifier: UITableView.musicListTableCellID, for: indexPath) as? MusicListTableCell else {fatalError()}
+            musicListTableCell.pageView.addSubview(pageVC.view)
+            pageVC.musicListPageViewControllerDelegate = self
+            pageVC.view.frame = musicListTableCell.pageView.frame
+            pageVC.firstVC.top5Array = self.top5Array
+            return musicListTableCell
         default:
             break
         }
@@ -245,17 +245,16 @@ extension MainViewController: TouchedBannerCellDelegate {
 // MARK: DidTapPlayButtonSecondDelegate
 extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(newMusic: String) {
-        playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, newMusic: newMusic)
+        playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: newMusic)
         present(playerVC, animated: true)
     }
 }
 
-extension MainViewController: PageViewControllerDelegate {
+// MARK: MusicListPageViewControllerDelegate
+extension MainViewController: MusicListPageViewControllerDelegate {
     func sendMusicTitle(musicTitle: String) {
-        playerVC.newMusic = musicTitle
-        bottomButton.newMusic = musicTitle
-        bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
-        playerVC.mainVC = self
+        playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
+        playerVC.musicTitle = musicTitle
         present(playerVC, animated: true)
     }
 }
@@ -264,7 +263,7 @@ extension MainViewController: PageViewControllerDelegate {
 
 extension MainViewController: MusicSearchSendTitleDelegate {
     func searchSendMusicTitle(musicTitle: String) {
-        playerVC.newMusic = musicTitle
+        playerVC.musicTitle = musicTitle
         bottomButton.newMusic = musicTitle
         bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
         playerVC.mainVC = self

@@ -13,8 +13,8 @@ extension UITableView {
     static let bannerTableCellID = "bannerTableCellID"
     static let newMusicTitleTableCellID = "newMusicTitleTableCellID"
     static let newMusicCoverTableCellID = "newMusicCoverTableCellID"
-    static let musicTitleCellID = "chartTitleTableCellID"
-    static let musicTableCellID = "chartTableCellID"
+    static let musicListTitleCellID = "chartTitleTableCellID"
+    static let musicListTableCellID = "chartTableCellID"
     
     static let musicCellID = "chartCellID"
     

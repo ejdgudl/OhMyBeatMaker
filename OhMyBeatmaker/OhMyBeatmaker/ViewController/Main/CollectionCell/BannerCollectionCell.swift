@@ -13,7 +13,6 @@ class BannerCollectionCell: UICollectionViewCell {
     // MARK: Properties
     lazy var bannerImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.image = UIImage(named: "banner1")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = true
