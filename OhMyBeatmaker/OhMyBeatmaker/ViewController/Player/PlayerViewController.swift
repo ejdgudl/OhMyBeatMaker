@@ -202,16 +202,20 @@ class PlayerViewController: UIViewController {
             self.sortedArray = self.dictValues.sorted { $0.1 > $1.1 }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            if self.sortedArray.count == 0 {
-                
+            if self.sortedArray.count >= 6 {
+                self.sortedArray.removeSubrange(5...)
+                var top5List = [String]()
+                for item in self.sortedArray {
+                    top5List.append(item.0)
+                }
+                self.db.updateChildValues(["Top5": top5List])
+            } else {
+                var top5List = [String]()
+                for item in self.sortedArray {
+                    top5List.append(item.0)
+                }
+                self.db.updateChildValues(["Top5": top5List])
             }
-            self.sortedArray.removeSubrange(5...)
-            print(self.sortedArray[0].0)
-            var top5List = [String]()
-            for item in self.sortedArray {
-                top5List.append(item.0)
-            }
-            self.db.updateChildValues(["Top5": top5List])
         }
         
         

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol SecondPageVCDelegate: class{
-    func sendMusicTitle(musicTitle: String)
+    func sendMusicSecondChartTitle(musicTitle: String)
 }
 
 class SecondVC: UIViewController {
@@ -32,7 +32,7 @@ class SecondVC: UIViewController {
     
     let db = Database.database().reference()
     
-    weak var firstPageVCDelegate: FirstPageVCDelegate?
+    weak var secondPageVCDelegate: SecondPageVCDelegate?
     
     var musics = [Music]() {
         didSet {
@@ -112,7 +112,7 @@ extension SecondVC: UITableViewDataSource, UITableViewDelegate {
 
 extension SecondVC: MusicListCellDelegate {
     func sendMusicTitle(musicTitle: String) {
-        firstPageVCDelegate?.sendMusicTitle(musicTitle: musicTitle)
+        secondPageVCDelegate?.sendMusicSecondChartTitle(musicTitle: musicTitle)
     }
 }
 

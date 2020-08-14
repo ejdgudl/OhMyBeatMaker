@@ -16,7 +16,6 @@ class SearchTableCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .lightGray
         imageView.layer.cornerRadius = 48 / 2
         return imageView
     }()

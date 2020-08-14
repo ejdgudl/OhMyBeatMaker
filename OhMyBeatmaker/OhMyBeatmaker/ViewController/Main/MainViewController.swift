@@ -274,6 +274,8 @@ extension MainViewController: PageViewControllerDelegate {
     }
 }
 
+
+
 extension MainViewController: MusicSearchSendTitleDelegate {
     func searchSendMusicTitle(musicTitle: String) {
         playerVC.newMusic = musicTitle

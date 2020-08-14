@@ -35,6 +35,7 @@ class PageViewController: UIPageViewController {
         dataSource = self
         delegate = self
         firstVC.firstPageVCDelegate = self
+        secondVC.secondPageVCDelegate = self
         setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
     }
     
@@ -89,6 +90,12 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
 
 extension PageViewController: FirstPageVCDelegate {
     func sendMusicTitle(musicTitle: String) {
+        sendMusicTitleDelegate?.sendMusicTitle(musicTitle: musicTitle)
+    }
+}
+
+extension PageViewController: SecondPageVCDelegate {
+    func sendMusicSecondChartTitle(musicTitle: String) {
         sendMusicTitleDelegate?.sendMusicTitle(musicTitle: musicTitle)
     }
 }

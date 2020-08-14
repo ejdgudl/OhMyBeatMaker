@@ -16,7 +16,6 @@ class NewMessageTableCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .lightGray
         imageView.layer.cornerRadius = 48 / 2
         return imageView
     }()
@@ -25,14 +24,12 @@ class NewMessageTableCell: UITableViewCell {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .darkGray
-        label.text = "2h"
         return label
     }()
     
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.text = "aaaa"
         return label
     }()
     
