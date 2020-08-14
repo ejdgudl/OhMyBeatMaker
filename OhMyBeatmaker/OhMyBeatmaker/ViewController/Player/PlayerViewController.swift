@@ -123,6 +123,9 @@ class PlayerViewController: UIViewController {
     
     var mainVC: MainViewController?
     
+    var dictValues = [String: Int]()
+    var sortedArray = [Dictionary<String, Int>.Element]()
+    
     var newMusic: String? {
         didSet {
             guard let music = newMusic else {return}
@@ -181,6 +184,36 @@ class PlayerViewController: UIViewController {
         if player?.currentItem != nil {
             player?.pause()
         }
+        
+        
+        db.child("Musics").child(musicTitle).observeSingleEvent(of: .value, with: { (snapshot) in
+            let musicTitle = snapshot.key
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
+            let music = Music(musicTitle: musicTitle, dictionary: dictionary)
+            guard var like = music.like else {return}
+            like += 1
+            self.db.child("Musics").child(musicTitle).updateChildValues(["like" : like])
+        })
+        db.child("Musics").observe(.childAdded) { (snapshot) in
+            let musicTitle = snapshot.key
+            guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
+            let music = Music(musicTitle: musicTitle, dictionary: dictionary)
+            self.dictValues[music.musicTitle] = music.like
+            self.sortedArray = self.dictValues.sorted { $0.1 > $1.1 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if self.sortedArray.count == 0 {
+                
+            }
+            self.sortedArray.removeSubrange(5...)
+            print(self.sortedArray[0].0)
+            var top5List = [String]()
+            for item in self.sortedArray {
+                top5List.append(item.0)
+            }
+            self.db.updateChildValues(["Top5": top5List])
+        }
+        
         
         let url = URL(string: mp3FileUrl)
         self.playerItem = AVPlayerItem(url: url!)

@@ -18,6 +18,7 @@ class FirstVC: UIViewController {
     // MARK: Properties
     private let MusicListTitleView: MusicTitleHeaderView = {
         let view = MusicTitleHeaderView()
+        view.headerTitle.text = "Top5"
         return view
     }()
     
