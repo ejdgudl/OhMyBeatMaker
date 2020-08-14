@@ -322,7 +322,7 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
-		D37480A724DFBDE800D8EC43 /* ChartPage */ = {
+		D37480A724DFBDE800D8EC43 /* MusicListPage */ = {
 			isa = PBXGroup;
 			children = (
 				D37480A824DFBE1500D8EC43 /* MusicListPageViewController.swift */,
@@ -332,7 +332,7 @@
 				D3A3560C24E18E940009700A /* Second */,
 				D3FE298224E69B7700623C45 /* ThirdVC */,
 			);
-			path = ChartPage;
+			path = MusicListPage;
 			sourceTree = "<group>";
 		};
 		D37480BD24E037D000D8EC43 /* Search */ = {
@@ -372,7 +372,7 @@
 			children = (
 				D3A355FF24E18C940009700A /* Login */,
 				D3A355FE24E18C890009700A /* Main */,
-				D37480A724DFBDE800D8EC43 /* ChartPage */,
+				D37480A724DFBDE800D8EC43 /* MusicListPage */,
 				D374809C24DE905D00D8EC43 /* Player */,
 				D374807F24DCF36F00D8EC43 /* MyAccount */,
 				D374809424DD437500D8EC43 /* AddMusic */,

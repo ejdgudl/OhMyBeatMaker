@@ -158,14 +158,7 @@ extension EditView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = EditTableHeaderView()
-        switch section {
-        case section:
-            headerView.headerTitle.text = sections[section]
-        case section:
-            headerView.headerTitle.text = sections[section]
-        default:
-            fatalError()
-        }
+        headerView.headerTitle.text = sections[section]
         return headerView
     }
     
@@ -175,7 +168,7 @@ extension EditView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        private lazy var sections: [String] = rows.keys.sorted()
-//        private let rows = ["내 계정": ["로그아웃", "내정보"], "앱 소개": ["OMB"]]
+//        private let rows = ["내 계정": ["내정보", "유저 찾기", "노래찾기", "채팅방", "로그아웃"], "앱 소개": ["OMB"]]
         rows[sections[section]]!.count
     }
     
@@ -188,24 +181,7 @@ extension EditView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case 0:
-                didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
-            case 1:
-                didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
-            case 2:
-                didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
-            case 3:
-                didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
-            case 4:
-                didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
-            default:
-                break
-            }
-        } else {
-            didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
-        }
+        didTapEdiViewTableCellDelegate?.didTapEdiViewTableCell(section: indexPath.section, row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
