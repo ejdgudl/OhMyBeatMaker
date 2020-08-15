@@ -43,6 +43,7 @@ class UserMusicListTableCell: UITableViewCell {
     
     var userMusic: Music? {
         didSet {
+            print(userMusic)
             guard let userMusic = userMusic else {return}
             guard let coverImageStrUrl = userMusic.coverImageUrl else {return}
             guard let coverImageUrl = URL(string: coverImageStrUrl) else {return}
