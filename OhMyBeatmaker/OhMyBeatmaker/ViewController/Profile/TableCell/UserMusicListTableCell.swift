@@ -20,7 +20,6 @@ class UserMusicListTableCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
         imageView.layer.cornerRadius = 15
         return imageView
     }()

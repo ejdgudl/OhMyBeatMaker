@@ -225,5 +225,6 @@ extension MyAccountViewController: UIDocumentPickerDelegate {
                 }
             }
         }
+        myMusicListTableView.reloadData()
     }
 }
