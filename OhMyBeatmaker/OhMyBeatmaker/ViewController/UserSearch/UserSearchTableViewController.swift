@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol UserSearchTableVCDelegate: class {
+    func sendUserMusicTitle(musicTitle: String)
+}
+
 class UserSearchTableViewController: UITableViewController {
 
     // MARK: Properties
@@ -24,6 +28,8 @@ class UserSearchTableViewController: UITableViewController {
     private var searchMode = false
     
     private let db = Database.database().reference()
+    
+    var userSearchTableVCDelegate: UserSearchTableVCDelegate?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -108,6 +114,7 @@ extension UserSearchTableViewController {
             user = searchedUsers[indexPath.row]
         }
         let userProfileVC = UserProfileViewController()
+        userProfileVC.userProfileVCDelegate = self
         userProfileVC.user = user
         navigationController?.pushViewController(userProfileVC, animated: true)
     }
@@ -135,5 +142,11 @@ extension UserSearchTableViewController: UISearchBarDelegate {
             self.searchedUsers = matchingUsers
             tableView.reloadData()
         }
+    }
+}
+
+extension UserSearchTableViewController: UserProfileVCDelegate {
+    func sendUserMusicTitle(musicTitle: String) {
+        userSearchTableVCDelegate?.sendUserMusicTitle(musicTitle: musicTitle)
     }
 }

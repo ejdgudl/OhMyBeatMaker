@@ -10,6 +10,10 @@ import UIKit
 import Kingfisher
 import Firebase
 
+protocol UserProfileVCDelegate: class {
+    func sendUserMusicTitle(musicTitle: String)
+}
+
 class UserProfileViewController: UIViewController {
     
     // MARK: Properties
@@ -30,6 +34,8 @@ class UserProfileViewController: UIViewController {
     
     private let firebaseService = FirebaseService()
     private let db = Database.database().reference()
+    
+    var userProfileVCDelegate: UserProfileVCDelegate?
     
     var user: User? {
         didSet {
@@ -127,6 +133,13 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userMusicListTableView.dequeueReusableCell(withIdentifier: UITableView.userMusicListTableCellID, for: indexPath) as! UserMusicListTableCell
         cell.userMusic = self.userMusics[indexPath.row]
+        cell.userMusicListCellDelegate = self
         return cell
+    }
+}
+
+extension UserProfileViewController: UserMusicListCellDelegate {
+    func sendUserMusicTitle(musicTitle: String) {
+        userProfileVCDelegate?.sendUserMusicTitle(musicTitle: musicTitle)
     }
 }

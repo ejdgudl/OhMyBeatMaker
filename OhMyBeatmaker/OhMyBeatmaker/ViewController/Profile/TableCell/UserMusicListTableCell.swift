@@ -9,6 +9,10 @@
 import UIKit
 import Kingfisher
 
+protocol UserMusicListCellDelegate: class {
+    func sendUserMusicTitle(musicTitle: String)
+}
+
 class UserMusicListTableCell: UITableViewCell {
     
     // MARK: Properties
@@ -35,6 +39,8 @@ class UserMusicListTableCell: UITableViewCell {
         return button
     }()
     
+    var userMusicListCellDelegate: UserMusicListCellDelegate?
+    
     var userMusic: Music? {
         didSet {
             guard let userMusic = userMusic else {return}
@@ -59,7 +65,8 @@ class UserMusicListTableCell: UITableViewCell {
     
     // MARK: @Objc
     @objc private func didTapPlaybutton() {
-        print("didTap")
+        guard let musicTitle = self.musicTitleNameLabel.text else {return}
+        userMusicListCellDelegate?.sendUserMusicTitle(musicTitle: musicTitle)
     }
     
     // MARK: Configure

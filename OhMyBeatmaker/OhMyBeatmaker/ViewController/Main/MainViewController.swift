@@ -268,6 +268,15 @@ extension MainViewController: MusicSearchSendTitleDelegate {
     }
 }
 
+// MARK: UserSearchTableVCDelegate
+extension MainViewController: UserSearchTableVCDelegate {
+    func sendUserMusicTitle(musicTitle: String) {
+        playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
+        playerVC.musicTitle = musicTitle
+        present(playerVC, animated: true)
+    }
+}
+
 // MARK: DidTapEdiViewTableCellDelegate
 extension MainViewController: DidTapEdiViewTableCellDelegate {
     func didTapEdiViewTableCell(section: Int, row: Int) {
@@ -283,6 +292,7 @@ extension MainViewController: DidTapEdiViewTableCellDelegate {
                 navigationController?.pushViewController(myAccontVC, animated: true)
             case 1:
                 let userSerachVC = UserSearchTableViewController()
+                userSerachVC.userSearchTableVCDelegate = self
                 navigationController?.pushViewController(userSerachVC, animated: true)
             case 2:
                 let musicSerachVC = MusicSearchTableViewController()
