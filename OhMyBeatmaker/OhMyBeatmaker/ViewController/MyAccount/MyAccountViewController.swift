@@ -11,6 +11,10 @@ import Firebase
 import MobileCoreServices
 import Kingfisher
 
+protocol MyAccountVCDelegate: class {
+    func sendMyMusicTitle(musicTitle: String)
+}
+
 class MyAccountViewController: UIViewController {
     
     // MARK: Properties
@@ -25,6 +29,8 @@ class MyAccountViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    
+    var myAccountVCDelegate: MyAccountVCDelegate?
     
     var user: User? {
         didSet {
@@ -169,8 +175,15 @@ extension MyAccountViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myMusicListTableView.dequeueReusableCell(withIdentifier: UITableView.userMusicListTableCellID, for: indexPath) as! UserMusicListTableCell
         print(self.myMusics)
+        cell.userMusicListCellDelegate = self
         cell.userMusic = self.myMusics[indexPath.row]
         return cell
+    }
+}
+
+extension MyAccountViewController: UserMusicListCellDelegate {
+    func sendUserMusicTitle(musicTitle: String) {
+        myAccountVCDelegate?.sendMyMusicTitle(musicTitle: musicTitle)
     }
 }
 
