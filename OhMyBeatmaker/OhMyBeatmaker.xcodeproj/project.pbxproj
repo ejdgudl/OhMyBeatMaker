@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8229E50A8F600A29FDE3182E /* Pods_OhMyBeatmaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD684ED7C30B99842C04051 /* Pods_OhMyBeatmaker.framework */; };
+		D350BA4424E7A2C40022357F /* UserMusicListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D350BA4324E7A2C40022357F /* UserMusicListTableCell.swift */; };
 		D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374802C24DC1EA100D8EC43 /* AppDelegate.swift */; };
 		D374803124DC1EA100D8EC43 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374803024DC1EA100D8EC43 /* MainViewController.swift */; };
 		D374803624DC1EA400D8EC43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D374803524DC1EA400D8EC43 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		2CD684ED7C30B99842C04051 /* Pods_OhMyBeatmaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhMyBeatmaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A939FEB25BC4DB98ADB9C5 /* Pods-OhMyBeatmaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyBeatmaker.debug.xcconfig"; path = "Target Support Files/Pods-OhMyBeatmaker/Pods-OhMyBeatmaker.debug.xcconfig"; sourceTree = "<group>"; };
 		C2ED898FED249AAFAA514225 /* Pods-OhMyBeatmaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhMyBeatmaker.release.xcconfig"; path = "Target Support Files/Pods-OhMyBeatmaker/Pods-OhMyBeatmaker.release.xcconfig"; sourceTree = "<group>"; };
+		D350BA4324E7A2C40022357F /* UserMusicListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMusicListTableCell.swift; sourceTree = "<group>"; };
 		D374802924DC1EA100D8EC43 /* OhMyBeatmaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMyBeatmaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D374802C24DC1EA100D8EC43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D374803024DC1EA100D8EC43 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 				2CD684ED7C30B99842C04051 /* Pods_OhMyBeatmaker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D350BA4224E7A2A40022357F /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				D350BA4324E7A2C40022357F /* UserMusicListTableCell.swift */,
+			);
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 		D36F7F2224E6A8A600722DA9 /* CollectionCell */ = {
@@ -458,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				D37480C424E051E800D8EC43 /* UserProfileViewController.swift */,
+				D350BA4224E7A2A40022357F /* TableCell */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -771,6 +782,7 @@
 				D3DE7CA424E6C38500C90029 /* ArtistNickName.swift in Sources */,
 				D37480A424DFBA9A00D8EC43 /* MusicListTitleTableCell.swift in Sources */,
 				D3F42A3624E6A2ED0072FB11 /* MainTableView.swift in Sources */,
+				D350BA4424E7A2C40022357F /* UserMusicListTableCell.swift in Sources */,
 				D374804F24DC2DA600D8EC43 /* BannerCollectionCell.swift in Sources */,
 				D37480D924E0EEC600D8EC43 /* ChatCollectionCell.swift in Sources */,
 				D374804624DC27E900D8EC43 /* User.swift in Sources */,

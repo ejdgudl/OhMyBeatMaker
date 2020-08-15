@@ -27,6 +27,7 @@ class AppIntroViewController: UIViewController {
     
     // MARK: ConfigureViews
     private func configureViews() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        
     }
 }
