@@ -27,7 +27,7 @@ class FirstVC: UIViewController {
         let view = UITableView()
         view.backgroundColor = .clear
         view.separatorStyle = .none
-        view.isScrollEnabled = true
+        view.isScrollEnabled = false
         return view
     }()
     
