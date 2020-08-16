@@ -23,7 +23,6 @@ class PlayerViewController: UIViewController {
     
     lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 11
         imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width - 25, height: view.frame.width - 25)
         imageView.layer.cornerRadius = 11
         imageView.layer.masksToBounds = true
