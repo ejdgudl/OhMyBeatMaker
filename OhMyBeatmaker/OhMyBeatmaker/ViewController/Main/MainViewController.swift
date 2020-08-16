@@ -247,6 +247,7 @@ extension MainViewController: DidTapPlayButtonSecondDelegate {
     func didTapPlayButton(newMusic: String) {
         playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: newMusic)
         present(playerVC, animated: true)
+        self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
 }
 
@@ -256,6 +257,7 @@ extension MainViewController: MusicListPageViewControllerDelegate {
         playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
         playerVC.musicTitle = musicTitle
         present(playerVC, animated: true)
+        self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
 }
 
@@ -265,6 +267,7 @@ extension MainViewController: MusicSearchSendTitleDelegate {
         playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
         playerVC.musicTitle = musicTitle
         present(playerVC, animated: true)
+        self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
 }
 
@@ -274,6 +277,7 @@ extension MainViewController: UserSearchTableVCDelegate {
         playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
         playerVC.musicTitle = musicTitle
         present(playerVC, animated: true)
+        self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
 }
 
@@ -283,6 +287,7 @@ extension MainViewController: MyAccountVCDelegate {
         playerService.presentPlayer(playerVC: playerVC, bottomButton: bottomButton, selfVC: self, musicTitle: musicTitle)
         playerVC.musicTitle = musicTitle
         present(playerVC, animated: true)
+        self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
 }
 
