@@ -145,10 +145,16 @@ class PlayerViewController: UIViewController {
         guard let mainVC = self.mainVC else {return}
         if player?.rate == 0 {
             player?.play()
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                self.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
             mainVC.bottomButton.playButton.setImage(UIImage(named: "pause"), for: .normal)
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
             player?.pause()
+            UIView.animate(withDuration: 0.3) {
+                self.coverImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            }
             mainVC.bottomButton.playButton.setImage(UIImage(named: "playButton"), for: .normal)
             playButton.setImage(UIImage(named: "playButton"), for: .normal)
         }
@@ -249,6 +255,7 @@ class PlayerViewController: UIViewController {
         coverImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         coverImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         coverImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         
         musicTitleLabel.bottomAnchor.constraint(equalTo: artistNickName.topAnchor, constant: -4).isActive = true
         musicTitleLabel.leftAnchor.constraint(equalTo: coverImageView.leftAnchor).isActive = true

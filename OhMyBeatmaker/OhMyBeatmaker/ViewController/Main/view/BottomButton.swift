@@ -12,6 +12,7 @@ import Kingfisher
 
 protocol ChangeButtonImageDelegate: class {
     func changeButtonImage(imageName: String)
+    func changeCoverImageTransform(size: Double)
 }
 
 class BottomButton: UIButton {
@@ -75,10 +76,12 @@ class BottomButton: UIButton {
     @objc private func didTapPlaybutton() {
         if player?.rate == 0 {
             player?.play()
+            changeButtonImageDelegate?.changeCoverImageTransform(size: 1)
             changeButtonImageDelegate?.changeButtonImage(imageName: "pause")
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
             player?.pause()
+            changeButtonImageDelegate?.changeCoverImageTransform(size: 0.8)
             changeButtonImageDelegate?.changeButtonImage(imageName: "playButton")
             playButton.setImage(UIImage(named: "playButton"), for: .normal)
         }

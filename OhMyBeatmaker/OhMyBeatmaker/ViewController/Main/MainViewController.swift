@@ -338,6 +338,21 @@ extension MainViewController: SuccessSignInDelegate {
 
 // MARK: ChangeButtonImageDelegate
 extension MainViewController: ChangeButtonImageDelegate {
+    func changeCoverImageTransform(size: Double) {
+        switch size {
+        case 1:
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+        case 0.8:
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                self.playerVC.coverImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            }, completion: nil)
+        default:
+            break
+        }
+    }
+    
     func changeButtonImage(imageName: String) {
         playerVC.playButton.setImage(UIImage(named: imageName), for: .normal)
     }
