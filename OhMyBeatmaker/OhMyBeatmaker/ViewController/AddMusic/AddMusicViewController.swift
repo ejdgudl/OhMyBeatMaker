@@ -25,11 +25,6 @@ class AddMusicViewController: UIViewController {
         return button
     }()
     
-    private var indicator: IndicatorView = {
-        var indicator = IndicatorView(frame: accessibilityFrame())
-        return indicator
-    }()
-    
     var user: User?
     
     private let imagePicker = UIImagePickerController()
@@ -101,7 +96,7 @@ class AddMusicViewController: UIViewController {
     private func configureViews() {
         view.backgroundColor = .white
         
-        [plusCoverButton, addMusicButton, indicator].forEach {
+        [plusCoverButton, addMusicButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -113,22 +108,13 @@ class AddMusicViewController: UIViewController {
         
         addMusicButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
         addMusicButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        imagePicker.view.addSubview(indicator)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.centerYAnchor.constraint(equalTo: imagePicker.view.centerYAnchor).isActive = true
-        indicator.centerXAnchor.constraint(equalTo: imagePicker.view.centerXAnchor).isActive = true
     }
 }
 
 // MARK: UIDocumentPickerDelegate
 extension AddMusicViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        view.addSubview(indicator)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        indicator.startActivityIndicator()
+        view.makeToastActivity(.center)
         
         guard controller.documentPickerMode == .open, let url = urls.first, url.startAccessingSecurityScopedResource() else {return}
         
@@ -151,7 +137,7 @@ extension AddMusicViewController: UIDocumentPickerDelegate {
                         }
                         self.uploadMusicData(musicTitle: musicTitle, musicFileUrl: musicFileUrl)
                         self.dismiss(animated: true, completion: nil)
-                        self.indicator.stopAnimating()
+                        self.view.hideToastActivity()
                     }
                 }
             }
@@ -162,14 +148,14 @@ extension AddMusicViewController: UIDocumentPickerDelegate {
 // MARK: ImagePicker
 extension AddMusicViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        indicator.startActivityIndicator()
+        imagePicker.view.makeToastActivity(.center)
         guard let profileImage = info[.editedImage] as? UIImage else {return}
         
         plusCoverButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.dismiss(animated: true, completion: nil)
-            self.indicator.stopAnimating()
+            self.view.hideToastActivity()
         }
     }
 }

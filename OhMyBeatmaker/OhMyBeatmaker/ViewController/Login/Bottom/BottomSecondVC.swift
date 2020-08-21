@@ -58,12 +58,12 @@ class BottomSecondVC: UIViewController {
     // MARK: @Objc
     @objc private func didTapSignUpButton() {
         
-        self.stackView.indicator.startActivityIndicator()
+        self.view.makeToastActivity(.center)
         
         guard let email = emailTextField.text, let password = passwordTextField.text, let nickName = nickNameTextField.text else {return}
         guard email != "", password != "", nickName != "", password.count >= 6 else {
             alertNormal(title: "회원가입 오류", message: "다시 입력해 주세요")
-            stackView.indicator.stopActivityIndicator()
+            view.hideToastActivity()
             return
         }
         
@@ -71,7 +71,7 @@ class BottomSecondVC: UIViewController {
             if let error = error {
                 print("Failed to create user with error", error.localizedDescription)
                 self.alertNormal(title: "회원가입 오류", message: "중복된 email이거나 형식이 잘못되었습니다") { (_) in
-                    self.stackView.indicator.stopActivityIndicator()
+                    self.view.hideToastActivity()
                 }
             }
             
@@ -80,13 +80,14 @@ class BottomSecondVC: UIViewController {
             let values = [uid: dictionaryValues]
             
             self.db.child("users").updateChildValues(values) { (error, ref) in
-                self.stackView.indicator.stopActivityIndicator()
+                self.view.makeToastActivity(.center)
                 self.whenSucessSignUp()
                 self.alertNormal(title: "회원가입 성공", message: "wassup.\(nickName)") { (_) in
                     self.signUpCompletionDelegate?.ScrollToFirst()
                 }
                 print("successfully created user and saved information to database")
             }
+            self.view.hideToastActivity()
             self.firebaseService.signOut()
         }
     }

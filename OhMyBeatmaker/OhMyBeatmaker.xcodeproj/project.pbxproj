@@ -31,7 +31,6 @@
 		D374806724DC4AAF00D8EC43 /* BottomFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374806624DC4AAF00D8EC43 /* BottomFirstVC.swift */; };
 		D374806924DC4ABA00D8EC43 /* BottomSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374806824DC4ABA00D8EC43 /* BottomSecondVC.swift */; };
 		D374806B24DC4BDD00D8EC43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */; };
-		D374806E24DC4E1F00D8EC43 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374806D24DC4E1F00D8EC43 /* IndicatorView.swift */; };
 		D374807124DC502A00D8EC43 /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807024DC502A00D8EC43 /* EmailTextField.swift */; };
 		D374807324DC512100D8EC43 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807224DC512100D8EC43 /* PasswordTextField.swift */; };
 		D374807524DC519100D8EC43 /* LogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D374807424DC519100D8EC43 /* LogButton.swift */; };
@@ -115,7 +114,6 @@
 		D374806624DC4AAF00D8EC43 /* BottomFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomFirstVC.swift; sourceTree = "<group>"; };
 		D374806824DC4ABA00D8EC43 /* BottomSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSecondVC.swift; sourceTree = "<group>"; };
 		D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D374806D24DC4E1F00D8EC43 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		D374807024DC502A00D8EC43 /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		D374807224DC512100D8EC43 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		D374807424DC519100D8EC43 /* LogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogButton.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				D374807A24DC5EAB00D8EC43 /* Service */,
 				D374804724DC286C00D8EC43 /* Extension */,
 				D374804424DC27E000D8EC43 /* Model */,
-				D3DE7CBA24E6F0B300C90029 /* View */,
 				D3A355FD24E18C7F0009700A /* ViewController */,
 				D374806A24DC4BDD00D8EC43 /* GoogleService-Info.plist */,
 				D374803524DC1EA400D8EC43 /* Assets.xcassets */,
@@ -515,14 +512,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D3DE7CBA24E6F0B300C90029 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D374806D24DC4E1F00D8EC43 /* IndicatorView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		D3DE7CBB24E6F0DF00C90029 /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,7 +741,6 @@
 				D37480AE24DFBE5C00D8EC43 /* SecondVC.swift in Sources */,
 				D374808424DCF49900D8EC43 /* AppIntroViewController.swift in Sources */,
 				D374804324DC234F00D8EC43 /* TopView.swift in Sources */,
-				D374806E24DC4E1F00D8EC43 /* IndicatorView.swift in Sources */,
 				D374808624DCF6A200D8EC43 /* FirebaseService.swift in Sources */,
 				D374802D24DC1EA100D8EC43 /* AppDelegate.swift in Sources */,
 				D374805324DC35AE00D8EC43 /* NewMusicCoverTableCell.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MobileCoreServices
 import Kingfisher
+import Toast_Swift
 
 protocol MyAccountVCDelegate: class {
     func sendMyMusicTitle(musicTitle: String)
@@ -55,11 +56,6 @@ class MyAccountViewController: UIViewController {
             self.myMusicListTableView.reloadData()
         }
     }
-    
-    private let indicator: IndicatorView = {
-        var indicator = IndicatorView(frame: accessibilityFrame())
-        return indicator
-    }()
     
     private let imagePicker = UIImagePickerController()
     
@@ -149,11 +145,6 @@ class MyAccountViewController: UIViewController {
         myMusicListTableView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         myMusicListTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         myMusicListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
-        
-        imagePicker.view.addSubview(indicator)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.centerYAnchor.constraint(equalTo: imagePicker.view.centerYAnchor).isActive = true
-        indicator.centerXAnchor.constraint(equalTo: imagePicker.view.centerXAnchor).isActive = true
     }
 }
 
@@ -190,14 +181,14 @@ extension MyAccountViewController: UserMusicListCellDelegate {
 // MARK: UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension MyAccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        indicator.startActivityIndicator()
+        imagePicker.view.makeToastActivity(.center)
         guard let profileImage = info[.editedImage] as? UIImage else {return}
         
         plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         self.uploadProfileImage()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.dismiss(animated: true, completion: nil)
-            self.indicator.stopActivityIndicator()
+            self.imagePicker.view.hideToastActivity()
         }
     }
 }

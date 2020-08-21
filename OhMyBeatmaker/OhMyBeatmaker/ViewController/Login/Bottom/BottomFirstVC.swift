@@ -61,20 +61,20 @@ class BottomFirstVC: UIViewController {
     
     // MARK: @Objc
     @objc func didTapSignInButton() {
-        stackView.indicator.startActivityIndicator()
+        view.makeToastActivity(.center)
         guard let email = emailTextField.text, let password = passwordTextField.text else {return}
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
-                self.stackView.indicator.stopActivityIndicator()
                 print("Unable to sign user in with error", error.localizedDescription)
                 self.alertNormal(title: "로그인 오류", message: "아이디와 비밀번호를 확인해주세요") { (_) in
+                    self.view.hideToastActivity()
                 }
                 return
             }
             print("successfully signed user in")
             
             self.dismiss(animated: true) {
-                self.stackView.indicator.stopActivityIndicator()
+                self.view.hideToastActivity()
                 self.successSignInDelegate?.whenSuccessSignIn()
             }
         }
