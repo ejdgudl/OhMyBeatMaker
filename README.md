@@ -1,48 +1,51 @@
 # Oh My Beat Maker
-- 개인 프로젝트
+- 개인 Toy Project
 
+# Intro 
+- 비트메이커 혹은 싱어, 래퍼 등 자신의 음악 작업물을 업로드 함과 동시에 스트리밍이 가능하며 원하는 유저에게 메세지로 컨택을 할수있습니다.
+일종의 뮤지션들의 만남의 장을 그리며 제작
 
-### <앱 설명>
-```
-비트메이커 혹은 싱어, 래퍼 등 자신의 음악 작업물을 업로드 함과 동시에 스트리밍이 가능하며 원하는 유저에게 메세지로 컨택을 할수있습니다.
-일종의 뮤지션들의 만남의 장을 그리며 제작했습니다.
-```
-
-### <로그인, 회원가입>
+#### 사용라이브러리
+- Kingfisher
+- Toast-Swift
 - Firebase
+- youtube-ios-player-helper
+
+### 로그인, 회원가입(Firebase)
 <div>
-<img width="250" alt="1" src="https://user-images.githubusercontent.com/63357508/91742514-57bef700-ebf1-11ea-8ef2-469358ebbdbf.png">
-<img width="250" alt="2" src="https://user-images.githubusercontent.com/63357508/91743420-ba64c280-ebf2-11ea-8813-d2be1af3f2ef.png">
+<img width="250" alt="1" src="https://user-images.githubusercontent.com/63357508/95290829-31a00d00-08a9-11eb-9f39-60cd1caac523.gif">
+<img width="250" alt="2" src="https://user-images.githubusercontent.com/63357508/95291096-be4acb00-08a9-11eb-8479-e9e3cdbf78bb.gif">
 </div>
   
-### <메인화면 베너, Top5, TodayBeat>
+  
+### 메인화면 베너, Top5, TodayBeat
 ```
 최신음악에는 업로드되는 순서대로 최대 5개씩 보여줍니다. 
 또한 Top5에는 play 횟수가 가장 많은 곡부터 차례대로 TableView에 표현됩니다. 
 Today Beat에는 업로드 되어있는 노래중 무작위로 5개를 뽑아 TableView에 표현됩니다.
 유튜브 MV 영상 1개의 주소를 기입하여 표현됩니다.
 ```
+
 <div>
 <img width="190" alt="3" src="https://user-images.githubusercontent.com/63357508/91743608-0a438980-ebf3-11ea-8f83-c5e75e4ce1cc.png">
 <img width="190" alt="4" src="https://user-images.githubusercontent.com/63357508/91743698-2d6e3900-ebf3-11ea-8690-fbafb4e73eb9.png">
 <img width="190" alt="5" src="https://user-images.githubusercontent.com/63357508/91743712-3232ed00-ebf3-11ea-9fb6-746d4e99f651.png">
 </div>
     
-### <플레이어>
-- avplayer
+### 플레이어(AVPlayer)
 ```
 애플뮤직의 플레이어 화면을 본따 제작하였습니다.
 ```
-<img width="280" alt="6" src="https://user-images.githubusercontent.com/63357508/91743716-33fcb080-ebf3-11ea-9dc3-187202f59be7.png">
+<img width="280" alt="6" src="https://user-images.githubusercontent.com/63357508/95291615-da02a100-08aa-11eb-9425-339e32f6f5c1.gif">
 
-### <목록 뷰>
+### 목록 뷰
 ```
 각 기능에 접근할수 있는 경로를 제공하는 뷰입니다.
 ```
 <img width="280" alt="7" src="https://user-images.githubusercontent.com/63357508/91744392-6824a100-ebf4-11ea-96c7-23341b4cb958.png">
 
 
-### <프로필, 음악, 커버 업로드>
+### 프로필, 음악, 커버 업로드
 ```
 프로필 화면에는 해당 유저의 프로필 이미지와 업로드한 트랙이 표현됩니다.
 우측 상단 네비게이션 버튼 터치시 업로드를 시작할수 있는 뷰로 이동하게됩니다.
@@ -56,7 +59,7 @@ Today Beat에는 업로드 되어있는 노래중 무작위로 5개를 뽑아 Ta
 <img width="170" alt="13" src="https://user-images.githubusercontent.com/63357508/91744843-0add1f80-ebf5-11ea-9bc7-de418e4de5f4.png">
 </div>
 
-### <유저 검색, 노래 검색>
+### 유저 검색, 노래 검색
 ```
 현재 가입되어있는 모든 유저와 업로드 되어있는 노래들을 검색할수 있습니다.
 ```
@@ -65,7 +68,7 @@ Today Beat에는 업로드 되어있는 노래중 무작위로 5개를 뽑아 Ta
 <img width="250" alt="15" src="https://user-images.githubusercontent.com/63357508/91744855-0fa1d380-ebf5-11ea-98ff-51b379325336.png">
 </div>
 
-### <채팅 목록, 채팅 상대 선택, 채팅>
+### 채팅 목록, 채팅 상대 선택, 채팅
 ```
 메세지를 이용하여 작업물의 피드백이나 협업을 요청할수 있습니다.
 ```
